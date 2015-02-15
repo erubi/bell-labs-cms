@@ -45,10 +45,12 @@ group :development, :test do
   gem 'spring'
   gem 'pry'
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', "~> 4.0"
 end
 
 group :test do
   gem 'guard-rspec'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
 
