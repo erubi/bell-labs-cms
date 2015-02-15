@@ -51,5 +51,6 @@ group :test do
   gem 'guard-rspec'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', "~> 4.0"
+  gem 'faker'
 end
 
