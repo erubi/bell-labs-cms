@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem "haml-rails", "~> 0.8"
+gem 'bootstrap-sass', '~> 3.3.3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,6 +49,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'
   gem 'quiet_assets'
+end
+
+group :development do
+  gem 'guard-livereload', '~> 2.4', require: false
+  gem "rack-livereload"
 end
 
 group :test do
