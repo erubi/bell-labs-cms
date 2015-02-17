@@ -92,7 +92,11 @@ GEM
       execjs
     eco-source (1.1.0.rc.1)
     ejs (1.1.1)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    eventmachine (1.0.7)
     execjs (2.3.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -115,6 +119,10 @@ GEM
       shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-compat (1.2.1)
+    guard-livereload (2.4.0)
+      em-websocket (~> 0.5)
+      guard (~> 2.8)
+      multi_json (~> 1.8)
     guard-rspec (4.5.0)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -134,6 +142,7 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
@@ -174,6 +183,8 @@ GEM
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
+    rack-livereload (0.3.15)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -286,6 +297,7 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 4.0)
   faker
+  guard-livereload (~> 2.4)
   guard-rspec
   haml-rails (~> 0.8)
   jbuilder (~> 2.0)
@@ -293,6 +305,7 @@ DEPENDENCIES
   pg
   pry-rails
   quiet_assets
+  rack-livereload
   rails (= 4.2.0)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
