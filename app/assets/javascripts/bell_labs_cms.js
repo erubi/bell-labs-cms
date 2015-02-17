@@ -1,15 +1,11 @@
-// var BellLabsCMS = Marionette.Application.extend({
-//   initialize: function(options){
-//   }
-// });
+var bellCMS = new Marionette.Application();
 
-// BellLabsCMS.on('start', function(){
-//   if (Backbone.history){
-//     Backbone.history.start();
-//   }
-// });
+bellCMS.on('start', function(){
+  if (Backbone.history){
+    Backbone.history.start();
+  }
+});
 
-// $(document).ready(function(){
-//   var bellCMS = new BellLabsCMS({});
-//   bellCMS.start();
-// });
+$(function(){
+  bellCMS.start();
+});

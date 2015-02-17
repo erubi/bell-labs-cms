@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require backbone.babysitter
+//= require backbone.radio
 //= require backbone.marionette
 //= require backbone.radio.shim
 //= require bell_labs_cms
