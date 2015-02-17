@@ -4,7 +4,10 @@ require 'faker'
 FactoryGirl.define do
 
   factory :media_module do
-
+    name { Faker::Lorem.sentence }
+    active_interval { rand(100) * 100 }
+    active_time { rand * 24 }
+    active { true }
   end
 
   factory :user do
