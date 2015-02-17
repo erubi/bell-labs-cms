@@ -15,6 +15,9 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require backbone.marionette.min
+//= require backbone.babysitter.min
+//= require backbone.radio.shim
 //= require bell_labs_cms
 //= require_tree ../templates
 //= require_tree ./models
