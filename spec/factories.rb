@@ -1,4 +1,5 @@
 require 'faker'
+require 'carrierwave/orm/activerecord'
 
 # This will guess the User class
 FactoryGirl.define do

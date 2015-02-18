@@ -34,7 +34,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 # gem 'capistrano-rails', group: :development
 
 gem 'backbone-on-rails'
-gem 'carrierwave'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
