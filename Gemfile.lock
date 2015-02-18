@@ -285,6 +285,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   backbone-on-rails
   better_errors
   bootstrap-sass (~> 3.3.3)
