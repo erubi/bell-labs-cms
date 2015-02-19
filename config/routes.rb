@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :events, except: [:new, :edit]
+    resources :media_modules, except: [:new, :edit]
   end
 end
