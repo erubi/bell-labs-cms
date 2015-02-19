@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   get 'landing',  to: "home#landing", as: :landing
 
   devise_for :users, controllers: { sessions: "users/sessions" }
+
+  namespace :api, defaults: { format: :json } do
+    resources :events, except: [:new, :edit]
+    resources :media_modules, except: [:new, :edit]
+  end
 end
