@@ -10,11 +10,11 @@ require File.join(Rails.root, 'spec/support/sign_in_support.rb')
 resource "MediaModules" do
   # login_user
 
-  let(:auth_token) { current_user.authentication_token }
+  # let(:auth_token) { user.authentication_token }
 
   get "api/media_modules" do
     example "Get a list of all events" do
-      sign_in_as_a_valid_user
+      @user = FactoryGirl.create :user
       do_request
       expect(status).to eq(200)
     end
