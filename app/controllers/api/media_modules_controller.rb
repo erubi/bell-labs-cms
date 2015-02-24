@@ -1,5 +1,5 @@
 class Api::MediaModulesController < ApplicationController
-  before_action :require_signed_in
+  before_action :authenticate_user!
 
   def index
     @media_modules = MediaModule.all

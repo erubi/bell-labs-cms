@@ -1,13 +1,17 @@
 class User < ActiveRecord::Base
-  # Include default devise modules.
+  # Include devise modules
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :confirmable, :omniauthable
-  include DeviseTokenAuth::Concerns::User
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
+
+  # including this concern causes uid to be required and raises error immediately
+  # this concern does have potentially useful methods though
+  # include DeviseTokenAuth::Concerns::User
 
   validates :email, presence: true
+
+  # before_save -> do
+  #   self.uid = SecureRandom.uuid
+  #   skip_confirmation!
+  # end
 end
