@@ -8,6 +8,9 @@ require 'rspec_api_documentation/dsl'
 # end
 
 resource "MediaModules", type: :controller do
+  let (:media_module) { FactoryGirl.create :media_module }
+  let (:id) { media_module.id }
+
   get "/api/media_modules" do
     example "Get a list of all modules" do
       do_request
@@ -15,7 +18,13 @@ resource "MediaModules", type: :controller do
     end
   end
 
-  # need to make hidden from generated docs
+  # might want to switch to using slugs with module names
+  get "/api/media_modules/:id" do
+    example "Get a module by id" do
+      expect(path).to eq "/api/media_modules/#{id}"
+    end
+  end
+
   post "/api/media_modules" do
     example "Creating a module", :document => false do
       do_request(
@@ -24,5 +33,18 @@ resource "MediaModules", type: :controller do
       )
     end
   end
+
+  put "api/media_modules/:id" do
+    example "Update a module", :document => false do
+      expect(path).to eq "api/media_modules/#{id}"
+    end
+  end
+
+  delete "api/media_modules/:id" do
+    example "Delete a module", :document => false do
+      expect(path).to eq "api/media_modules/#{id}"
+    end
+  end
+
 end
 
