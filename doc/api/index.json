@@ -1,0 +1,14 @@
+{
+  "resources": [
+    {
+      "name": "MediaModules",
+      "examples": [
+        {
+          "description": "Get a list of all modules",
+          "link": "mediamodules/get_a_list_of_all_modules.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}

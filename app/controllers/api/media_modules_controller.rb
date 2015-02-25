@@ -1,6 +1,4 @@
 class Api::MediaModulesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @media_modules = MediaModule.all
   end
