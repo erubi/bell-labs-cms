@@ -1,22 +1,49 @@
 require 'rails_helper'
 require 'rspec_api_documentation/dsl'
-require File.join(Rails.root, 'spec/support/sign_in_support.rb')
+# require File.join(Rails.root, 'spec/support/sign_in_support.rb')
 
 # def sign_in_as_a_valid_user
 #   @user ||= FactoryGirl.create :user
 #   post_via_redirect Rails.application.routes.url_helpers.user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
 # end
 
-resource "MediaModules" do
-  # login_user
+resource "MediaModules", type: :controller do
+  user = FactoryGirl.create :user
+  # before do
+  #   user = FactoryGirl.create :user
+  #   auth_hash = user.create_new_auth_token
+  #   header 'access-token', auth_hash['access-token']
+  #   header 'uid', user.uid
+  # end
+  #
+  parameter :email, "email"
+  parameter :password, "password"
 
-  # let(:auth_token) { user.authentication_token }
+  # let (:user) { FactoryGirl.create :user}
+  let (:email) {'dude@example.com'}
+  let (:password) {'password'}
+  # let (:auth_token_hash) { user.create_new_auth_token }
+
+
+  post 'auth/sign_in' do
+    parameter :email, 'dude@example.com'
+    parameter :password, 'password'
+    it "requires a signed in user" do
+      binding.pry
+      do_request
+    end
+  end
+
+  # let(:auth_hash) { user.create_new_auth_token }
+  # let('access-token') { auth_hash['access-token'] }
+  # let('uid') { user.uid }
 
   get "api/media_modules" do
     example "Get a list of all events" do
-      @user = FactoryGirl.create :user
-      do_request
-      expect(status).to eq(200)
+      binding.pry
+      puts params
+      # do_request
+      # expect(status).to eq(200)
     end
   end
 
