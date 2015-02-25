@@ -22,8 +22,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
-gem 'devise_token_auth'
-gem 'omniauth'
 # gem "haml-rails", "~> 0.8"
 gem 'bootstrap-sass', '~> 3.3.3'
 gem "autoprefixer-rails"
