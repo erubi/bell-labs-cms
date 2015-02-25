@@ -20,16 +20,17 @@ resource "MediaModules", type: :controller do
   parameter :password, "password"
 
   # let (:user) { FactoryGirl.create :user}
-  let (:email) {'dude@example.com'}
-  let (:password) {'password'}
+  let (:email) {user.email}
+  let (:password) {user.password}
   # let (:auth_token_hash) { user.create_new_auth_token }
 
 
-  post 'auth/sign_in' do
-    parameter :email, 'dude@example.com'
-    parameter :password, 'password'
+  post 'api/auth/sign_in' do
+    parameter :email, user.email
+    parameter :password, user.password
     it "requires a signed in user" do
       binding.pry
+      # puts User.all
       do_request
     end
   end
