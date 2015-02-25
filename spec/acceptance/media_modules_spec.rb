@@ -9,20 +9,13 @@ require 'rspec_api_documentation/dsl'
 
 resource "MediaModules", type: :controller do
   user = FactoryGirl.create :user
-  # before do
-  #   user = FactoryGirl.create :user
-  #   auth_hash = user.create_new_auth_token
-  #   header 'access-token', auth_hash['access-token']
-  #   header 'uid', user.uid
-  # end
-  #
+
   parameter :email, "email"
   parameter :password, "password"
 
   # let (:user) { FactoryGirl.create :user}
   let (:email) {user.email}
   let (:password) {user.password}
-  # let (:auth_token_hash) { user.create_new_auth_token }
 
 
   post 'api/auth/sign_in' do
@@ -34,10 +27,6 @@ resource "MediaModules", type: :controller do
       do_request
     end
   end
-
-  # let(:auth_hash) { user.create_new_auth_token }
-  # let('access-token') { auth_hash['access-token'] }
-  # let('uid') { user.uid }
 
   get "api/media_modules" do
     example "Get a list of all events" do
