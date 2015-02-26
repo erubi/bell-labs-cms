@@ -1,6 +1,4 @@
 class Api::EventsController < ApplicationController
-  before_action :require_signed_in
-
   def index
     @events = Event.current_and_upcoming_events
   end

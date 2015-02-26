@@ -37,6 +37,8 @@ gem "autoprefixer-rails"
 gem 'backbone-on-rails'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', branch: 'master'
 
+#rspec api tests gems
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -51,6 +53,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'rspec_api_documentation'
+  gem 'apitome'
 end
 
 group :development do
