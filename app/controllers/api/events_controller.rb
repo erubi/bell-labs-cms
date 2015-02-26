@@ -4,9 +4,33 @@ class Api::EventsController < ApplicationController
   end
 
   def create
+    @event = Event.build(event_params)
+
+    if @event.save
+      render "show"
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
   end
 
   def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      render "show"
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    render "show"
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy!
+    render json: true
   end
 
   private
