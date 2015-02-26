@@ -18,6 +18,11 @@ var BellCMS = new BellCMS({
 
 BellCMS.on('before:start', function(options){
   // should fetch necessary models/collections here
+  BellCMS.Collections.events = new BellCMS.Collections.Events();
+  BellCMS.Collections.modules = new BellCMS.Collections.Modules();
+
+  BellCMS.Collections.events.fetch();
+  BellCMS.Collections.modules.fetch();
 });
 
 BellCMS.on('start', function(options){
