@@ -21,6 +21,7 @@ resource "MediaModules", type: :controller do
   # might want to switch to using slugs with module names
   get "/api/media_modules/:id" do
     example "Get a module by id" do
+      do_request
       expect(path).to eq "/api/media_modules/#{id}"
     end
   end
@@ -36,12 +37,14 @@ resource "MediaModules", type: :controller do
 
   put "api/media_modules/:id" do
     example "Update a module", :document => false do
+      do_request
       expect(path).to eq "api/media_modules/#{id}"
     end
   end
 
   delete "api/media_modules/:id" do
     example "Delete a module", :document => false do
+      do_request
       expect(path).to eq "api/media_modules/#{id}"
     end
   end

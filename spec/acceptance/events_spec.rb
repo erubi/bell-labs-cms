@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource "Events", type: :controller do
-  let (:event) { FactoryGirl.create :media_module }
+  let (:event) { FactoryGirl.create :event }
   let (:id) { event.id }
 
   get "/api/events" do
@@ -12,9 +12,10 @@ resource "Events", type: :controller do
     end
   end
 
-  get "/api/event/:id" do
+  get "/api/events/:id" do
     example "Get an event by id" do
-      expect(path).to eq "/api/event/#{id}"
+      do_request
+      expect(path).to eq "/api/events/#{id}"
     end
   end
 
@@ -30,12 +31,14 @@ resource "Events", type: :controller do
 
   put "api/events/:id" do
     example "Update an event", :document => false do
+      do_request
       expect(path).to eq "api/events/#{id}"
     end
   end
 
   delete "api/events/:id" do
     example "Delete an event", :document => false do
+      do_request
       expect(path).to eq "api/events/#{id}"
     end
   end
