@@ -1,3 +1,7 @@
+Backbone.Marionette.Renderer.render = function(template, data){
+  return JST[template](data);
+};
+
 var BellCMS = Marionette.Application.extend({
   initialize: function(options){
     this.mergeOptions(options);
@@ -5,7 +9,7 @@ var BellCMS = Marionette.Application.extend({
 });
 
 var BellCMS = new BellCMS({
-  Container: '#app-container',
+  Container: $('#app-container'),
   Routers: {},
   Controllers: {},
   Views: {},
