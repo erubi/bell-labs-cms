@@ -28,12 +28,12 @@ BellCMS.on('before:start', function(options){
 BellCMS.on('start', function(options){
 
   // initialize app router
-  new BellCMS.Routers.RootRouter({
-    controller: BellCMS.Controllers.RootController
+  new BellCMS.Routers.AppRouter({
+    controller: BellCMS.Controllers.AppController
   });
 
   // initialize root layout view
-  new BellCMS.Layouts.RootLayoutView();
+  new BellCMS.Layouts.AppLayoutView();
 
   if (Backbone.history){
     Backbone.history.start();

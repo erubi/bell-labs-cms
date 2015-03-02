@@ -1,4 +1,4 @@
-BellCMS.Routers.RootRouter = Backbone.Marionette.AppRouter.extend({
+BellCMS.Routers.AppRouter = Backbone.Marionette.AppRouter.extend({
   appRoutes: {
     '/' : 'root',
     'exterior_modules' : 'exteriorModules',

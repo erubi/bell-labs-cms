@@ -1,4 +1,4 @@
-BellCMS.Controllers.RootController = {
+BellCMS.Controllers.AppController= {
   root: function(){
 
   },
