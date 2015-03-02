@@ -26,9 +26,6 @@ BellCMS.on('before:start', function(options){
 });
 
 BellCMS.on('start', function(options){
-  if (Backbone.history){
-    Backbone.history.start();
-  }
 
   // initialize app router
   new BellCMS.Routers.RootRouter({
@@ -37,6 +34,10 @@ BellCMS.on('start', function(options){
 
   // initialize root layout view
   new BellCMS.Layouts.RootLayoutView();
+
+  if (Backbone.history){
+    Backbone.history.start();
+  }
 });
 
 $(function(){
