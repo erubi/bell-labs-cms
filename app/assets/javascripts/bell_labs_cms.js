@@ -37,14 +37,12 @@ BellCMS.on('start', function(options){
   });
 
   // initialize root layout view
-  new BellCMS.Layouts.AppLayoutView();
+  BellCMS.rootView = new BellCMS.Layouts.AppLayoutView();
 
   if (Backbone.history){
     Backbone.history.start();
   }
+
+  BellCMS.rootView.render();
 });
 
-$(function(){
-  // can pass options to start event callbacks here
-  BellCMS.start({});
-});
