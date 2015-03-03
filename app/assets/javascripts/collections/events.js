@@ -5,19 +5,19 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
 
 
   getOrFetch: function(id){
-    var items = this;
+    var events = this;
 
-    var item;
-    if (item = this.get(id)){
-      item.fetch();
+    var eventModel;
+    if (eventModel = this.get(id)){
+      eventModel.fetch();
     } else {
-      item = new Pinventory.Models.Item({id: id});
-      item.fetch({
-        success: function() { items.add(item) }
+      eventModel = new BellCMS.Models.Event({id: id});
+      eventModel.fetch({
+        success: function() { events.add(eventModel) }
       });
     }
 
-    return item;
+    return eventModel;
   }
 
 });

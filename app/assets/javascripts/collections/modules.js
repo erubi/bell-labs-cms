@@ -4,18 +4,18 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
   url: 'api/media_modules',
 
   getOrFetch: function(id){
-    var items = this;
+    var modules = this;
 
-    var item;
-    if (item = this.get(id)){
-      item.fetch();
+    var module;
+    if (module = this.get(id)){
+      module.fetch();
     } else {
-      item = new Pinventory.Models.Item({id: id});
-      item.fetch({
-        success: function() { items.add(item) }
+      module = new BellCMS.Models.Module({id: id});
+      module.fetch({
+        success: function() { modules.add(item) }
       });
     }
 
-    return item;
+    return module;
   }
 });
