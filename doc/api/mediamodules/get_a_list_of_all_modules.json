@@ -24,17 +24,17 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[{\"id\":174,\"name\":\"Lulz module\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"images\":[{\"filename\":\"sample1.jpg\",\"url\":\"/uploads/media_module/images/174/sample1.jpg\"}]},{\"id\":175,\"name\":\"Doge party\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"videos\":[{\"filename\":\"sample1.mp4\",\"url\":\"/uploads/media_module/videos/175/sample1.mp4\"}]},{\"id\":182,\"name\":\"Lulz module\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"images\":[{\"filename\":\"sample1.jpg\",\"url\":\"/uploads/media_module/images/182/sample1.jpg\"}]},{\"id\":183,\"name\":\"Doge party\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"videos\":[{\"filename\":\"sample1.mp4\",\"url\":\"/uploads/media_module/videos/183/sample1.mp4\"}]}]",
+      "response_body": "[{\"id\":1,\"name\":\"Lulz module\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"images\":[{\"filename\":\"sample1.jpg\",\"url\":\"/uploads/media_module/images/1/sample1.jpg\"}]},{\"id\":2,\"name\":\"Doge party\",\"active_interval\":20.0,\"active_time\":4.0,\"active\":null,\"videos\":[{\"filename\":\"sample1.mp4\",\"url\":\"/uploads/media_module/videos/2/sample1.mp4\"}]}]",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"ff053a198baef95809e28151b434d6e7\"",
+        "ETag": "W/\"e8b08cb8a36a7cbadc97c24a5827f833\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "4e74202d-63ef-4bb1-880f-1cb5c5e3fb09",
-        "X-Runtime": "0.024933",
-        "Content-Length": "711"
+        "X-Request-Id": "bdd40c58-a508-496a-8a40-f36d560f392c",
+        "X-Runtime": "0.021242",
+        "Content-Length": "348"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null
