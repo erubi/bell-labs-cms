@@ -1,6 +1,6 @@
 BellCMS.Views.AppNavView = Marionette.ItemView.extend({
-  el: 'nav',
-
+  tagName: 'nav',
+  className: 'navbar navbar-default navbar-app',
   template: 'app/nav_bar'
 
 });
