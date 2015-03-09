@@ -13,7 +13,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/events/45",
+      "request_path": "/api/events/3",
       "request_body": null,
       "request_headers": {
         "Host": "example.org",
@@ -24,17 +24,17 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"id\":45,\"name\":\"Debitis similique est ex voluptas iusto.\",\"description\":null,\"start_time\":\"2015-02-12T23:46:21.000Z\",\"end_time\":\"2015-03-16T10:50:18.000Z\"}",
+      "response_body": "{\"id\":3,\"name\":\"Porro temporibus nihil at est minima.\",\"description\":null,\"start_time\":\"2015-02-25T01:32:47.000Z\",\"end_time\":\"2015-03-26T12:43:01.000Z\",\"countdown_begin\":\"2015-02-25T00:32:47.000Z\"}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"54d883f32ee6513e50e27dc2a6d67934\"",
+        "ETag": "W/\"48fd55dbdb8dab82ed01299f4de75ec0\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "63f7c84f-02f6-4c4e-9960-8d6698a0e67a",
-        "X-Runtime": "0.006978",
-        "Content-Length": "156"
+        "X-Request-Id": "58961d97-2b68-47cf-bbb5-a0fa14760f02",
+        "X-Runtime": "0.007653",
+        "Content-Length": "197"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

@@ -13,7 +13,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/media_modules/184",
+      "request_path": "/api/media_modules/3",
       "request_body": null,
       "request_headers": {
         "Host": "example.org",
@@ -24,17 +24,17 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"id\":184,\"name\":\"Recusandae quae exercitationem in nisi nam.\",\"active_interval\":90.0,\"active_time\":null,\"active\":true}",
+      "response_body": "{\"id\":3,\"name\":\"Et molestiae dolorem iste.\",\"active_interval\":13.0,\"active_time\":null,\"active\":true}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"a054905c9d7296ed4f94805807522313\"",
+        "ETag": "W/\"d241b52893a9c5de6c44cd3d2df2e116\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "64c95c20-bdeb-43c0-8a42-362663dfab68",
-        "X-Runtime": "0.007644",
-        "Content-Length": "119"
+        "X-Request-Id": "a63dd040-a4cb-4033-a98a-86c3e8ebbd04",
+        "X-Runtime": "0.005788",
+        "Content-Length": "100"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

@@ -20,5 +20,6 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence }
     start_time { Faker::Time.backward(14, :evening) }
     end_time { Faker::Time.forward(23, :morning) }
+    countdown_begin { start_time - rand(2).hours }
   end
 end

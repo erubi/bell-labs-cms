@@ -29,8 +29,8 @@ resource "MediaModules", type: :controller do
   post "/api/media_modules" do
     example "Creating a module", :document => false do
       do_request(
-        name: "Bell Labs Module 1",
-        active_interval: 20
+        name: media_module.name,
+        active_interval: media_module.active_interval
       )
     end
   end

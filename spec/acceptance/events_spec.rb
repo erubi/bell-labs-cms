@@ -22,9 +22,10 @@ resource "Events", type: :controller do
   post "/api/events" do
     example "Creating an event", :document => false do
       do_request(
-        name: "Bell Labs Presenter 2",
-        start_time: Date.today,
-        end_time: Date.tomorrow
+        name: event.name,
+        start_time: event.start_time,
+        end_time: event.end_time,
+        countdown_begin: event.countdown_begin
       )
     end
   end
