@@ -1,12 +1,12 @@
 BellCMS.Controllers.AppController= {
   root: function(){
-    debugger
-    console.log("Root fn called!");
-    BellCMS.rootView.render();
+    // debugger
+    // console.log("Root fn called!");
+    // BellCMS.rootView.render();
   },
 
   exteriorModules: function(){
-    debugger
+    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
   },
 
   presentationModes: function(){
