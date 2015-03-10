@@ -1,7 +1,6 @@
 BellCMS.Controllers.AppController= {
   root: function(){
     // debugger
-    // console.log("Root fn called!");
     // BellCMS.rootView.render();
   },
 
