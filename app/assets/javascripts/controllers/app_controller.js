@@ -10,11 +10,8 @@ BellCMS.Controllers.AppController= {
   },
 
   presentationModes: function(){
-    debugger
   },
 
   media: function(){
-
-    debugger
   }
 };

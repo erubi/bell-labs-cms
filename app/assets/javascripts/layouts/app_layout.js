@@ -4,8 +4,8 @@ BellCMS.Layouts.AppLayoutView = Marionette.LayoutView.extend({
   template: 'app/layout',
 
   regions: {
-    appNav: "#app-nav",
-    contentContainer: "#content-ctr"
+    appNav: '#app-nav',
+    contentContainer: '#content-ctr'
   },
 
   // https://github.com/marionettejs/backbone.marionette/issues/2227
