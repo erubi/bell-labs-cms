@@ -1,6 +1,6 @@
 class MediaModule < ActiveRecord::Base
-  validates :name, presence: true
-  validates :active_interval, inclusion: { in: 0..100 }
+  validates :name, :weight, presence: true
+  validates :weight, inclusion: { in: 0..1 }
 
   mount_uploaders :images, ImageUploader
   mount_uploaders :videos, VideoUploader
