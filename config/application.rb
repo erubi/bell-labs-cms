@@ -31,5 +31,8 @@ module BellLabsCms
         :controller_specs => true,
         :request_specs => true
     end
+
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end
