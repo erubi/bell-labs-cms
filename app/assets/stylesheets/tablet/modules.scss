@@ -12,3 +12,11 @@
     background-color: #6E7070;
   }
 }
+
+.backbone-nav{
+  a{
+    &:first-child{
+      padding-left: 0px;
+    }
+  }
+}
