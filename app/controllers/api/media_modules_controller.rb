@@ -44,7 +44,7 @@ class Api::MediaModulesController < ApplicationController
   private
 
   def media_module_params
-    params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type)
+    params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type, :active)
   end
 
 end

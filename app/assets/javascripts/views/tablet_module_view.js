@@ -1,6 +1,16 @@
 BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
   tagName: 'li',
-  className: 'module-view-li',
+  // className: 'tablet-module-view-li',
+  className: function(){
+    var classes = ['tablet-module-view-li'];
+
+    if (this.model.get('active')){
+      classes.push('tablet-active-module')
+    }
+
+    return classes.join(' ');
+  },
+
   template: 'tablet/module_item',
 
   initialize: function(){
@@ -9,18 +19,7 @@ BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
   },
 
   events: {
-    'change .weight-input' : 'updateModelWeight',
-
-  },
-
-  updateModelWeight: function(event){
-    var weight = event.target.value / 100;
-    this.model.set('weight', weight);
-
-    if (this.model.isValid()){
-      this.removeError();
-      this.model.save();
-    }
+    'click' : 'activateModule'
   },
 
   showError: function(event){
@@ -31,6 +30,19 @@ BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
 
   removeError: function(){
     this.$el.find('.alert').remove();
+  },
+
+  activateModule: function(event){
+    this.model.set('active', true);
+    if (this.model.isValid()){
+      this.setActiveStyle();
+      this.model.save();
+    }
+  },
+
+  setActiveStyle: function(){
+    $('li').removeClass('tablet-active-module');
+    this.$el.addClass('tablet-active-module');
   }
 
 });
