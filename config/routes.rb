@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions" }
 
   namespace :api, defaults: { format: :json } do
+    get 'scene_weight', to: 'media_modules#scene_weight'
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
   end

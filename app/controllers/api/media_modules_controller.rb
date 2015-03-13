@@ -33,10 +33,14 @@ class Api::MediaModulesController < ApplicationController
     render json: true
   end
 
+  def scene_weight
+    @media_modules = MediaModule.all
+  end
+
   private
 
   def media_module_params
-    params.require(:media_module).permit(:name, :weight, :images, :videos)
+    params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type)
   end
 
 end

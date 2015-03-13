@@ -4,4 +4,8 @@ class MediaModule < ActiveRecord::Base
 
   mount_uploaders :images, ImageUploader
   mount_uploaders :videos, VideoUploader
+
+  def cycle_duration
+    Rails.application.config.cycle_duration
+  end
 end
