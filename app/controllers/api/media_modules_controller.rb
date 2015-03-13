@@ -33,10 +33,24 @@ class Api::MediaModulesController < ApplicationController
     render json: true
   end
 
+  def scene_weight
+    @media_modules = MediaModule.all
+  end
+
+  def scene_override
+    @media_modules = MediaModule.all
+  end
+
+  def set_active_scene
+    @media_module = MediaModule.find(params[:id])
+    @media_module.update(active: true)
+    render json: true
+  end
+
   private
 
   def media_module_params
-    params.require(:media_module).permit(:name, :active_interval, :active_time, :active, :images, :videos)
+    params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type, :active)
   end
 
 end

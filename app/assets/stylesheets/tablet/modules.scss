@@ -1,0 +1,22 @@
+.tablet-module-view-ul{
+  list-style: none;
+}
+
+.tablet-module-view-li{
+  cursor: pointer;
+}
+
+.tablet-active-module{
+  color: #fff;
+  .panel{
+    background-color: #6E7070;
+  }
+}
+
+.backbone-nav{
+  a{
+    &:first-child{
+      padding-left: 0px;
+    }
+  }
+}

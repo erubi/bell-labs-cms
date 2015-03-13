@@ -3,6 +3,8 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
 
   url: 'api/media_modules',
 
+  comparator: 'name',
+
   getOrFetch: function(id){
     var modules = this;
 
@@ -17,5 +19,14 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
     }
 
     return module;
+  },
+
+  weightSum: function(){
+    var weights = this.pluck('weight');
+    var total = weights.reduce(function(a, b){
+      return a + b;
+    });
+
+    return total;
   }
 });

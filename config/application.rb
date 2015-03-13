@@ -31,5 +31,11 @@ module BellLabsCms
         :controller_specs => true,
         :request_specs => true
     end
+
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    # config value for scenes/modules cycle durations
+    config.cycle_duration = 24
   end
 end

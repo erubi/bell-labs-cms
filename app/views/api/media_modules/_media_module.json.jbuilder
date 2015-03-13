@@ -1,4 +1,4 @@
-json.(media_module, :id, :name, :active_interval, :active_time, :active)
+json.(media_module, :id, :name, :weight, :scene_type, :active)
 
 unless media_module.images.length == 0
   json.images media_module.images do |image|

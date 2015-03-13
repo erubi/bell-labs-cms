@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions" }
 
   namespace :api, defaults: { format: :json } do
+    get 'scene_weight', to: 'media_modules#scene_weight'
+    get 'scene_override', to: 'media_modules#scene_override'
+    post 'set_active_scene/:id', to: 'media_modules#set_active_scene'
+
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
   end

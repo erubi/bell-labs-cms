@@ -9,7 +9,6 @@ var BellCMS = Marionette.Application.extend({
 });
 
 var BellCMS = new BellCMS({
-  Container: $('#app-container'),
   Routers: {},
   Controllers: {},
   Views: {},
@@ -38,11 +37,11 @@ BellCMS.on('start', function(options){
 
   // initialize root layout view
   BellCMS.rootView = new BellCMS.Layouts.AppLayoutView();
+  BellCMS.rootView.render();
 
   if (Backbone.history){
     Backbone.history.start();
   }
 
-  BellCMS.rootView.render();
 });
 
