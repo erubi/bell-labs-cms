@@ -36,6 +36,7 @@ BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
     this.model.set('active', true);
     if (this.model.isValid()){
       this.setActiveStyle();
+      this.model.collection.setRestInactive(this.model.id);
       this.model.save();
     }
   },

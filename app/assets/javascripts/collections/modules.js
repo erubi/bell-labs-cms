@@ -28,5 +28,19 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
     });
 
     return total;
+  },
+
+  getInactive: function(activeId){
+    return this.filter(function(module){
+      return module.id != activeId;
+    });
+  },
+
+  setRestInactive: function(activeId){
+    var inactiveModels = this.getInactive(activeId);
+    inactiveModels.forEach(function(model, index){
+      model.set('active', false);
+    });
   }
+
 });
