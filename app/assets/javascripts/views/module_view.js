@@ -5,6 +5,7 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
 
   initialize: function(){
     this.listenTo(this.model, "invalid", this.showError);
+    this.listenTo(this.model, "sync", this.render);
   },
 
   events: {
