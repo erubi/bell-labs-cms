@@ -1,5 +1,5 @@
-BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
-  template: 'exterior_modules/layout',
+BellCMS.Layouts.TabletLayout = Marionette.LayoutView.extend({
+  template: 'tablet/layout',
 
   regions: {
     modulesContainer: "#modules-ctr",
@@ -7,7 +7,7 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
   },
 
   onBeforeShow: function(){
-    this.showChildView('modulesContainer', new BellCMS.Views.ModuleCompositeView(
+    this.showChildView('modulesContainer', new BellCMS.Views.TabletModuleCompositeView(
         {
           collection: BellCMS.Collections.modules
         }

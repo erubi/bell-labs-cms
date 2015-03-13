@@ -12,5 +12,9 @@ BellCMS.Controllers.AppController= {
   },
 
   media: function(){
+  },
+
+  tablet: function(){
+    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.TabletLayout());
   }
 };
