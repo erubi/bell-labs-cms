@@ -41,6 +41,12 @@ class Api::MediaModulesController < ApplicationController
     @media_modules = MediaModule.all
   end
 
+  def set_active_scene
+    @media_module = MediaModule.find(params[:id])
+    @media_module.update(active: true)
+    render json: true
+  end
+
   private
 
   def media_module_params

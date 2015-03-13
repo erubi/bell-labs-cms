@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  #
+  # TODO: add back for certain parts of the website, whitelist third party sources
+  # protect_from_forgery with: :exception
 
   def require_signed_in
     if !signed_in?

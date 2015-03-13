@@ -22,4 +22,6 @@ events = Event.create!([
   {name: "Test Event 1", description: "This is a test event", start_time: DateTime.now.tomorrow, end_time: DateTime.now + 3, countdown_begin: DateTime.now.tomorrow - 3.hours},
   {name: "Test Event 2", description: "This is a second test event", start_time: DateTime.now + 8, end_time: DateTime.now + 20, countdown_begin: DateTime.now - 2.hours }])
 
-users = User.create([{email: 'dude@example.com', password: 'password'}])
+users = User.create([
+  {email: 'dude@example.com', password: 'password'},
+  {email: 'guild@example.com', password: 'password'}])
