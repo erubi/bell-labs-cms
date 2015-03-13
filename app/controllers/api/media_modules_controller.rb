@@ -37,6 +37,10 @@ class Api::MediaModulesController < ApplicationController
     @media_modules = MediaModule.all
   end
 
+  def scene_override
+    @media_modules = MediaModule.all
+  end
+
   private
 
   def media_module_params

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get 'scene_weight', to: 'media_modules#scene_weight'
+    get 'scene_override', to: 'media_modules#scene_override'
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
   end
