@@ -39,6 +39,7 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', br
 
 gem 'newrelic_rpm'
 
+gem 'apitome'
 #rspec api tests gems
 
 group :development, :test do
@@ -56,7 +57,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec_api_documentation'
-  gem 'apitome'
 end
 
 group :development do
