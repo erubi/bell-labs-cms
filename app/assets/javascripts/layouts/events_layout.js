@@ -1,4 +1,5 @@
 BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
+  id: 'events-ctr',
   template: 'events/layout',
 
   regions: {
