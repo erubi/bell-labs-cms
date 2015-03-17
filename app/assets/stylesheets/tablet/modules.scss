@@ -14,9 +14,11 @@
 }
 
 .backbone-nav{
-  a{
+  li{
     &:first-child{
-      padding-left: 0px;
+      a{
+        padding-left: 0px;
+      }
     }
   }
 }
