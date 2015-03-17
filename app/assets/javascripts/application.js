@@ -19,6 +19,7 @@
 //= require backbone.radio
 //= require backbone.marionette
 //= require backbone.radio.shim
+//= require moment
 //= require bell_labs_cms
 //= require_tree ../templates
 //= require_tree ./models

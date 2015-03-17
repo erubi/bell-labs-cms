@@ -10,6 +10,24 @@ class Event < ActiveRecord::Base
     Event.where('end_time > ?', DateTime.now)
   end
 
+  def start_time_ms
+    self.start_time.to_datetime.strftime('%Q')
+  end
+
+  def end_time_ms
+    self.end_time.to_datetime.strftime('%Q')
+  end
+
+  def start_time_ms=(val)
+    d_time = Time.at(val/1000)
+    self.start_time = d_time
+  end
+
+  def end_time_ms=(val)
+    d_time = Time.at(val/1000)
+    self.end_time = d_time
+  end
+
   private
 
   def valid_countdown_begin

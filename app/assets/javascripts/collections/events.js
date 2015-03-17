@@ -18,6 +18,12 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
     }
 
     return eventModel;
+  },
+
+  todayEvents: function(){
+    return this.filter(function(eventObj){
+      eventObj.isToday();
+    });
   }
 
 });

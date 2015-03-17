@@ -12,9 +12,9 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
   onBeforeShow: function(){
     this.showChildView('newEventContainer', new BellCMS.Views.EventNewView());
 
-    // this.showChildView('todayEventsContainer', new BellCMS.Views.EventCompositeView({
-    //   collection: BellCMS.Collections.events.todayEvents()
-    // });
+    this.showChildView('todayEventsContainer', new BellCMS.Views.EventCompositeView({
+      // collection: BellCMS.Collections.events.todayEvents()
+    }));
 
     // this.showChildView('weekEventsContainer', new BellCMS.Views.EventCompositeView({
     //   collection: BellCMS.Collections.events.weekEvents()

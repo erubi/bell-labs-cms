@@ -1,1 +1,1 @@
-json.(event, :id, :name, :description, :start_time, :end_time, :countdown_begin)
+json.(event, :id, :name, :description, :start_time_ms, :end_time_ms, :countdown_begin)
