@@ -34,11 +34,11 @@ class Api::MediaModulesController < ApplicationController
   end
 
   def scene_weight
-    @media_modules = MediaModule.all
+    @media_modules = MediaModule.order(:name)
   end
 
   def scene_override
-    @media_modules = MediaModule.all
+    @media_modules = MediaModule.order(:name)
   end
 
   def set_active_scene
