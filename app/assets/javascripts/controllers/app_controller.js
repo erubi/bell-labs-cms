@@ -8,6 +8,10 @@ BellCMS.Controllers.AppController= {
     BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
   },
 
+  announcements: function(){
+    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.EventsLayout());
+  },
+
   presentationModes: function(){
   },
 

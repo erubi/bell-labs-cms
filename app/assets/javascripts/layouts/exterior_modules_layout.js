@@ -2,8 +2,7 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
   template: 'exterior_modules/layout',
 
   regions: {
-    modulesContainer: "#modules-ctr",
-    eventsContainer: "#events-ctr"
+    modulesContainer: "#modules-ctr"
   },
 
   onBeforeShow: function(){
