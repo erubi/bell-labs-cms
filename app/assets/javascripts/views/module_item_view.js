@@ -10,7 +10,6 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
 
   events: {
     'change .weight-input' : 'updateModelWeight',
-
   },
 
   updateModelWeight: function(event){

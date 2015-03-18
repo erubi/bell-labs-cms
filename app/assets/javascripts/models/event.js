@@ -15,6 +15,14 @@ BellCMS.Models.Event = Backbone.Model.extend({
     return moment(ms);
   },
 
+  startISO: function(){
+    return this.startDate.toISOString();
+  },
+
+  endISO: function(){
+    return this.endDate.toISOString();
+  },
+
   isToday: function(){
     var today = moment();
     var start = this.startDate();
