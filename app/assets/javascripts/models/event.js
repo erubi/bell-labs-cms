@@ -29,5 +29,37 @@ BellCMS.Models.Event = Backbone.Model.extend({
     }
 
     return false;
+  },
+
+  isThisWeek: function(){
+    var currentWeek = moment().week();
+    var startWeek = this.startDate().week();
+    var endWeek = this.endDate().week();
+
+    if (this.isToday()){
+      return false;
+    }
+
+    if (startWeek == currentWeek){
+      return true;
+    } else if (endWeek == currentWeek){
+      return true;
+    } else if ((currentWeek > startWeek) && (currentWeek < endWeek)){
+      return true;
+    }
+
+    return false;
+  },
+
+  isThisMonth: function(){
+    var today = moment();
+    var start = this.startDate();
+    var end = this.endDate();
+
+    if (this.isToday() || this.isThisWeek()){
+      return false;
+    }
+
+    // if (start.)
   }
 });
