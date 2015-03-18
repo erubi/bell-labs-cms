@@ -1,9 +1,40 @@
 BellCMS.Models.Event = Backbone.Model.extend({
   urlRoot: 'api/events',
 
-  validate: function(){
+  validate: function(attrs, options){
+    if (attrs.name.length() < 1){
+      return "Event must have event text.";
+    }
 
+    if (attrs.start_time_ms == ""){
+      return "Event must have a start time.";
+    }
+
+    if (attrs.end_time_ms == ""){
+      return "Event must have an end time.";
+    }
+
+    if (attrs.countdown_begin == ""){
+      return
+    }
   },
+
+  save: function (key, val, options) {
+    this.beforeSave(key, val, options);
+    return Backbone.Model.prototype.save.call(this, key, val, options);
+  },
+
+  beforeSave: function (key, val, options) {
+    // might need to add back timezon data here due to datetime local input
+    var isoStart = this.get('start_time_ms');
+    var msStart = moment(isoStart).valueOf();
+    this.set('start_time_ms', msStart);
+
+    var isoEnd = this.get('end_time_ms');
+    var msEnd = moment(isoEnd).valueOf();
+    this.set('end_time_ms', msEnd);
+  },
+
 
   startDate: function(){
     var ms = parseInt(this.get('start_time_ms'));

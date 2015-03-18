@@ -13,10 +13,6 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
     var that = this;
     var events = BellCMS.Collections.events;
 
-    // var todaySubset = new BellCMS.Subsets.EventsSubset({
-    //   grabModelCB: BellCMS.Collections.events.
-    // });
-    //
     events.fetch({
       success: function(){
         that.createChildViews();

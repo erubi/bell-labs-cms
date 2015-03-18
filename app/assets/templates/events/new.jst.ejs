@@ -5,29 +5,40 @@
 </div>
 
 <div class="row new-event-form-ctr">
-  <div class="col-sm-4">
-    <input type="text" placeholder="New Event Text Here">
-  </div>
+  <form>
+    <div class="col-sm-4">
+      <input
+        type="text"
+        placeholder="New Event Text Here"
+        name="name">
+    </div>
 
-  <div class="col-sm-3 event-calendar-ctr">
-    <label>Start time
-    <input type="datetime-local">
-    </label>
-  </div>
+    <div class="col-sm-3 event-calendar-ctr">
+      <label>Start time
+        <input
+          type="datetime-local"
+          name="start_time_ms">
+      </label>
+    </div>
 
-  <div class="col-sm-3 event-calendar-ctr">
-    <label>End time
-    <input type="datetime-local">
-    </label>
-  </div>
+    <div class="col-sm-3 event-calendar-ctr">
+      <label>End time
+        <input
+          type="datetime-local"
+          name="end_time_ms">
+      </label>
+    </div>
 
-  <div class="col-sm-1">
-    <label>Countdown Timer
-      <input type="number">
-    </label>
-  </div>
+    <div class="col-sm-1">
+      <label>Countdown Timer
+        <input
+          type="number"
+          name="countdown_begin">
+      </label>
+    </div>
 
-  <div class="col-sm-1">
-    <button>Save</button>
-  </div>
+    <div id="save-new-event" class="col-sm-1">
+      <button>Save</button>
+    </div>
+  </form>
 </div>
