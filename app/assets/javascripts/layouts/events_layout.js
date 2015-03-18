@@ -10,28 +10,38 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
   },
 
   onBeforeShow: function(){
-    var eventSubset = Backbone.Subset.extend({});
-    var todayEvents = new eventSubset(BellCMS.Collections.events.todayEvents(), { parentCollection: BellCMS.Collections.events });
-    var weekEvents = new eventSubset(BellCMS.Collections.events.weekEvents(), { parentCollection: BellCMS.Collections.events });
-    var monthEvents = new eventSubset(BellCMS.Collections.events.monthEvents(), { parentCollection: BellCMS.Collections.events });
+    var that = this;
+    var events = BellCMS.Collections.events;
+
+    // var todaySubset = new BellCMS.Subsets.EventsSubset({
+    //   grabModelCB: BellCMS.Collections.events.
+    // });
+    //
+    events.fetch({
+      success: function(){
+        that.createChildViews();
+      }
+    })
+  },
+
+  createChildViews: function(){
+    var events = BellCMS.Collections.events;
 
     this.showChildView('newEventContainer', new BellCMS.Views.EventNewView());
 
     this.showChildView('todayEventsContainer', new BellCMS.Views.EventCompositeView({
-      // collection: BellCMS.Collections.events.todayEvents(),
-      collection: todayEvents,
+      collection: events.todaySubset(),
       type: 'Today'
     }));
 
     this.showChildView('weekEventsContainer', new BellCMS.Views.EventCompositeView({
-      // collection: BellCMS.Collections.events.weekEvents()
-      collection: weekEvents,
+      collection: events.weekSubset(),
       type: 'This Week'
     }));
 
     this.showChildView('monthEventsContainer', new BellCMS.Views.EventCompositeView({
-      collection: BellCMS.Collections.events,
-      type: 'All'
+      collection: events.monthSubset(),
+      type: 'This Month'
     }));
   }
 

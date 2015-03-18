@@ -16,11 +16,13 @@ BellCMS.Models.Event = Backbone.Model.extend({
   },
 
   startISO: function(){
-    return this.startDate.toISOString();
+    var str = this.startDate().toISOString();
+    return str.substring(0, str.length - 1);
   },
 
   endISO: function(){
-    return this.endDate.toISOString();
+    var str = this.endDate().toISOString();
+    return str.substring(0, str.length - 1);
   },
 
   isToday: function(){
@@ -60,14 +62,22 @@ BellCMS.Models.Event = Backbone.Model.extend({
   },
 
   isThisMonth: function(){
-    var today = moment();
-    var start = this.startDate();
-    var end = this.endDate();
+    var currentMonth = moment().month();
+    var startMonth = this.startDate().month();
+    var endMonth = this.endDate().month();
 
     if (this.isToday() || this.isThisWeek()){
       return false;
     }
 
-    // if (start.)
+    if (startMonth == currentMonth){
+      return true;
+    } else if (endMonth == currentMonth){
+      return true;
+    } else if ((currentMonth > startMonth) && (currentMonth < endMonth)){
+      return true;
+    }
+
+    return false;
   }
 });
