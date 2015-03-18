@@ -39,22 +39,31 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
   },
 
   todaySubset: function(){
-    var events = this.todayEvents();
-    var subset = new Backbone.Collection(events, {});
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isToday();
+      }
+    });
 
     return subset;
   },
 
   weekSubset: function(){
-    var events = this.weekEvents();
-    var subset = new Backbone.Collection(events, {});
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isThisWeek();
+      }
+    });
 
     return subset;
   },
 
   monthSubset: function(){
-    var events = this.monthEvents();
-    var subset = new Backbone.Collection(events, {});
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isThisMonth();
+      }
+    });
 
     return subset;
   }

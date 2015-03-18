@@ -2,7 +2,7 @@ BellCMS.Models.Event = Backbone.Model.extend({
   urlRoot: 'api/events',
 
   validate: function(attrs, options){
-    if (attrs.name.length() < 1){
+    if (attrs.name.length < 1){
       return "Event must have event text.";
     }
 
@@ -14,9 +14,9 @@ BellCMS.Models.Event = Backbone.Model.extend({
       return "Event must have an end time.";
     }
 
-    if (attrs.countdown_begin == ""){
-      return
-    }
+//     if (attrs.countdown_begin == ""){
+//       return
+//     }
   },
 
   save: function (key, val, options) {
@@ -33,6 +33,10 @@ BellCMS.Models.Event = Backbone.Model.extend({
     var isoEnd = this.get('end_time_ms');
     var msEnd = moment(isoEnd).valueOf();
     this.set('end_time_ms', msEnd);
+
+    var timerHours = parseInt(this.get('countdown_ms'));
+    var countdownBeginTime = moment(isoStart).subtract(timerHours, 'hours').valueOf();
+    this.set('countdown_ms', countdownBeginTime);
   },
 
 
@@ -43,6 +47,11 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
   endDate: function(){
     var ms = parseInt(this.get('end_time_ms'));
+    return moment(ms);
+  },
+
+  countdownDate: function(){
+    var ms = parseInt(this.get('count_down_ms'));
     return moment(ms);
   },
 
