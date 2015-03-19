@@ -14,35 +14,10 @@ BellCMS.Models.Event = Backbone.Model.extend({
       return "Event must have an end time.";
     }
 
-//     if (attrs.countdown_begin == ""){
-//       return
-//     }
+    if (attrs.countdown_hours < 0 ){
+      return "Countdown must be positive number.";
+    }
   },
-
-  save: function (key, val, options) {
-    return Backbone.Model.prototype.save.call(this, key, val, options);
-  },
-
-//   convertTimes: function(){
-//     // might need to add back timezon data here due to datetime local input
-//     var startMs = this.convertTimeToMs(this.startDate());
-//     this.set('start_time_ms', startMs);
-
-//     var endMs = this.convertTimeToMs(this.endDate());
-//     this.set('end_time_ms', endMs);
-
-//     var timerHours = parseInt(this.get('countdown_ms'));
-//     var countdownBeginTime = this.startDate().subtract(timerHours, 'hours').valueOf();
-//     this.set('countdown_ms', countdownBeginTime);
-//   },
-
-//   convertTimeToMs: function(time){
-//     var offset = time.local().utcOffset();
-//     debugger
-//     time.subtract(offset, 'minutes');
-//     var ms = time.valueOf();
-//     return ms;
-//   },
 
   startDate: function(){
     var ms = parseInt(this.get('start_time_ms'));

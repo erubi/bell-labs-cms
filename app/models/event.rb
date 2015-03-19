@@ -3,8 +3,8 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
-  # validates :countdown_begin,
   validate :valid_end_date
+  validates :countdown_hours, numericality: { only_integer: true }
 
   def self.current_and_upcoming_events
     Event.where('end_time > ?', DateTime.now)
@@ -18,12 +18,6 @@ class Event < ActiveRecord::Base
     self.end_time.to_datetime.strftime('%Q')
   end
 
-  def countdown_ms
-    unless self.countdown_begin.nil?
-      self.countdown_begin.to_datetime.strftime('%Q')
-    end
-  end
-
   def start_time_ms=(val)
     d_time = Time.at(val/1000)
     self.start_time = d_time
@@ -34,10 +28,14 @@ class Event < ActiveRecord::Base
     self.end_time = d_time
   end
 
-  def countdown_ms=(val)
-    return nil if val == ""
-    d_time = Time.at(val/1000)
-    self.countdown_begin = d_time
+  def countdown_begin
+    return nil if self.countdown_hours.nil?
+    self.start_time - self.countdown_hours.hours
+  end
+
+  def countdown_begin_ms
+    return nil if self.countdown_hours.nil?
+    countdown_begin.to_datetime.strftime('%Q')
   end
 
   private
