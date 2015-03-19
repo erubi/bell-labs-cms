@@ -39,9 +39,6 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
       collection: events.monthSubset(),
       type: 'This Month'
     }));
-
-    // var eventsChannel = Backbone.Radio.channel('events');
-    // eventsChannel.comply('renderChildren', this.createChildViews());
   }
 
 });

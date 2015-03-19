@@ -23,8 +23,6 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
       this.model.save([], {
         success: function(){
           this.model = new BellCMS.Models.Event();
-          var eventsChannel = Backbone.Radio.channel('events');
-          eventsChannel.trigger('renderChildren');
         }
       });
     }

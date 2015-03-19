@@ -4,41 +4,42 @@
   </div>
 </div>
 
-<div class="row new-event-form-ctr">
-  <form>
-    <div class="col-md-3">
+<div class="new-event-form-ctr">
+  <form class="form-inline">
+    <div class="form-group">
       <input
+        class="form-control"
         type="text"
         placeholder="New Event Text Here"
         name="name">
     </div>
 
-    <div class="col-md-3 event-calendar-ctr">
-      <label>Start time
+    <div class="form-group event-calendar-ctr">
+      <!-- <span>Start time</span> -->
         <input
+          class="form-control"
           type="datetime-local"
           name="start_time_ms">
-      </label>
     </div>
 
-    <div class="col-md-3 event-calendar-ctr">
-      <label>End time
+    <div class="form-group event-calendar-ctr">
+      <!-- <span>End time</span> -->
         <input
+          class="form-control"
           type="datetime-local"
           name="end_time_ms">
-      </label>
     </div>
 
-    <div class="col-xs-1">
-      <label>Countdown Timer
+    <div class="form-group">
+      <!-- <span>Countdown Timer</span> -->
         <input
+          class="form-control"
           type="number"
           name="countdown_ms">
-      </label>
     </div>
 
-    <div id="save-new-event" class="col-xs-1">
-      <button>Save</button>
+    <div class="form-group">
+      <button class="form-control" id="save-new-event">Save</button>
     </div>
   </form>
 </div>
