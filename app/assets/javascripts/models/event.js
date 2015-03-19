@@ -99,4 +99,5 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
     return false;
   }
+
 });

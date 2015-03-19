@@ -11,11 +11,13 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   },
 
   events: {
-    'click .delete-event-btn' : 'deleteEvent'
+    'click .delete-event-btn' : 'deleteEvent',
+    'change input' : 'updateEvent'
   },
 
   modelEvents: {
-    'destroy' : 'modelDestroyed'
+    'destroy' : 'modelDestroyed',
+    'invalid' : 'showError'
   },
 
   modelDestroyed: function(){
@@ -25,5 +27,49 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   deleteEvent: function(event){
     event.preventDefault();
     this.model.destroy();
+  },
+
+  updateEvent: function(event){
+    event.preventDefault();
+    var that = this;
+
+    var attrs = this.$el.find('form').serializeJSON();
+    attrs = this.handleAttrConv(attrs);
+    this.model.set(attrs);
+
+    if (this.model.isValid()){
+      this.removeError();
+      this.model.save();
+    }
+  },
+
+  showError: function(event){
+    var error = this.model.validationError;
+    this.removeError();
+    this.$el.prepend('<div class="alert alert-warning">'+error+'</div>');
+  },
+
+  removeError: function(){
+    this.$el.find('.alert').remove();
+  },
+
+  handleAttrConv: function(attrs){
+    // should convert iso date attrs to moment dates
+    var startMs = this.convertIsoToMs(attrs['start_time_ms']);
+    var endMs = this.convertIsoToMs(attrs['end_time_ms']);
+
+    attrs['start_time_ms'] = startMs;
+    attrs['end_time_ms'] = endMs;
+
+    return attrs;
+  },
+
+  convertIsoToMs: function(isoString){
+    var time = moment(isoString);
+    var offset = time.local().utcOffset();
+    time.add(offset, 'minutes');
+    var ms = time.valueOf();
+    return ms;
   }
+
 });
