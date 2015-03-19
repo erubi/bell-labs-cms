@@ -3,7 +3,7 @@ BellCMS.Models.Module = Backbone.Model.extend({
 
   validate: function(attrs, options){
     if (attrs.weight < 0){
-      return "Weight must be a percentage greater than 0."
+      return "Weight must be a percentage greater than 0.";
     }
 
     // check if values add up to less than 1(100%)

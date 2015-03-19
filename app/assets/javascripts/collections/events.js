@@ -18,6 +18,55 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
     }
 
     return eventModel;
+  },
+
+  todayEvents: function(){
+    return this.filter(function(eventObj){
+      eventObj.isToday();
+    });
+  },
+
+  weekEvents: function(){
+    return this.filter(function(eventObj){
+      return eventObj.isThisWeek();
+    });
+  },
+
+  monthEvents: function(){
+    return this.filter(function(eventObj){
+      return eventObj.isThisMonth();
+    });
+  },
+
+  todaySubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isToday();
+      }
+    });
+
+    return subset;
+  },
+
+  weekSubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isThisWeek();
+      }
+    });
+
+    return subset;
+  },
+
+  monthSubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return eventObj.isThisMonth();
+      }
+    });
+
+    return subset;
   }
+
 
 });
