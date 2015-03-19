@@ -11,6 +11,16 @@ BellCMS.Layouts.MediaLayout = Marionette.LayoutView.extend({
   onBeforeShow: function(){
     var that = this;
     this.showChildView('mediaNavContainer', new BellCMS.Views.MediaNavView());
+  },
+
+  events: {
+    'click #media-nav-image' : 'showImageView'
+    // 'click #media-nav-video' : 'showVideoView'
+  },
+
+  showImageView: function(){
+    this.showChildView('mediaUploadContainer', new BellCMS.Views.ImageUploadView());
+    this.showChildView('mediaContentContainer', new BellCMS.Views.ImageContentView());
   }
 
 });
