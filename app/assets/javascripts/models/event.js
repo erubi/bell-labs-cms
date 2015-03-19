@@ -20,25 +20,29 @@ BellCMS.Models.Event = Backbone.Model.extend({
   },
 
   save: function (key, val, options) {
-    this.beforeSave(key, val, options);
     return Backbone.Model.prototype.save.call(this, key, val, options);
   },
 
-  beforeSave: function (key, val, options) {
-    // might need to add back timezon data here due to datetime local input
-    var isoStart = this.get('start_time_ms');
-    var msStart = moment(isoStart).valueOf();
-    this.set('start_time_ms', msStart);
+//   convertTimes: function(){
+//     // might need to add back timezon data here due to datetime local input
+//     var startMs = this.convertTimeToMs(this.startDate());
+//     this.set('start_time_ms', startMs);
 
-    var isoEnd = this.get('end_time_ms');
-    var msEnd = moment(isoEnd).valueOf();
-    this.set('end_time_ms', msEnd);
+//     var endMs = this.convertTimeToMs(this.endDate());
+//     this.set('end_time_ms', endMs);
 
-    var timerHours = parseInt(this.get('countdown_ms'));
-    var countdownBeginTime = moment(isoStart).subtract(timerHours, 'hours').valueOf();
-    this.set('countdown_ms', countdownBeginTime);
-  },
+//     var timerHours = parseInt(this.get('countdown_ms'));
+//     var countdownBeginTime = this.startDate().subtract(timerHours, 'hours').valueOf();
+//     this.set('countdown_ms', countdownBeginTime);
+//   },
 
+//   convertTimeToMs: function(time){
+//     var offset = time.local().utcOffset();
+//     debugger
+//     time.subtract(offset, 'minutes');
+//     var ms = time.valueOf();
+//     return ms;
+//   },
 
   startDate: function(){
     var ms = parseInt(this.get('start_time_ms'));

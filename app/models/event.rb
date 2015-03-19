@@ -19,7 +19,9 @@ class Event < ActiveRecord::Base
   end
 
   def countdown_ms
-    self.countdown_begin.to_datetime.strftime('%Q')
+    unless self.countdown_begin.nil?
+      self.countdown_begin.to_datetime.strftime('%Q')
+    end
   end
 
   def start_time_ms=(val)
@@ -33,6 +35,7 @@ class Event < ActiveRecord::Base
   end
 
   def countdown_ms=(val)
+    return nil if val == ""
     d_time = Time.at(val/1000)
     self.countdown_begin = d_time
   end
