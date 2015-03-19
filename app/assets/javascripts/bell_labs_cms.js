@@ -35,6 +35,10 @@ BellCMS.on('start', function(options){
     controller: BellCMS.Controllers.AppController
   });
 
+  new BellCMS.Routers.MediaRouter({
+    controller: BellCMS.Controllers.MediaController
+  });
+
   // initialize root layout view
   BellCMS.rootView = new BellCMS.Layouts.AppLayoutView();
   BellCMS.rootView.render();

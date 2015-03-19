@@ -1,7 +1,5 @@
 BellCMS.Controllers.AppController= {
   root: function(){
-    // debugger
-    // BellCMS.rootView.render();
   },
 
   exteriorModules: function(){
@@ -16,7 +14,9 @@ BellCMS.Controllers.AppController= {
   },
 
   media: function(){
-    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.MediaLayout());
+    // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
+    var mediaLayout = new BellCMS.Layouts.MediaLayout();
+    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
   },
 
   tablet: function(){
