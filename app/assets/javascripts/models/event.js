@@ -2,7 +2,7 @@ BellCMS.Models.Event = Backbone.Model.extend({
   urlRoot: 'api/events',
 
   validate: function(attrs, options){
-    if (attrs.name.length < 1){
+    if (attrs.event_text.length < 1){
       return "Event must have event text.";
     }
 
@@ -16,6 +16,10 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
     if (attrs.countdown_hours < 0 ){
       return "Countdown must be positive number.";
+    }
+
+    if (attrs.start_time_ms >= attrs.end_time_ms){
+      return "Event start date must be before event end date."
     }
   },
 

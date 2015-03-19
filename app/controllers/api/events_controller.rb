@@ -36,6 +36,6 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.permit(:name, :description, :start_time_ms, :end_time_ms, :countdown_hours)
+    params.permit(:event_text, :description, :start_time_ms, :end_time_ms, :countdown_hours)
   end
 end

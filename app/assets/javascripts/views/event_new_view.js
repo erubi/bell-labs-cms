@@ -43,8 +43,15 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
   handleAttrConv: function(attrs){
     // should convert iso date attrs to moment dates
-    var startMs = this.convertIsoToMs(attrs['start_time_ms']);
-    var endMs = this.convertIsoToMs(attrs['end_time_ms']);
+    var startAttr = attrs['start_time_ms'];
+    var endAttr = attrs['end_time_ms'];
+
+    if ((startAttr == "") || (endAttr == "")){
+      return attrs;
+    }
+
+    var startMs = this.convertIsoToMs(startAttr);
+    var endMs = this.convertIsoToMs(endAttr);
 
     attrs['start_time_ms'] = startMs;
     attrs['end_time_ms'] = endMs;
