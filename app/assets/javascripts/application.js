@@ -21,6 +21,7 @@
 //= require backbone.radio.shim
 //= require backbone.virtual-collection
 //= require moment
+//= require dropzone
 //= require jquery.serializejson
 //= require bell_labs_cms
 //= require_tree ../templates

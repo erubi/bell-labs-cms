@@ -47,6 +47,21 @@ class Api::MediaModulesController < ApplicationController
     render json: true
   end
 
+  # controller action for uploading media
+  def upload_images
+    @media_module = MediaModule.find_by(name: params[:module_name])
+    @media_module.images += [params[:file]]
+
+    if @media_module.save
+      render json: true
+    else
+      render json: @media_module.errors, status: :unprocessable_entity
+    end
+  end
+
+  def upload_videos
+  end
+
   private
 
   def media_module_params
