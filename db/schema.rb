@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319210933) do
+ActiveRecord::Schema.define(version: 20150320202354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150319210933) do
     t.datetime "updated_at",      null: false
     t.datetime "end_time"
     t.integer  "countdown_hours"
+    t.string   "header"
+    t.string   "subheader"
   end
 
   create_table "media_modules", force: :cascade do |t|

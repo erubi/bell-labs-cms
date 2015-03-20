@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'scene_override', to: 'media_modules#scene_override'
     post 'set_active_scene/:id', to: 'media_modules#set_active_scene'
 
+    get 'calendar', to: 'events#calendar'
+
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
   end
