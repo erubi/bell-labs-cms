@@ -23,6 +23,37 @@ BellCMS.Models.Event = Backbone.Model.extend({
     }
   },
 
+  handleAttrConv: function(attrs){
+    // should convert iso date attrs to moment dates
+    var startAttr = attrs['start_time_ms'];
+    var endAttr = attrs['end_time_ms'];
+    var countdownAttr = attrs['countdown_hours'];
+
+    if ((startAttr == "") || (endAttr == "")){
+      return attrs;
+    }
+
+    if (countdownAttr == ""){
+      attrs['countdown_hours'] = 0;
+    }
+
+    var startMs = this.convertIsoToMs(startAttr);
+    var endMs = this.convertIsoToMs(endAttr);
+
+    attrs['start_time_ms'] = startMs;
+    attrs['end_time_ms'] = endMs;
+
+    return attrs;
+  },
+
+  convertIsoToMs: function(isoString){
+    var time = moment(isoString);
+    var offset = time.local().utcOffset();
+    time.add(offset, 'minutes');
+    var ms = time.valueOf();
+    return ms;
+  },
+
   startDate: function(){
     var ms = parseInt(this.get('start_time_ms'));
     return moment(ms);

@@ -34,7 +34,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     var that = this;
 
     var attrs = this.$el.find('form').serializeJSON();
-    attrs = this.handleAttrConv(attrs);
+    attrs = this.model.handleAttrConv(attrs);
     this.model.set(attrs);
 
     if (this.model.isValid()){
@@ -51,33 +51,6 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
 
   removeError: function(){
     this.$el.find('.alert').remove();
-  },
-
-  handleAttrConv: function(attrs){
-    // should convert iso date attrs to moment dates
-
-    var startAttr = attrs['start_time_ms'];
-    var endAttr = attrs['end_time_ms'];
-
-    if ((startAttr == "") || (endAttr == "")){
-      return attrs;
-    }
-
-    var startMs = this.convertIsoToMs(startAttr);
-    var endMs = this.convertIsoToMs(endAttr);
-
-    attrs['start_time_ms'] = startMs;
-    attrs['end_time_ms'] = endMs;
-
-    return attrs;
-  },
-
-  convertIsoToMs: function(isoString){
-    var time = moment(isoString);
-    var offset = time.local().utcOffset();
-    time.add(offset, 'minutes');
-    var ms = time.valueOf();
-    return ms;
   }
 
 });
