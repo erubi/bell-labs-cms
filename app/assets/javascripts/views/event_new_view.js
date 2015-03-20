@@ -15,20 +15,29 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     var that = this;
 
     var attrs = this.$el.find('form').serializeJSON();
-    attrs = this.handleAttrConv(attrs);
-    this.model.set(attrs);
+    attrs = this.model.handleAttrConv(attrs);
+    // this.model.set(attrs);
 
-    if (this.model.isValid()){
-      this.removeError();
-      // on success re render and create new js model
-      BellCMS.Collections.events.unshift(this.model);
-      this.model.save([], {
-        success: function(){
+    // if (this.model.isValid()){
+    //   this.removeError();
+    //   // on success re render and create new js model
+    //   this.model.save({}, {
+    //     success: function(){
+    //       BellCMS.Collections.events.unshift(this.model);
+    //       that.model = new BellCMS.Models.Event();
+    //       that.render();
+    //     }
+    //   });
+    // }
+
+    this.model.save(attrs, {
+      success: function(){
+          that.removeError();
+          BellCMS.Collections.events.unshift(that.model);
           that.model = new BellCMS.Models.Event();
           that.render();
-        }
-      });
-    }
+      }
+    });
   },
 
   showError: function(event){
@@ -39,32 +48,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
   removeError: function(){
     this.$el.find('.alert').remove();
-  },
-
-  handleAttrConv: function(attrs){
-    // should convert iso date attrs to moment dates
-    var startAttr = attrs['start_time_ms'];
-    var endAttr = attrs['end_time_ms'];
-
-    if ((startAttr == "") || (endAttr == "")){
-      return attrs;
-    }
-
-    var startMs = this.convertIsoToMs(startAttr);
-    var endMs = this.convertIsoToMs(endAttr);
-
-    attrs['start_time_ms'] = startMs;
-    attrs['end_time_ms'] = endMs;
-
-    return attrs;
-  },
-
-  convertIsoToMs: function(isoString){
-    var time = moment(isoString);
-    var offset = time.local().utcOffset();
-    time.add(offset, 'minutes');
-    var ms = time.valueOf();
-    return ms;
   }
+
 
 });
