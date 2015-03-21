@@ -1,1 +1,2 @@
 json.cycle_duration Rails.application.config.cycle_duration
+json.video_player_enabled Rails.application.config.video_player_enabled

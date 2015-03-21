@@ -40,5 +40,6 @@ module BellLabsCms
     # config value for scenes/modules cycle durations
     config.cycle_duration = 60 #minutes
     config.event_frequency = 30 #minutes
+    config.video_player_enabled = false
   end
 end
