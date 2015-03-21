@@ -51,7 +51,7 @@ class Api::MediaModulesController < ApplicationController
   def upload_media
     # need to check for file type here
     @media_module = MediaModule.find_by(name: params[:module_name])
-    @media_module.images += [params[:file]]
+    @media_module.images += params[:files]
 
     if @media_module.save
       render json: true
