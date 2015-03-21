@@ -4,4 +4,12 @@
       <img class="media-content-img" src="<%= i.url %>">
     </li>
   <% }); %>
+
+  <% _.each(videos, function(i){ %>
+    <li class="col-sm-3">
+      <div class="text-center">
+        <%= i.filename %>
+      </div>
+    </li>
+  <% }); %>
 </ul>

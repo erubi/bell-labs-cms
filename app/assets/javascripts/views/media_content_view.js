@@ -7,7 +7,8 @@ BellCMS.Views.MediaContentView = Marionette.ItemView.extend({
 
   templateHelpers: function(){
     return {
-      images: this.model.get('images')
+      images: this.model.get('images'),
+      videos: this.model.get('videos')
     }
   }
 

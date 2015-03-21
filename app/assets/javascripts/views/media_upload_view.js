@@ -21,7 +21,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
       },
 
       submit: function(e, data){
-        data.formData = that.grabFormData();
+        data.formData = that.grabFormData(data);
       },
 
       done: function(e, data){
@@ -29,9 +29,22 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     });
   },
 
-  grabFormData: function(){
-    var metadataHash = $('#metadata-form').serializeJSON();
+  grabFormData: function(data){
+    var metadataHash;
+    var fileTypeStr;
+    var fileType;
+
+    metadataHash= $('#metadata-form').serializeJSON();
     metadataHash['module_name'] = this.model.get('name');
+    fileTypeStr = data.files[0].type;
+
+    if ((/\/(gif|jpg|jpeg|tiff|png)$/i).test(fileTypeStr)) {
+      fileType = 'image';
+    } else if ((/\/(mov|mp4|mkv|avi)$/i).test(fileTypeStr)){
+      fileType = 'video';
+    }
+
+    metadataHash['file_type'] = fileType;
     return metadataHash;
   }
 });
