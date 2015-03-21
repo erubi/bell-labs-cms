@@ -1,6 +1,6 @@
 # encoding: utf-8
-
 class VideoUploader < CarrierWave::Uploader::Base
+  include CarrierWave::Video
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -45,5 +45,11 @@ class VideoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  #
+
+  def video_duration
+   # video duration in seconds
+   FFMPEG::Movie.new(file.file).duration
+  end
 
 end

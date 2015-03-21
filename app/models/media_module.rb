@@ -24,15 +24,15 @@ class MediaModule < ActiveRecord::Base
     other_modules.update_all(active: false)
   end
 
-  private
-
   def movie_duration
     total_duration = 0 #seconds
     self.videos.each do |video|
-      ffmpeg_movie = FFMPEG::Movie.new(video.url)
+      ffmpeg_movie = FFMpeg::Movie.new(video.url)
       total_duration += ffmpeg_movie.duration
     end
   end
+
+  private
 
   def weight_total
     if (other_modules.sum(:weight) + self.weight) > 1
