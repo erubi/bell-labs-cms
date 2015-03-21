@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
     get 'calendar', to: 'events#calendar'
 
+    get 'config_model', to: 'config_model#show'
+    post 'config_model', to: 'config_model#update'
+
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
   end

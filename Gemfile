@@ -40,6 +40,7 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', br
 gem 'newrelic_rpm'
 
 gem 'apitome'
+gem 'streamio-ffmpeg'
 #rspec api tests gems
 
 group :development, :test do

@@ -1,0 +1,1 @@
+json.cycle_duration Rails.application.config.cycle_duration

@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'rubygems'
+require 'streamio-ffmpeg'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -36,7 +38,7 @@ module BellLabsCms
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     # config value for scenes/modules cycle durations
-    config.cycle_duration = 24 #hours
+    config.cycle_duration = 60 #minutes
     config.event_frequency = 30 #minutes
   end
 end

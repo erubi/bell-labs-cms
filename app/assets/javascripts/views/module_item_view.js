@@ -9,19 +9,23 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
   },
 
   onDomRefresh: function(){
-    $('.weight-input').slider({
-      ticks: [0, 25, 50, 75, 100],
-      ticks_labels : ['0%', '25%', '', '', '100%'],
-      handle: 'square'
-    });
+    if ($('.weight-input').length){
+      $('.weight-input').slider({
+        ticks: [0, 25, 50, 75, 100],
+        ticks_labels : ['0%', '25%', '', '', '100%'],
+        handle: 'square'
+      });
+    } else if($('.on-off-switch').length){
+      $('.on-off-switch').bootstrapSwitch();
+    }
   },
 
   events: {
-    'change .weight-input' : 'updateModelWeight',
+    'slideStop .weight-input' : 'updateModelWeight',
   },
 
   updateModelWeight: function(event){
-    var weight = event.target.value / 100;
+    var weight = event.value / 100;
     this.model.set('weight', weight);
 
     if (this.model.isValid()){

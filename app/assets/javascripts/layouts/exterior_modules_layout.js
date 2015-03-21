@@ -6,11 +6,18 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
   },
 
   onBeforeShow: function(){
-    this.showChildView('modulesContainer', new BellCMS.Views.ModuleCompositeView(
-        {
-          collection: BellCMS.Collections.modules.codeTypeSubset()
-        }
-    ));
+    var that = this;
+
+    BellCMS.Models.configModel.fetch({
+      success: function(){
+        that.showChildView('modulesContainer', new BellCMS.Views.ModuleCompositeView(
+            {
+              collection: BellCMS.Collections.modules.codeTypeSubset(),
+              model: BellCMS.Models.configModel
+            }
+        ));
+      }
+    })
   }
 
 });
