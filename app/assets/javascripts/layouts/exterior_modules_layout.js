@@ -8,7 +8,7 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
   onBeforeShow: function(){
     this.showChildView('modulesContainer', new BellCMS.Views.ModuleCompositeView(
         {
-          collection: BellCMS.Collections.modules
+          collection: BellCMS.Collections.modules.codeTypeSubset()
         }
     ));
   }

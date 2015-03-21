@@ -1,11 +1,19 @@
 BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
   tagName: 'li',
-  className: 'module-view-li',
+  className: 'module-view-li clearfix',
   template: 'exterior_modules/module_item',
 
   initialize: function(){
     this.listenTo(this.model, "invalid", this.showError);
-    this.listenTo(this.model, "sync", this.render);
+    // this.listenTo(this.model, "sync", this.render);
+  },
+
+  onDomRefresh: function(){
+    $('.weight-input').slider({
+      ticks: [0, 25, 50, 75, 100],
+      ticks_labels : ['0%', '25%', '', '', '100%'],
+      handle: 'square'
+    });
   },
 
   events: {

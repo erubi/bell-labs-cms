@@ -1,9 +1,17 @@
-<div class="panel panel-default <%= active ? 'active-module' : 'inactive-module' %>">
-  <div class="panel-body">
-    <span class="module-title"><%= name %></span>
-    <span class="module-weight-ctr">
-      <input class="weight-input" type="number" value="<%= weight *= 100 %>">
-      <span>%</span>
-    </span>
-  </div>
+<div class="module-item-box <%= active ? 'active-module' : 'inactive-module' %>">
+  <span class="module-title"><%= name %></span>
 </div>
+
+<% if (name != 'Video Player'){ %>
+  <div class="module-weight-ctr">
+    <input class="weight-input" type="text" data-slider-value="<%= weight *= 100 %>">
+  </div>
+<% } else { %>
+
+  <div class="module-weight-ctr">
+    <button class="on-off-switch" type="button" value="">
+      ON/OFF
+    </button>
+  </div>
+
+<% } %>
