@@ -48,7 +48,8 @@ class Api::MediaModulesController < ApplicationController
   end
 
   # controller action for uploading media
-  def upload_images
+  def upload_media
+    # need to check for file type here
     @media_module = MediaModule.find_by(name: params[:module_name])
     @media_module.images += [params[:file]]
 
@@ -57,9 +58,6 @@ class Api::MediaModulesController < ApplicationController
     else
       render json: @media_module.errors, status: :unprocessable_entity
     end
-  end
-
-  def upload_videos
   end
 
   private

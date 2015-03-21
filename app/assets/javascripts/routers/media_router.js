@@ -4,7 +4,9 @@ BellCMS.Routers.MediaRouter = Backbone.Marionette.AppRouter.extend({
 
   appRoutes: {
     'image_library' : 'imageLibrary',
-    'media_library' : 'mediaLibrary'
+    'media_library' : 'mediaLibrary',
+    'nobel_ghosts_media' : 'nobelGhostsMedia',
+    'bell_heroes_media' : 'bellHeroesMedia'
   }
 });
 
