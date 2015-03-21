@@ -7,15 +7,14 @@
 # mm2.save!
 
 MediaModule.create!([
-  {name: "nobel_ghosts", scene_type: "code"},
-  {name: "bell_labs_heroes", scene_type: "code"},
-  {name: "network", scene_type: "code"},
-  {name: "physics", scene_type: "code"},
-  {name: "software", scene_type: "code"},
-  {name: "entrance_cue", scene_type: "video"},
-  {name: "starfield", scene_type: "video"},
-  {name: "media_library", scene_type: "video"},
-  {name: "none", scene_type: "video"},
+  {name: "Video Player", scene_type: "code"},
+  {name: "Bell Labs Heroes", scene_type: "code"},
+  {name: "Network", scene_type: "code"},
+  {name: "Physics", scene_type: "code"},
+  {name: "Software", scene_type: "code"},
+  {name: "Entrance Cue", scene_type: "video"},
+  {name: "Starfield Welcome", scene_type: "video"},
+  {name: "Media Library", scene_type: "video"}
 ])
 
 events = Event.create!([

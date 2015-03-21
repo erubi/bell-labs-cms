@@ -10,23 +10,23 @@ BellCMS.Controllers.MediaController= {
     BellCMS.rootView.showChildView('contentContainer', mediaLayout);
   },
 
-  nobelGhostsMedia: function(){
+  videoPlayerMedia: function(){
     BellCMS.Collections.modules.fetch({
       success: function(){
         var mediaLayout = new BellCMS.Layouts.MediaLayout();
-        var nobelGhostsModule = BellCMS.Collections.modules.findWhere({name: 'nobel_ghosts'});
+        var videoPlayerModule = BellCMS.Collections.modules.findWhere({name: 'Video Player'});
 
-        var nobelGhostsUploadView = new BellCMS.Views.MediaUploadView({
-          model: nobelGhostsModule
+        var videoPlayerUploadView = new BellCMS.Views.MediaUploadView({
+          model: videoPlayerModule
         });
 
-        var nobelGhostsContentView = new BellCMS.Views.MediaContentView({
-          model: nobelGhostsModule
+        var videoPlayerContentView = new BellCMS.Views.MediaContentView({
+          model: videoPlayerModule
         });
 
         BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-        mediaLayout.showChildView('mediaUploadContainer', nobelGhostsUploadView);
-        mediaLayout.showChildView('mediaContentContainer', nobelGhostsContentView);
+        mediaLayout.showChildView('mediaUploadContainer', videoPlayerUploadView);
+        mediaLayout.showChildView('mediaContentContainer', videoPlayerContentView);
       }
     })
 
@@ -36,7 +36,7 @@ BellCMS.Controllers.MediaController= {
     BellCMS.Collections.modules.fetch({
       success: function(){
         var mediaLayout = new BellCMS.Layouts.MediaLayout();
-        var bellHeroesModule = BellCMS.Collections.modules.findWhere({name: 'bell_labs_heroes'});
+        var bellHeroesModule = BellCMS.Collections.modules.findWhere({name: 'Bell Labs Heroes'});
 
         var bellHeroesUploadView = new BellCMS.Views.MediaUploadView({
           model: bellHeroesModule
