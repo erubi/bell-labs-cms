@@ -56,6 +56,7 @@ class Api::MediaModulesController < ApplicationController
     if @media_module.save
       render json: true
     else
+      binding.pry
       render json: @media_module.errors, status: :unprocessable_entity
     end
   end

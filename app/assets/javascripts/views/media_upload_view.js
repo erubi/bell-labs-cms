@@ -13,12 +13,25 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
       url: 'api/upload_media',
       type: 'put',
       dataType: 'json',
-      formData: {
-        module_name: that.model.get('name')
+
+      add: function(e, data){
+        $('#upload-btn').on('click', function(){
+          data.submit();
+        });
+      },
+
+      submit: function(e, data){
+        data.formData = that.grabFormData();
       },
 
       done: function(e, data){
       }
     });
+  },
+
+  grabFormData: function(){
+    var metadataHash = $('#metadata-form').serializeJSON();
+    metadataHash['module_name'] = this.model.get('name');
+    return metadataHash;
   }
 });

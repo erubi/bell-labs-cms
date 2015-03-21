@@ -11,7 +11,6 @@ BellCMS.Controllers.MediaController= {
   },
 
   nobelGhostsMedia: function(){
-
     BellCMS.Collections.modules.fetch({
       success: function(){
         var mediaLayout = new BellCMS.Layouts.MediaLayout();
@@ -34,18 +33,23 @@ BellCMS.Controllers.MediaController= {
   },
 
   bellHeroesMedia: function(){
-    var mediaLayout = new BellCMS.Layouts.MediaLayout();
-    var bellHeroesModule = BellCMS.Collections.modules.findWhere({name: 'bell_labs_heroes'});
+    BellCMS.Collections.modules.fetch({
+      success: function(){
+        var mediaLayout = new BellCMS.Layouts.MediaLayout();
+        var bellHeroesModule = BellCMS.Collections.modules.findWhere({name: 'bell_labs_heroes'});
 
-    var bellHeroesUploadView = new BellCMS.Views.MediaUploadView({
-      model: bellHeroesModule
+        var bellHeroesUploadView = new BellCMS.Views.MediaUploadView({
+          model: bellHeroesModule
+        });
+
+        var bellHeroesContentView = new BellCMS.Views.MediaContentView({
+          model: bellHeroesModule
+        });
+
+        BellCMS.rootView.showChildView('contentContainer', mediaLayout);
+        mediaLayout.showChildView('mediaUploadContainer', bellHeroesUploadView);
+        mediaLayout.showChildView('mediaContentContainer', bellHeroesContentView);
+      }
     });
-
-    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-
-    mediaLayout.showChildView('mediaUploadContainer', bellHeroesUploadView);
-    // mediaLayout.showChildView('mediaContentContainer', );
   }
-
-
 };
