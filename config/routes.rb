@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'scene_weight', to: 'media_modules#scene_weight'
     get 'scene_override', to: 'media_modules#scene_override'
     post 'set_active_scene/:id', to: 'media_modules#set_active_scene'
+    put 'upload_media', to: 'media_modules#upload_media'
 
     get 'calendar', to: 'events#calendar'
 
