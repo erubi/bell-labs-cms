@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: "users/sessions" }
 
+  namespace :users do
+    get 'manage_users', to: 'management#show'
+    post 'manage_users', to: 'management#create'
+    delete 'manage_users', to: 'management#destroy'
+  end
+
   namespace :api, defaults: { format: :json } do
     get 'scene_weight', to: 'media_modules#scene_weight'
     get 'scene_override', to: 'media_modules#scene_override'

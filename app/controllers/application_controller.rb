@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # TODO: add back for certain parts of the website, whitelist third party sources
   # protect_from_forgery with: :exception
 
+  include Pundit
+
   def require_signed_in
     if !signed_in?
       redirect_to landing_url
@@ -14,6 +16,13 @@ class ApplicationController < ActionController::Base
   def require_signed_out
     if signed_in?
       redirect_to root_url
+    end
+  end
+
+  def require_admin
+    if !current_user.admin
+      render json: "Invalid permissions"
+      return
     end
   end
 

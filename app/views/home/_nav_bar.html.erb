@@ -4,7 +4,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       </button>
-      <a class="navbar-brand" href="#/">Bell Labs</a>
+      <a class="navbar-brand" href="/#">Bell Labs</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +17,7 @@
           <li>
             <%= link_to "Sign Out", destroy_user_session_url, method: :delete %>
           </li>
+          <li><a class="glyphicon glyphicon-menu-hamburger" href="<%= %>"></a></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

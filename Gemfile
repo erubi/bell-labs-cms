@@ -39,6 +39,7 @@ gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', br
 gem 'fog'
 gem 'figaro'
 gem 'newrelic_rpm'
+gem "pundit"
 
 gem 'apitome'
 gem 'carrierwave-video'

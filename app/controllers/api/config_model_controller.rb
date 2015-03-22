@@ -1,5 +1,7 @@
 class Api::ConfigModelController < ApplicationController
 
+  before_action :require_admin, except: [:show]
+
   def update
     SETTINGS['CYCLE_DURATION'] = params[:cycle_duration]
 
