@@ -1,6 +1,6 @@
 BellCMS.Views.MediaNavView = Marionette.ItemView.extend({
   tagName: 'nav',
-  className: 'navbar navbar-default navbar-app',
+  className: 'top-media-nav navbar navbar-default navbar-app',
   template: 'media/nav_bar',
 
   events: {

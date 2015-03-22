@@ -34,10 +34,10 @@
 }
 
 .media-upload-ctr{
-  // border-right: 1px solid black;
-  // border-left: 1px solid black;
-  // border-bottom: 1px solid black;
-  border: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  // border: 1px solid black;
   padding: 20px;
   height: 200px;
 }
@@ -74,4 +74,27 @@ input[readonly] {
 
 .file-name-text{
   width: 190px !important;
+}
+
+.top-media-nav{
+  border-bottom: 0px !important;
+}
+
+.media-content-ctr{
+  // padding: 0 40px 10px 40px;
+  padding: 20px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.media-box{
+  height: 180px;
+  width: 180px;
+  border: 1px solid black;
+  margin-bottom: 35px;
+}
+
+.video-ctr{
+  background: #C9C8C8;
 }
