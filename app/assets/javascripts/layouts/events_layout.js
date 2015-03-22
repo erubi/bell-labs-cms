@@ -10,6 +10,22 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
     monthEventsContainer : '#month-events-ctr'
   },
 
+  events: {
+    'click .dropdown-menu li' : 'updateFrequency'
+  },
+
+  templateHelper: function(){
+    return {
+    };
+  },
+
+  updateFrequency: function(event){
+    event.preventDefault();
+    var freq = $(event.currentTarget).data('value');
+    BellCMS.Models.configModel.set('event_freq', freq);
+    BellCMS.Models.configModel.save();
+  },
+
   onBeforeShow: function(){
     var that = this;
     var events = BellCMS.Collections.events;

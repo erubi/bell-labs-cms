@@ -12,6 +12,10 @@ class Api::ConfigModelController < ApplicationController
       end
     end
 
+    if (params[:event_freq] != SETTINGS['EVENT_FREQUENCY'])
+      SETTINGS['EVENT_FREQUENCY'] = params[:event_freq]
+    end
+
     render 'show'
   end
 

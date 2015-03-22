@@ -7,7 +7,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   events: {
-    'click #save-new-event' : 'createEvent'
+    'click #save-new-event' : 'createEvent',
   },
 
   createEvent: function(event){
@@ -16,19 +16,6 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
     var attrs = this.$el.find('form').serializeJSON();
     attrs = this.model.handleAttrConv(attrs);
-    // this.model.set(attrs);
-
-    // if (this.model.isValid()){
-    //   this.removeError();
-    //   // on success re render and create new js model
-    //   this.model.save({}, {
-    //     success: function(){
-    //       BellCMS.Collections.events.unshift(this.model);
-    //       that.model = new BellCMS.Models.Event();
-    //       that.render();
-    //     }
-    //   });
-    // }
 
     this.model.save(attrs, {
       success: function(){

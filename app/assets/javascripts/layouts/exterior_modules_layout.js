@@ -17,10 +17,12 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
               model: BellCMS.Models.configModel
             }
         ));
+
+        that.showChildView('eventsContainer', new BellCMS.Layouts.EventsLayout());
+
       }
     });
 
-    that.showChildView('eventsContainer', new BellCMS.Layouts.EventsLayout());
 
   }
 
