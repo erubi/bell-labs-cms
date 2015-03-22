@@ -83,3 +83,9 @@ production:
   database: bell_labs_cms_production
   username: bell_labs_cms
   password: <%= ENV['BELL_LABS_CMS_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: bell_labs_cms_staging
+  username: bell_labs_cms
+  password: <%= ENV['BELL_LABS_CMS_DATABASE_PASSWORD'] %>

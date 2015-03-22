@@ -5,16 +5,13 @@ defaults: &defaults
    VIDEO_PLAYER_ENABLED: false
    VIDEO_PLAYER_DURATION: 0
 
+staging:
+  <<: *defaults
+
 development:
   <<: *defaults
 
-playground:
-  <<: *defaults
-
 production:
-  <<: *defaults
-
-poststaging:
   <<: *defaults
 
 test:
