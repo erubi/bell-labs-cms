@@ -95,6 +95,22 @@
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
               </button>
             </div>
+
+            <div class="form-group visible-event-ctr">
+              <button class="form-control visible-event-btn">
+                <% if (visible) { %>
+                <span
+                  class="eye-icon glyphicon glyphicon-eye-open"
+                  aria-hidden="true">
+                </span>
+                <% } else { %>
+                <span
+                  class="eye-icon glyphicon glyphicon-eye-close"
+                  aria-hidden="true">
+                </span>
+                <% } %>
+              </button>
+            </div>
           </form>
         </div>
       </div>

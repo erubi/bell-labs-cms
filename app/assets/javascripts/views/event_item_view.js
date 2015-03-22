@@ -17,12 +17,20 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   events: {
     'click .delete-event-btn' : 'deleteEvent',
     'change input' : 'updateEvent',
-    'click .dropdown-menu li' : 'updateCountdown'
+    'click .dropdown-menu li' : 'updateCountdown',
+    'click .visible-event-btn' : 'updateVisibility'
   },
 
   modelEvents: {
     'destroy' : 'modelDestroyed',
     'invalid' : 'showError'
+  },
+
+  updateVisibility: function(event){
+    event.preventDefault();
+    $('.eye-icon').toggleClass('glyphicon-eye-open').toggleClass('glyphicon-eye-close');
+    this.model.set('visible', !this.model.get('visible'));
+    this.model.save();
   },
 
   updateCountdown: function(event){
