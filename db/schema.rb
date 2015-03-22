@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322201237) do
+ActiveRecord::Schema.define(version: 20150322221154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20150322201237) do
     t.string   "subheader"
     t.datetime "event_time"
     t.boolean  "visible",         default: false
+  end
+
+  create_table "media_items", force: :cascade do |t|
+    t.string   "file_name"
+    t.string   "file_type"
+    t.datetime "date_uploaded"
+    t.string   "scene_association"
+    t.string   "bell_labs_people"
+    t.string   "top_level_category"
+    t.string   "keywords"
+    t.string   "additional_metadata"
+    t.json     "images"
+    t.json     "videos"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "media_modules", force: :cascade do |t|
