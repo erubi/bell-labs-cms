@@ -59,6 +59,10 @@ class Api::MediaModulesController < ApplicationController
     end
 
     if @media_module.save
+      if @media_module.name == "Video Player"
+        SETTINGS['VIDEO_PLAYER_DURATION'] = MediaModule.find_by(name: "Video Player").movie_duration
+      end
+
       render json: true
     else
       render json: @media_module.errors, status: :unprocessable_entity
