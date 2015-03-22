@@ -59,6 +59,10 @@ class Api::MediaModulesController < ApplicationController
     end
 
     if @media_module.save
+      if @media_module.name == 'Video Player' && params[:file_type] == 'video'
+        update_video_player_duration
+      end
+
       render json: true
     else
       render json: @media_module.errors, status: :unprocessable_entity
@@ -66,6 +70,11 @@ class Api::MediaModulesController < ApplicationController
   end
 
   private
+
+  def update_video_player_duration
+    new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
+    SETTINGS['VIDEO_PLAYER_DURATION'] += new_video_duration
+  end
 
   def upload_image
   end
