@@ -17,7 +17,10 @@
           <li>
             <%= link_to "Sign Out", destroy_user_session_url, method: :delete %>
           </li>
-          <li><a class="glyphicon glyphicon-menu-hamburger" href="<%= %>"></a></li>
+          <li>
+          <%# <a class="glyphicon glyphicon-menu-hamburger" href="<%= %1>"></a> %>
+            <%= link_to "Sign Out", destroy_user_session_url, method: :delete %>
+          </li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

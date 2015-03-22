@@ -2,7 +2,10 @@ require 'faker'
 require 'carrierwave/orm/activerecord'
 
 # This will guess the User class
-FactoryGirl.define do
+FactoryGirl.define do  factory :media_item do
+    
+  end
+
 
   factory :media_module do
     name { Faker::Lorem.sentence }

@@ -5,6 +5,8 @@ class MediaModule < ActiveRecord::Base
 
   before_update :activate_callback
 
+  has_many :media_items
+
   mount_uploaders :images, ImageUploader
   mount_uploaders :videos, VideoUploader
 
@@ -26,13 +28,27 @@ class MediaModule < ActiveRecord::Base
 
   def movie_duration
     total_duration = 0 #seconds
+
     self.videos.each do |video|
+      next if video.nil?
       total_duration += video.video_duration
     end
 
     total_minutes = total_duration / 60
 
     total_minutes
+  end
+
+  def images
+    self.media_items.with_image.collect do |m|
+      m.image
+    end.compact
+  end
+
+  def videos
+    self.media_items.with_video.collect do |m|
+      m.video
+    end.compact
   end
 
   private

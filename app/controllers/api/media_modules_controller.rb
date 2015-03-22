@@ -53,18 +53,20 @@ class Api::MediaModulesController < ApplicationController
   def upload_media
     # TODO: save metadata here
     @media_module = MediaModule.find_by(name: params[:module_name])
+    @media_item = @media_module.media_items.create()
 
     if params[:file_type] == 'image'
-      @media_module.images += params[:files]
+      @media_item.image = params[:files][0]
     elsif params[:file_type] == 'video'
-      @media_module.videos += params[:files]
+      @media_item.video = params[:files][0]
     end
 
-    if @media_module.save
+    @media_item.update_attributes(metadata_params)
+
+    if @media_item.save
       if @media_module.name == 'Video Player' && params[:file_type] == 'video'
         update_video_player_duration
       end
-
       render json: true
     else
       render json: @media_module.errors, status: :unprocessable_entity
@@ -78,14 +80,12 @@ class Api::MediaModulesController < ApplicationController
     SETTINGS['VIDEO_PLAYER_DURATION'] += new_video_duration
   end
 
-  def upload_image
-  end
-
-  def upload_video
-  end
-
   def media_module_params
     params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type, :active)
+  end
+
+  def metadata_params
+    params.permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata)
   end
 
 end

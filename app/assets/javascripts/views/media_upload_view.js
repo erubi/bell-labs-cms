@@ -34,12 +34,12 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   },
 
   grabFormData: function(data){
-    var metadataHash;
+    var formDataHash;
     var fileTypeStr;
     var fileType;
 
-    metadataHash= $('#metadata-form').serializeJSON();
-    metadataHash['module_name'] = this.model.get('name');
+    formDataHash = $('#metadata-form').serializeJSON();
+    formDataHash['module_name'] = this.model.get('name');
     fileTypeStr = data.files[0].type;
 
     if ((/\/(gif|jpg|jpeg|tiff|png)$/i).test(fileTypeStr)) {
@@ -48,7 +48,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
       fileType = 'video';
     }
 
-    metadataHash['file_type'] = fileType;
-    return metadataHash;
+    formDataHash['file_type'] = fileType;
+    return formDataHash;
   }
 });
