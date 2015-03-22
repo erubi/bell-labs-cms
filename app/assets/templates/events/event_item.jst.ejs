@@ -1,6 +1,18 @@
-<div class="">
+<div class="event-form-ctr">
   <form class="form-inline">
-    <div class="form-group">
+    <div class="form-group event-text-ctr">
+      <input
+        class="form-control"
+        type="text"
+        name="header"
+        value="<%= header %>">
+
+      <input
+        class="form-control"
+        type="text"
+        name="subheader"
+        value="<%= subheader %>">
+
       <input
         class="form-control"
         type="text"
@@ -8,22 +20,38 @@
         value="<%= event_text %>">
     </div>
 
-    <div class="form-group">
+    <div class="form-group event-date-ctr">
       <!-- <span>Start time</span> -->
+      <div>
+      <label for="start-input-<%= id %>">Start Time</label>
       <input
+        id="start-input-<%= id %>"
         class="form-control"
         type="datetime-local"
         name="start_time_ms"
         value="<%= startISO %>">
-    </div>
+        </div>
 
-    <div class="form-group">
       <!-- <span>End time</span> -->
+      <div>
+      <label for="end-input-<%= id %>">End Time</label>
       <input
+        id="end-input-<%= id %>"
         class="form-control"
         type="datetime-local"
         name="end_time_ms"
         value="<%= endISO %>">
+      </div>
+
+      <div>
+      <label for="event-time-input-<%= id %>">Event Time</label>
+      <input
+        id="event-time-input-<%= id %>"
+        class="form-control"
+        type="datetime-local"
+        name="end_time_ms"
+        value="<%= eventISO %>">
+      </div>
     </div>
 
     <div class="form-group">

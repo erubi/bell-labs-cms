@@ -18,8 +18,8 @@ MediaModule.create!([
 ])
 
 events = Event.create!([
-  {header: 'Event 1 Header', subheader: 'Event 2 subheader', event_text: "Test Event 1", start_time: DateTime.now.tomorrow, end_time: DateTime.now + 3, countdown_hours: 3},
-  {header: 'Event 2 header', subheader: 'Event 2 subheader', event_text: "Test Event 2", start_time: DateTime.now + 8, end_time: DateTime.now + 20, countdown_hours: 2}])
+  {header: 'Event 1 Header', subheader: 'Event 2 subheader', event_text: "Test Event 1", start_time: DateTime.now.tomorrow, event_time: DateTime.now + 2, end_time: DateTime.now + 3, countdown_hours: 3},
+  {header: 'Event 2 header', subheader: 'Event 2 subheader', event_text: "Test Event 2", start_time: DateTime.now + 8, event_time: DateTime.now + 10, end_time: DateTime.now + 20, countdown_hours: 2}])
 
 users = User.create([
   {email: 'dude@example.com', password: 'password'},

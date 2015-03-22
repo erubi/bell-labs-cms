@@ -1,5 +1,6 @@
 BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   template: 'events/new',
+  className: 'events-new-ctr',
 
   initialize: function(){
     this.model = new BellCMS.Models.Event();

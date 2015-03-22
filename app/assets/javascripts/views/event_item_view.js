@@ -6,7 +6,8 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   templateHelpers: function(){
     return {
       startISO: this.model.startISO(),
-      endISO: this.model.endISO()
+      endISO: this.model.endISO(),
+      eventISO: this.model.eventISO()
     }
   },
 

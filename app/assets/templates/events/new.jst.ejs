@@ -6,29 +6,57 @@
 
 <div class="new-event-form-ctr">
   <form class="form-inline">
-    <div class="form-group">
+    <div class="form-group event-text-ctr">
       <input
         class="form-control"
         type="text"
-        placeholder="New Event Text Here"
-        name="event_text">
-    </div>
+        placeholder="HEADLINE: 20 characters"
+        name="header">
 
-    <div class="form-group event-calendar-ctr">
-      <!-- <span>Start time</span> -->
+      <input
+        class="form-control"
+        type="text"
+        placeholder="SUB HEAD: 100 characters"
+        name="subheader">
+
         <input
+        class="form-control"
+        type="text"
+        placeholder="EVENT TEXT"
+        name="event_text">
+      </div>
+
+      <div class="form-group event-date-ctr">
+        <!-- <span>Start time</span> -->
+        <div>
+          <label for="start-time-input">Start Time</label>
+          <input
+          id="start-time-input"
           class="form-control"
           type="datetime-local"
           name="start_time_ms">
-    </div>
+        </div>
 
-    <div class="form-group event-calendar-ctr">
-      <!-- <span>End time</span> -->
-        <input
+        <!-- <span>End time</span> -->
+        <div>
+          <label for="end-time-input">End Time</label>
+          <input
+          id="end-time-input"
           class="form-control"
           type="datetime-local"
           name="end_time_ms">
-    </div>
+        </div>
+
+        <!-- <span>End time</span> -->
+        <div>
+          <label for="event-time-input">Event Time</label>
+          <input
+          id="event-time-input"
+          class="form-control"
+          type="datetime-local"
+          name="event_time_ms">
+        </div>
+      </div>
 
     <div class="form-group">
       <!-- <span>Countdown Timer</span> -->

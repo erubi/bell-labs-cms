@@ -27,9 +27,10 @@ BellCMS.Models.Event = Backbone.Model.extend({
     // should convert iso date attrs to moment dates
     var startAttr = attrs['start_time_ms'];
     var endAttr = attrs['end_time_ms'];
+    var eventTimeAttr = attrs['event_time_ms'];
     var countdownAttr = attrs['countdown_hours'];
 
-    if ((startAttr == "") || (endAttr == "")){
+    if ((startAttr == "") || (endAttr == "") || (eventTimeAttr == "")){
       return attrs;
     }
 
@@ -39,9 +40,12 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
     var startMs = this.convertIsoToMs(startAttr);
     var endMs = this.convertIsoToMs(endAttr);
+    var eventMS = this.convertIsoToMs(eventTimeAttr);
+
 
     attrs['start_time_ms'] = startMs;
     attrs['end_time_ms'] = endMs;
+    attrs['event_time_ms'] = eventMS;
 
     return attrs;
   },
@@ -64,6 +68,11 @@ BellCMS.Models.Event = Backbone.Model.extend({
     return moment(ms);
   },
 
+  eventDate: function(){
+    var ms = parseInt(this.get('event_time_ms'));
+    return moment(ms);
+  },
+
   countdownDate: function(){
     var ms = parseInt(this.get('count_down_ms'));
     return moment(ms);
@@ -76,6 +85,11 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
   endISO: function(){
     var str = this.endDate().toISOString();
+    return str.substring(0, str.length - 1);
+  },
+
+  eventISO: function(){
+    var str = this.eventDate().toISOString();
     return str.substring(0, str.length - 1);
   },
 

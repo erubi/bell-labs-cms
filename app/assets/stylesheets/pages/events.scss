@@ -1,10 +1,12 @@
 #events-ctr{
-  input, label{
-    display: block;
-  }
+  // input, {
+  //   display: block;
+  // }
 
   label{
     font-size: 12px;
+    width: 60px;
+    margin-left: 10px;
   }
 
   input[type="text"]{
@@ -30,3 +32,30 @@
   border-right: 1px solid black;
 }
 
+.events-new-ctr{
+  margin-top: 15px;
+}
+
+.new-event-form-ctr,
+.event-form-ctr{
+  .form-group{
+    vertical-align: top;
+  }
+}
+
+.event-text-ctr{
+  width: 335px;
+  input{
+    margin-bottom: 10px;
+  }
+}
+
+.event-date-ctr{
+  input{
+    margin-bottom: 10px;
+  }
+}
+
+.form-control{
+  border-radius: 0px !important;
+}
