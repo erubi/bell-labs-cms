@@ -5,7 +5,6 @@ BellCMS.Routers.AppRouter = Backbone.Marionette.AppRouter.extend({
   appRoutes: {
     '' : 'root',
     'exterior_modules' : 'exteriorModules',
-    'announcements' : 'announcements',
     'media' : 'media',
     'tablet' : 'tablet'
   }

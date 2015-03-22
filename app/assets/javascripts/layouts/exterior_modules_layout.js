@@ -2,7 +2,8 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
   template: 'exterior_modules/layout',
 
   regions: {
-    modulesContainer: "#modules-ctr"
+    modulesContainer: "#modules-ctr",
+    eventsContainer: "#events-ctr"
   },
 
   onBeforeShow: function(){
@@ -17,7 +18,10 @@ BellCMS.Layouts.ExteriorModulesLayout = Marionette.LayoutView.extend({
             }
         ));
       }
-    })
+    });
+
+    that.showChildView('eventsContainer', new BellCMS.Layouts.EventsLayout());
+
   }
 
 });
