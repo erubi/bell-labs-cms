@@ -24,16 +24,19 @@ class Event < ActiveRecord::Base
   end
 
   def start_time_ms=(val)
+    val = val.to_i
     d_time = Time.at(val/1000)
     self.start_time = d_time
   end
 
   def end_time_ms=(val)
+    val = val.to_i
     d_time = Time.at(val/1000)
     self.end_time = d_time
   end
 
   def event_time_ms=(val)
+    val = val.to_i
     d_time = Time.at(val/1000)
     self.event_time = d_time
   end

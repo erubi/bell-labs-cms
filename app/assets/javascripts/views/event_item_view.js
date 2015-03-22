@@ -3,6 +3,9 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   className: 'event-view-li',
   template: 'events/event_item',
 
+  initialize: function(){
+  },
+
   templateHelpers: function(){
     return {
       startISO: this.model.startISO(),
@@ -26,6 +29,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     event.preventDefault();
     var hours = $(event.currentTarget).data('value');
     this.model.set('countdown_hours', hours);
+    $('.countdown-text').text(hours + ' hours');
     this.model.save();
   },
 

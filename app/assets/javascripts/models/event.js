@@ -14,6 +14,10 @@ BellCMS.Models.Event = Backbone.Model.extend({
       return "Event must have an end time.";
     }
 
+    if (attrs.event_time_ms == ""){
+      return "Event must have an end time.";
+    }
+
     if (attrs.countdown_hours < 0 ){
       return "Countdown must be positive number.";
     }
@@ -55,7 +59,7 @@ BellCMS.Models.Event = Backbone.Model.extend({
     var offset = time.local().utcOffset();
     time.add(offset, 'minutes');
     var ms = time.valueOf();
-    return ms;
+    return parseInt(ms);
   },
 
   startDate: function(){

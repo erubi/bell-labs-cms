@@ -16,7 +16,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     event.preventDefault();
     var hours = $(event.currentTarget).data('value');
     this.model.set('countdown_hours', hours);
-    $('#countdown-toggle').text(' ' + hours + ' hours');
+    $('#countdown-text').text(' ' + hours + ' hours');
   },
 
   createEvent: function(event){

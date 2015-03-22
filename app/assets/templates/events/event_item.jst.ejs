@@ -1,87 +1,102 @@
-<div class="event-form-ctr">
-  <form class="form-inline">
-    <div class="form-group event-text-ctr">
-      <input
-        class="form-control"
-        type="text"
-        name="header"
-        value="<%= header %>">
-
-      <input
-        class="form-control"
-        type="text"
-        name="subheader"
-        value="<%= subheader %>">
-
-      <input
-        class="form-control"
-        type="text"
-        name="event_text"
-        value="<%= event_text %>">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <%= header %>
+        </a>
+      </h4>
     </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
 
-    <div class="form-group event-date-ctr">
-      <!-- <span>Start time</span> -->
-      <div>
-      <label for="start-input-<%= id %>">Start Time</label>
-      <input
-        id="start-input-<%= id %>"
-        class="form-control"
-        type="datetime-local"
-        name="start_time_ms"
-        value="<%= startISO %>">
+        <div class="event-form-ctr">
+          <form class="form-inline">
+            <div class="form-group event-text-ctr">
+              <input
+              class="form-control"
+              type="text"
+              name="header"
+              value="<%= header %>">
+
+              <input
+              class="form-control"
+              type="text"
+              name="subheader"
+              value="<%= subheader %>">
+
+              <input
+              class="form-control"
+              type="text"
+              name="event_text"
+              value="<%= event_text %>">
+            </div>
+
+            <div class="form-group event-date-ctr">
+              <!-- <span>Start time</span> -->
+              <div>
+                <label for="start-input-<%= id %>">Start Time</label>
+                <input
+                id="start-input-<%= id %>"
+                class="form-control"
+                type="datetime-local"
+                name="start_time_ms"
+                value="<%= startISO %>">
+              </div>
+
+              <!-- <span>End time</span> -->
+              <div>
+                <label for="end-input-<%= id %>">End Time</label>
+                <input
+                id="end-input-<%= id %>"
+                class="form-control"
+                type="datetime-local"
+                name="end_time_ms"
+                value="<%= endISO %>">
+              </div>
+
+              <div>
+                <label for="event-time-input-<%= id %>">Event Time</label>
+                <input
+                id="event-time-input-<%= id %>"
+                class="form-control"
+                type="datetime-local"
+                name="end_time_ms"
+                value="<%= eventISO %>">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <!-- <input -->
+              <!--   class="form-control" -->
+              <!--   type="number" -->
+              <!--   name="countdown_hours" -->
+              <!--   value="<%= countdown_hours %>"> -->
+
+              <div class="countdown-dropdown dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                  <span class="countdown-text"><%= countdown_hours %> hours</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li data-value="2"><a href="#">2 hrs</a></li>
+                  <li data-value="3"><a href="#">3 hrs</a></li>
+                  <li data-value="6"><a href="#">6 hrs</a></li>
+                  <li data-value="12"><a href="#">12 hrs</a></li>
+                  <li data-value="24"><a href="#">24 hrs</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="form-group delete-event-ctr">
+              <button class="form-control delete-event-btn">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+            </div>
+          </form>
         </div>
-
-      <!-- <span>End time</span> -->
-      <div>
-      <label for="end-input-<%= id %>">End Time</label>
-      <input
-        id="end-input-<%= id %>"
-        class="form-control"
-        type="datetime-local"
-        name="end_time_ms"
-        value="<%= endISO %>">
-      </div>
-
-      <div>
-      <label for="event-time-input-<%= id %>">Event Time</label>
-      <input
-        id="event-time-input-<%= id %>"
-        class="form-control"
-        type="datetime-local"
-        name="end_time_ms"
-        value="<%= eventISO %>">
       </div>
     </div>
-
-    <div class="form-group">
-      <!-- <input -->
-      <!--   class="form-control" -->
-      <!--   type="number" -->
-      <!--   name="countdown_hours" -->
-      <!--   value="<%= countdown_hours %>"> -->
-
-      <div class="countdown-dropdown dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
-          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-          <%= countdown_hours %> hours
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li data-value="2"><a href="#">2 hrs</a></li>
-          <li data-value="3"><a href="#">3 hrs</a></li>
-          <li data-value="6"><a href="#">6 hrs</a></li>
-          <li data-value="12"><a href="#">12 hrs</a></li>
-          <li data-value="24"><a href="#">24 hrs</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="form-group delete-event-ctr">
-      <button class="form-control delete-event-btn">
-        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-      </button>
-    </div>
-  </form>
-</div>
+  </div>
