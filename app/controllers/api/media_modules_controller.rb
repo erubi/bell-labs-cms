@@ -1,4 +1,6 @@
 class Api::MediaModulesController < ApplicationController
+  before_action :require_admin, except: [:show, :index]
+
   def index
     @media_modules = MediaModule.all
   end

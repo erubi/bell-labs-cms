@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    if !current_user.admin
+      render json: "Invalid permissions"
+      return
+    end
+  end
+
   def after_sign_in_path_for(resource)
     root_url
   end
