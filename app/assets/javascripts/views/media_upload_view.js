@@ -15,6 +15,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
       dataType: 'json',
 
       add: function(e, data){
+        $('.file-name-text').val(data.files[0].name);
         $('#upload-btn').on('click', function(){
           data.submit();
         });

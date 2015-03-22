@@ -1,44 +1,52 @@
 <div class="row">
-  <div class="col-sm-3">
-  <button id="upload-btn" class="btn btn-primary btn-lg">
+  <div class="col-sm-4">
+  <button id="upload-btn" class="media-upload-btn">
     UPLOAD
   </button>
-  <input id="upload-media" type="file">
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <input type="text" class="form-control file-name-text" readonly>
+      <span class="btn btn-primary btn-file">
+        Browse&hellip; <input id="upload-media" type="file">
+      </span>
+    </span>
+  </div>
+
   </div>
 
   <div class="col-sm-3">
     <p>Notes on file constraints</p>
-
   </div>
 
 
   <div class="col-sm-5">
-    <form class="form-horizontal vertical-align" id="metadata-form">
+    <form class="" id="metadata-form">
       <h4 class="text-center">Metadata</h4>
-      <div class="form-group">
-        <label for="meta1" class="control-label col-sm-4">BellLabsPeople</label>
-        <div class="col-sm-8">
+      <div class="">
+        <label for="meta1" class="">BellLabsPeople</label>
+        <div class="">
           <input type="text" id="meta1" class="form-control" name="BellLabsPeople">
         </div>
       </div>
-      <div class="form-group">
-        <label for="meta1" class="control-label col-sm-4">TopLevelCategory</label>
-        <div class="col-sm-8">
-          <input type="text" id="meta1" class="form-control" name="TopLevelCategory">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="meta1" class="control-label col-sm-4">Keywords</label>
-        <div class="col-sm-8">
-          <input type="text" id="meta1" class="form-control" name="Keywords">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="meta1" class="control-label col-sm-4">AdditionalMetadata</label>
-        <div class="col-sm-8">
-          <input type="text" id="meta1" class="form-control" name="AdditionalMetadata">
-        </div>
-      </div>
+      <!-- <div class=""> -->
+      <!--   <label ="meta1" class="">TopLevelCategory</label> -->
+      <!--   <div class=""> -->
+      <!--     <input type="text" id="meta1" class="form-control" name="TopLevelCategory"> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <!-- <div class=""> -->
+      <!--   <label for="meta1" class="">Keywords</label> -->
+      <!--   <div class=""> -->
+      <!--     <input type="text" id="meta1" class="form-control" name="Keywords"> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <!-- <div class=""> -->
+      <!--   <label for="meta1" class="control-label col-sm-4">AdditionalMetadata</label> -->
+      <!--   <div class="8"> -->
+      <!--     <input type="text" id="meta1" class="form-control" name="AdditionalMetadata"> -->
+      <!--   </div> -->
+      <!-- </div> -->
     </form>
   </div>
 </div>
