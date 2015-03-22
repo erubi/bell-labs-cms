@@ -13,3 +13,6 @@
 /tmp
 /public/uploads/
 /spec/fixtures/
+
+application.yml
+secrets.yml

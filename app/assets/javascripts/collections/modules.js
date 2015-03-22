@@ -21,6 +21,16 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
     return module;
   },
 
+  codeTypeSubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function(module){
+        return (module.get('scene_type') == 'code');
+      }
+    });
+
+    return subset;
+  },
+
   weightSum: function(){
     var weights = this.pluck('weight');
     var total = weights.reduce(function(a, b){

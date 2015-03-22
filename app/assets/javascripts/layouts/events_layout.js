@@ -1,12 +1,29 @@
 BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
   id: 'events-ctr',
   template: 'events/layout',
+  className: 'events-layout-ctr',
 
   regions: {
     newEventContainer : '#new-event-ctr',
     todayEventsContainer : '#today-events-ctr',
     weekEventsContainer : '#week-events-ctr',
     monthEventsContainer : '#month-events-ctr'
+  },
+
+  events: {
+    'click .dropdown-menu li' : 'updateFrequency'
+  },
+
+  templateHelper: function(){
+    return {
+    };
+  },
+
+  updateFrequency: function(event){
+    event.preventDefault();
+    var freq = $(event.currentTarget).data('value');
+    BellCMS.Models.configModel.set('event_freq', freq);
+    BellCMS.Models.configModel.save();
   },
 
   onBeforeShow: function(){

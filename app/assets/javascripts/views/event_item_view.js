@@ -3,21 +3,42 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   className: 'event-view-li',
   template: 'events/event_item',
 
+  initialize: function(){
+  },
+
   templateHelpers: function(){
     return {
       startISO: this.model.startISO(),
-      endISO: this.model.endISO()
+      endISO: this.model.endISO(),
+      eventISO: this.model.eventISO()
     }
   },
 
   events: {
     'click .delete-event-btn' : 'deleteEvent',
-    'change input' : 'updateEvent'
+    'change input' : 'updateEvent',
+    'click .dropdown-menu li' : 'updateCountdown',
+    'click .visible-event-btn' : 'updateVisibility'
   },
 
   modelEvents: {
     'destroy' : 'modelDestroyed',
     'invalid' : 'showError'
+  },
+
+  updateVisibility: function(event){
+    event.preventDefault();
+    $('.eye-icon').toggleClass('glyphicon-eye-open').toggleClass('glyphicon-eye-close');
+    this.model.set('visible', !this.model.get('visible'));
+    this.model.save();
+  },
+
+  updateCountdown: function(event){
+    event.preventDefault();
+    var hours = $(event.currentTarget).data('value');
+    this.model.set('countdown_hours', hours);
+    $('.countdown-text').text(hours + ' hours');
+    this.model.save();
   },
 
   modelDestroyed: function(){

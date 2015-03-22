@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
 
   validates :event_text, presence: true
   validates :start_time, presence: true
+  validates :event_time, presence: true
   validates :end_time, presence: true
   validate :valid_end_date
   validates :countdown_hours, numericality: { only_integer: true }
@@ -18,14 +19,26 @@ class Event < ActiveRecord::Base
     self.end_time.to_datetime.strftime('%Q')
   end
 
+  def event_time_ms
+    self.event_time.to_datetime.strftime('%Q')
+  end
+
   def start_time_ms=(val)
+    val = val.to_i
     d_time = Time.at(val/1000)
     self.start_time = d_time
   end
 
   def end_time_ms=(val)
+    val = val.to_i
     d_time = Time.at(val/1000)
     self.end_time = d_time
+  end
+
+  def event_time_ms=(val)
+    val = val.to_i
+    d_time = Time.at(val/1000)
+    self.event_time = d_time
   end
 
   def countdown_begin

@@ -6,13 +6,6 @@ BellCMS.Controllers.AppController= {
     BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
   },
 
-  announcements: function(){
-    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.EventsLayout());
-  },
-
-  presentationModes: function(){
-  },
-
   media: function(){
     // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
     var mediaLayout = new BellCMS.Layouts.MediaLayout();

@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+
 module BellLabsCms
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -34,8 +36,5 @@ module BellLabsCms
 
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
-
-    # config value for scenes/modules cycle durations
-    config.cycle_duration = 24
   end
 end

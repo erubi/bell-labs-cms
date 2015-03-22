@@ -1,54 +1,38 @@
 BellCMS.Controllers.MediaController= {
   imageLibrary: function(){
-    // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
-    var mediaLayout = new BellCMS.Layouts.MediaLayout();
-    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
+    this.setUpMediaViews('Media Library', 'image');
   },
 
-  mediaLibrary: function(){
-    var mediaLayout = new BellCMS.Layouts.MediaLayout();
-    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
+  videoLibrary: function(){
+    this.setUpMediaViews('Media Library', 'video');
   },
 
-  nobelGhostsMedia: function(){
-    BellCMS.Collections.modules.fetch({
-      success: function(){
-        var mediaLayout = new BellCMS.Layouts.MediaLayout();
-        var nobelGhostsModule = BellCMS.Collections.modules.findWhere({name: 'nobel_ghosts'});
-
-        var nobelGhostsUploadView = new BellCMS.Views.MediaUploadView({
-          model: nobelGhostsModule
-        });
-
-        var nobelGhostsContentView = new BellCMS.Views.MediaContentView({
-          model: nobelGhostsModule
-        });
-
-        BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-        mediaLayout.showChildView('mediaUploadContainer', nobelGhostsUploadView);
-        mediaLayout.showChildView('mediaContentContainer', nobelGhostsContentView);
-      }
-    })
-
+  videoPlayerMedia: function(){
+    this.setUpMediaViews('Video Player');
   },
 
   bellHeroesMedia: function(){
+    this.setUpMediaViews('Bell Labs Heroes');
+  },
+
+  setUpMediaViews: function(moduleName, contentType){
     BellCMS.Collections.modules.fetch({
       success: function(){
         var mediaLayout = new BellCMS.Layouts.MediaLayout();
-        var bellHeroesModule = BellCMS.Collections.modules.findWhere({name: 'bell_labs_heroes'});
+        var module = BellCMS.Collections.modules.findWhere({name: moduleName});
 
-        var bellHeroesUploadView = new BellCMS.Views.MediaUploadView({
-          model: bellHeroesModule
+        var uploadView = new BellCMS.Views.MediaUploadView({
+          model: module
         });
 
-        var bellHeroesContentView = new BellCMS.Views.MediaContentView({
-          model: bellHeroesModule
+        var contentView = new BellCMS.Views.MediaContentView({
+          model: module,
+          contentType: contentType
         });
 
         BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-        mediaLayout.showChildView('mediaUploadContainer', bellHeroesUploadView);
-        mediaLayout.showChildView('mediaContentContainer', bellHeroesContentView);
+        mediaLayout.showChildView('mediaUploadContainer', uploadView);
+        mediaLayout.showChildView('mediaContentContainer', contentView);
       }
     });
   }

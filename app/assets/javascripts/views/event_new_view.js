@@ -1,5 +1,6 @@
 BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   template: 'events/new',
+  className: 'events-new-ctr',
 
   initialize: function(){
     this.model = new BellCMS.Models.Event();
@@ -7,7 +8,15 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   events: {
-    'click #save-new-event' : 'createEvent'
+    'click #save-new-event' : 'createEvent',
+    'click .dropdown-menu li' : 'updateCountdown'
+  },
+
+  updateCountdown: function(event){
+    event.preventDefault();
+    var hours = $(event.currentTarget).data('value');
+    this.model.set('countdown_hours', hours);
+    $('#countdown-text').text(' ' + hours + ' hours');
   },
 
   createEvent: function(event){
@@ -16,19 +25,6 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
     var attrs = this.$el.find('form').serializeJSON();
     attrs = this.model.handleAttrConv(attrs);
-    // this.model.set(attrs);
-
-    // if (this.model.isValid()){
-    //   this.removeError();
-    //   // on success re render and create new js model
-    //   this.model.save({}, {
-    //     success: function(){
-    //       BellCMS.Collections.events.unshift(this.model);
-    //       that.model = new BellCMS.Models.Event();
-    //       that.render();
-    //     }
-    //   });
-    // }
 
     this.model.save(attrs, {
       success: function(){

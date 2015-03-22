@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320202354) do
+ActiveRecord::Schema.define(version: 20150322032505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,14 @@ ActiveRecord::Schema.define(version: 20150320202354) do
   create_table "events", force: :cascade do |t|
     t.text     "event_text"
     t.datetime "start_time"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.datetime "end_time"
     t.integer  "countdown_hours"
     t.string   "header"
     t.string   "subheader"
+    t.datetime "event_time"
+    t.boolean  "visible",         default: false
   end
 
   create_table "media_modules", force: :cascade do |t|

@@ -36,10 +36,11 @@ gem "autoprefixer-rails"
 
 gem 'backbone-on-rails'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', branch: 'master'
-
+gem 'fog'
 gem 'newrelic_rpm'
 
 gem 'apitome'
+gem 'carrierwave-video'
 #rspec api tests gems
 
 group :development, :test do
@@ -57,6 +58,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec_api_documentation'
+  gem 'pry-byebug'
 end
 
 group :development do

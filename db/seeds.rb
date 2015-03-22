@@ -7,20 +7,19 @@
 # mm2.save!
 
 MediaModule.create!([
-  {name: "nobel_ghosts", scene_type: "code"},
-  {name: "bell_labs_heroes", scene_type: "code"},
-  {name: "network", scene_type: "code"},
-  {name: "physics", scene_type: "code"},
-  {name: "software", scene_type: "code"},
-  {name: "entrance_cue", scene_type: "video"},
-  {name: "starfield", scene_type: "video"},
-  {name: "media_library", scene_type: "video"},
-  {name: "none", scene_type: "video"},
+  {name: "Video Player", scene_type: "code"},
+  {name: "Bell Labs Heroes", scene_type: "code"},
+  {name: "Network", scene_type: "code"},
+  {name: "Physics", scene_type: "code"},
+  {name: "Software", scene_type: "code"},
+  {name: "Entrance Cue", scene_type: "video"},
+  {name: "Starfield Welcome", scene_type: "video"},
+  {name: "Media Library", scene_type: "video"}
 ])
 
 events = Event.create!([
-  {header: 'Event 1 Header', subheader: 'Event 2 subheader', event_text: "Test Event 1", start_time: DateTime.now.tomorrow, end_time: DateTime.now + 3, countdown_hours: 3},
-  {header: 'Event 2 header', subheader: 'Event 2 subheader', event_text: "Test Event 2", start_time: DateTime.now + 8, end_time: DateTime.now + 20, countdown_hours: 2}])
+  {header: 'Event 1 Header', subheader: 'Event 2 subheader', event_text: "Test Event 1", start_time: DateTime.now.tomorrow, event_time: DateTime.now + 2, end_time: DateTime.now + 3, countdown_hours: 3},
+  {header: 'Event 2 header', subheader: 'Event 2 subheader', event_text: "Test Event 2", start_time: DateTime.now + 8, event_time: DateTime.now + 10, end_time: DateTime.now + 20, countdown_hours: 2}])
 
 users = User.create([
   {email: 'dude@example.com', password: 'password'},

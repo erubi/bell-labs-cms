@@ -1,10 +1,13 @@
 # encoding: utf-8
-
 class VideoUploader < CarrierWave::Uploader::Base
+  include CarrierWave::Video
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+
+  # being called more than once for single upload(need different cb)
+  # after :store, :update_video_player_duration
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -45,5 +48,15 @@ class VideoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  #
 
+  def video_duration
+   # video duration in seconds
+   FFMPEG::Movie.new(file.file).duration
+  end
+
+  # def update_video_player_duration(file)
+    # binding.pry
+    # SETTINGS['VIDEO_PLAYER_DURATION'] += (video_duration/60)
+  # end
 end

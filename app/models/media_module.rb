@@ -24,6 +24,17 @@ class MediaModule < ActiveRecord::Base
     other_modules.update_all(active: false)
   end
 
+  def movie_duration
+    total_duration = 0 #seconds
+    self.videos.each do |video|
+      total_duration += video.video_duration
+    end
+
+    total_minutes = total_duration / 60
+
+    total_minutes
+  end
+
   private
 
   def weight_total

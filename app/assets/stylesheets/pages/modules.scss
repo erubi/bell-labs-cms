@@ -1,7 +1,43 @@
 .module-view-ul{
   list-style: none;
+  border: 1px solid black;
+  padding: 10px 40px;
+  margin-bottom: 0px;
+}
+
+.module-time-ctr{
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+  input{
+    float: left;
+  }
+
+  h2{
+    margin-right: 30px;
+    margin-top: 0px;
+    float: left;
+    display: inline-block;
+  }
+}
+
+.module-view-li{
+  display: block;
+}
+
+.module-item-box{
+  display: inline-block;
+  float: left;
+  border: 1px solid black;
+  width: 400px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .module-weight-ctr{
-  float: right;
+  float: left;
 }
