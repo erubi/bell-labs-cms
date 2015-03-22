@@ -14,5 +14,8 @@
 /public/uploads/
 /spec/fixtures/
 
-application.yml
+application.yml.bkup
 secrets.yml
+
+# Ignore application configuration
+/config/application.yml

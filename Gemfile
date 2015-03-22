@@ -37,6 +37,7 @@ gem "autoprefixer-rails"
 gem 'backbone-on-rails'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave', branch: 'master'
 gem 'fog'
+gem 'figaro'
 gem 'newrelic_rpm'
 
 gem 'apitome'

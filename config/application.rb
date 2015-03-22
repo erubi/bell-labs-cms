@@ -6,10 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-my_rails_root = File.expand_path('../..', __FILE__)
-
-ENV.update YAML.load_file("#{my_rails_root}/config/application.yml")[Rails.env]
-
 module BellLabsCms
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
