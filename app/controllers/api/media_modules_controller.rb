@@ -61,11 +61,12 @@ class Api::MediaModulesController < ApplicationController
       @media_item.video = params[:files][0]
     end
 
+    @media_item.update_attributes(metadata_params)
+
     if @media_item.save
       if @media_module.name == 'Video Player' && params[:file_type] == 'video'
         update_video_player_duration
       end
-
       render json: true
     else
       render json: @media_module.errors, status: :unprocessable_entity
@@ -81,6 +82,10 @@ class Api::MediaModulesController < ApplicationController
 
   def media_module_params
     params.require(:media_module).permit(:name, :weight, :images, :videos, :scene_type, :active)
+  end
+
+  def metadata_params
+    params.permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata)
   end
 
 end
