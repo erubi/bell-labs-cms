@@ -3,6 +3,7 @@ defaults: &defaults
    CYCLE_DURATION: 60
    EVENT_FREQUENCY: 30
    VIDEO_PLAYER_ENABLED: false
+   VIDEO_PLAYER_DURATION: 0
 
 development:
   <<: *defaults

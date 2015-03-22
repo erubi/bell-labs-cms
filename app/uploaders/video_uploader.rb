@@ -6,6 +6,9 @@ class VideoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  # being called more than once for single upload(need different cb)
+  # after :store, :update_video_player_duration
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -52,4 +55,8 @@ class VideoUploader < CarrierWave::Uploader::Base
    FFMPEG::Movie.new(file.file).duration
   end
 
+  # def update_video_player_duration(file)
+    # binding.pry
+    # SETTINGS['VIDEO_PLAYER_DURATION'] += (video_duration/60)
+  # end
 end

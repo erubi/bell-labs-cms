@@ -8,12 +8,7 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
     // this.listenTo(this.model, "sync", this.render);
   },
 
-  templateHelpers: function(){
-    return {
-    };
-  },
-
-  onAttach: function(){
+  onDomRefresh: function(){
     if ($('.weight-input').length){
       $('.weight-input').slider({
         ticks: [0, 25, 50, 75, 100],

@@ -58,6 +58,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec_api_documentation'
+  gem 'pry-byebug'
 end
 
 group :development do

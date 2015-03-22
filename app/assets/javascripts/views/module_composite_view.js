@@ -2,8 +2,10 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
   tagName: 'ul',
   className: 'module-view-ul clearfix',
   template: 'exterior_modules/module_composite',
+
   initialize: function(){
     this.childView = BellCMS.Views.ModuleItemView;
+    this.listenTo(BellCMS.Models.configModel, 'sync', this.handleConfigUpdate);
   },
 
   events: {
@@ -14,7 +16,15 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
     this.configSlider();
   },
 
-  configSlider: function(){
+  handleConfigUpdate: function(event){
+    this.render();
+  },
+
+  onRender: function(){
+    this.configSlider();
+  },
+
+  calcMaxCycle: function(){
     var max;
 
     if (this.model.get('video_player_enabled')){
@@ -22,6 +32,13 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
     } else {
       max = 60;
     }
+
+    return max;
+  },
+
+  configSlider: function(max){
+    var max = this.calcMaxCycle();
+
     if ($('.time-input').length){
       $('.time-input').slider({
         ticks: [5, max],

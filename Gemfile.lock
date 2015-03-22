@@ -186,6 +186,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.0.1)
+      byebug (~> 3.4)
+      pry (~> 0.10)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
     quiet_assets (1.1.0)
@@ -318,6 +321,7 @@ DEPENDENCIES
   jquery-rails
   newrelic_rpm
   pg
+  pry-byebug
   pry-rails
   quiet_assets
   rack-livereload
