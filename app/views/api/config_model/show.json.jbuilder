@@ -1,2 +1,3 @@
-json.cycle_duration Rails.application.config.cycle_duration
-json.video_player_enabled Rails.application.config.video_player_enabled
+json.cycle_duration SETTINGS['CYCLE_DURATION']
+json.video_player_enabled SETTINGS['VIDEO_PLAYER_ENABLED']
+json.video_player_duration @video_minutes

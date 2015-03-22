@@ -27,9 +27,12 @@ class MediaModule < ActiveRecord::Base
   def movie_duration
     total_duration = 0 #seconds
     self.videos.each do |video|
-      ffmpeg_movie = FFMpeg::Movie.new(video.url)
-      total_duration += ffmpeg_movie.duration
+      total_duration += video.video_duration
     end
+
+    total_minutes = total_duration / 60
+
+    total_minutes
   end
 
   private

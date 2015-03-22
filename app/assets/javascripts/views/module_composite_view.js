@@ -15,12 +15,19 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
   },
 
   configSlider: function(){
+    var max;
+
+    if (this.model.get('video_player_enabled')){
+      max = (60 - this.model.get('video_player_duration'));
+    } else {
+      max = 60;
+    }
     if ($('.time-input').length){
       $('.time-input').slider({
-        ticks: [5, 60],
+        ticks: [5, max],
         min: 5,
-        max: 60,
-        ticks_labels : ['5 MIN', '60 MIN'],
+        max: max,
+        ticks_labels : ['5 MIN', max + ' MIN'],
         handle: 'square'
       });
     }

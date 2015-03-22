@@ -1,0 +1,20 @@
+defaults: &defaults
+
+   CYCLE_DURATION: 60
+   EVENT_FREQUENCY: 30
+   VIDEO_PLAYER_ENABLED: false
+
+development:
+  <<: *defaults
+
+playground:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+poststaging:
+  <<: *defaults
+
+test:
+  <<: *defaults
