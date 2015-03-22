@@ -53,14 +53,15 @@ class Api::MediaModulesController < ApplicationController
   def upload_media
     # TODO: save metadata here
     @media_module = MediaModule.find_by(name: params[:module_name])
+    @media_item = @media_module.media_items.create()
 
     if params[:file_type] == 'image'
-      @media_module.images += params[:files]
+      @media_item.image = params[:files][0]
     elsif params[:file_type] == 'video'
-      @media_module.videos += params[:files]
+      @media_item.video = params[:files][0]
     end
 
-    if @media_module.save
+    if @media_item.save
       if @media_module.name == 'Video Player' && params[:file_type] == 'video'
         update_video_player_duration
       end
@@ -76,12 +77,6 @@ class Api::MediaModulesController < ApplicationController
   def update_video_player_duration
     new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
     SETTINGS['VIDEO_PLAYER_DURATION'] += new_video_duration
-  end
-
-  def upload_image
-  end
-
-  def upload_video
   end
 
   def media_module_params
