@@ -42,6 +42,6 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:header, :subheader, :event_text, :start_time_ms, :end_time_ms, :event_time_ms, :countdown_hours)
+    params.require(:event).permit(:header, :visible, :subheader, :event_text, :start_time_ms, :end_time_ms, :event_time_ms, :countdown_hours)
   end
 end

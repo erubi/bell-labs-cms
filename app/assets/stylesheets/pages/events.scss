@@ -59,3 +59,12 @@
 .form-control{
   border-radius: 0px !important;
 }
+
+.delete-event-ctr,
+.save-event-ctr{
+  float: right;
+}
+
+.save-event-ctr{
+  text-transform: uppercase;
+}

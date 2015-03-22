@@ -13,12 +13,20 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
 
   events: {
     'click .delete-event-btn' : 'deleteEvent',
-    'change input' : 'updateEvent'
+    'change input' : 'updateEvent',
+    'click .dropdown-menu li' : 'updateCountdown'
   },
 
   modelEvents: {
     'destroy' : 'modelDestroyed',
     'invalid' : 'showError'
+  },
+
+  updateCountdown: function(event){
+    event.preventDefault();
+    var hours = $(event.currentTarget).data('value');
+    this.model.set('countdown_hours', hours);
+    this.model.save();
   },
 
   modelDestroyed: function(){

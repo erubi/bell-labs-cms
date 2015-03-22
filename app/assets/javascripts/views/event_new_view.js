@@ -9,6 +9,14 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
   events: {
     'click #save-new-event' : 'createEvent',
+    'click .dropdown-menu li' : 'updateCountdown'
+  },
+
+  updateCountdown: function(event){
+    event.preventDefault();
+    var hours = $(event.currentTarget).data('value');
+    this.model.set('countdown_hours', hours);
+    $('#countdown-toggle').text(' ' + hours + ' hours');
   },
 
   createEvent: function(event){
