@@ -26,6 +26,8 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
       },
 
       done: function(e, data){
+        that.render();
+        that.model.fetch();
       }
     });
   },
