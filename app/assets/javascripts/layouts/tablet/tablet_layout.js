@@ -12,6 +12,8 @@ BellCMS.Layouts.TabletLayout = Marionette.LayoutView.extend({
           collection: BellCMS.Collections.modules
         }
     ));
+
+    this.showChildView('eventsContainer', new BellCMS.Layouts.TabletEventsLayout());
   }
 
 });
