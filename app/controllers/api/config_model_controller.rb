@@ -8,7 +8,8 @@ class Api::ConfigModelController < ApplicationController
 
     if (params[:video_player_enabled].to_s != ENV['VIDEO_PLAYER_ENABLED'])
       ENV['VIDEO_PLAYER_ENABLED'] = params[:video_player_enabled].to_s
-      if (ENV['VIDEO_PLAYER_ENABLED'])
+
+      if (ENV['VIDEO_PLAYER_ENABLED'].to_bool)
         num = ENV['CYCLE_DURATION'].to_i - ENV['VIDEO_PLAYER_DURATION'].to_i
         ENV['CYCLE_DURATION'] = num.to_s
       else
