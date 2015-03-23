@@ -8,9 +8,11 @@ BellCMS.Views.TabletEventItemView = Marionette.ItemView.extend({
 
   templateHelpers: function(){
     return {
-      startISO: this.model.startISO(),
-      endISO: this.model.endISO(),
-      eventISO: this.model.eventISO()
-    }
+      eventDate: this.eventDate()
+    };
   },
+
+  eventDate: function(){
+    return this.model.startDate().format('M/D/YY');
+  }
 });
