@@ -76,8 +76,14 @@ class Api::MediaModulesController < ApplicationController
   private
 
   def update_video_player_duration
-    new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
-    ENV['VIDEO_PLAYER_DURATION'] += new_video_duration.to_s
+    # check and restart video duration if 0
+    # new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
+    # current_duration = ENV['VIDEO_PLAYER_DURATION'].to_i
+    # updated_duration = current_duration + new_video_duration
+    #
+    # ENV['VIDEO_PLAYER_DURATION'] = updated_duration.to_s
+    new_duration = MedualModule.find_by(name: 'Video Player').movie_duration
+    ENV['VIDEO_PLAYER_DURATION'] = new_duration.to_s
   end
 
   def media_module_params
