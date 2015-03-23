@@ -1,5 +1,5 @@
-json.cycle_duration ENV['CYCLE_DURATION'].to_i
-json.video_player_enabled ENV['VIDEO_PLAYER_ENABLED'].to_bool
-json.video_player_duration ENV['VIDEO_PLAYER_DURATION'].to_i
-json.event_freq ENV['EVENT_FREQUENCY'].to_i
+json.cycle_duration Rails.application.config.cycle_duration
+json.video_player_enabled Rails.application.config.video_player_enabled
+json.video_player_duration Rails.application.config.video_player_duration
+json.event_freq Rails.application.config.event_frequency
 

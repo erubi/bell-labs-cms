@@ -43,6 +43,7 @@ gem "pundit"
 
 gem 'apitome'
 gem 'carrierwave-video'
+# gem 'redis'
 #rspec api tests gems
 
 group :development, :test do

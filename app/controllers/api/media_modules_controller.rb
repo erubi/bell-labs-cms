@@ -82,8 +82,9 @@ class Api::MediaModulesController < ApplicationController
     # updated_duration = current_duration + new_video_duration
     #
     # ENV['VIDEO_PLAYER_DURATION'] = updated_duration.to_s
-    new_duration = MedualModule.find_by(name: 'Video Player').movie_duration
-    ENV['VIDEO_PLAYER_DURATION'] = new_duration.to_s
+    new_duration = MediaModule.find_by(name: 'Video Player').movie_duration
+    # ENV['VIDEO_PLAYER_DURATION'] = new_duration.to_s
+    Rails.application.config.video_player_duration = new_duration
   end
 
   def media_module_params

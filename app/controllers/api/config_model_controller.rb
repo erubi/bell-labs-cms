@@ -4,22 +4,20 @@ class Api::ConfigModelController < ApplicationController
 
   def update
 
-    ENV['CYCLE_DURATION'] = params[:cycle_duration].to_s
+    Rails.application.config.cycle_duration = params[:cycle_duration]
 
-    if (params[:video_player_enabled].to_s != ENV['VIDEO_PLAYER_ENABLED'])
-      ENV['VIDEO_PLAYER_ENABLED'] = params[:video_player_enabled].to_s
+    if (params[:video_player_enabled]!= Rails.application.config.video_player_enabled)
+      Rails.application.config.video_player_enabled =params[:video_player_enabled]
 
-      if (ENV['VIDEO_PLAYER_ENABLED'].to_bool)
-        num = ENV['CYCLE_DURATION'].to_i - ENV['VIDEO_PLAYER_DURATION'].to_i
-        ENV['CYCLE_DURATION'] = num.to_s
+      if (Rails.application.config.video_player_enabled)
+        Rails.application.config.cycle_duration -= Rails.application.config.video_player_duration
       else
-        num = ENV['CYCLE_DURATION'].to_i + ENV['VIDEO_PLAYER_DURATION'].to_i
-        ENV['CYCLE_DURATION'] = num.to_s
+        Rails.application.config.cycle_duration += Rails.application.config.video_player_duration
       end
     end
 
-    if (params[:event_freq].to_s != ENV['EVENT_FREQUENCY'])
-      ENV['EVENT_FREQUENCY'] = params[:event_freq].to_s
+    if (params[:event_freq] != Rails.application.config.event_frequency)
+      Rails.application.config.event_frequency= params[:event_freq]
     end
 
     render 'show'
