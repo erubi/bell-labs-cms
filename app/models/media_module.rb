@@ -51,6 +51,10 @@ class MediaModule < ActiveRecord::Base
     end.compact
   end
 
+  def all_media
+    self.images.concat(self.videos)
+  end
+
   private
 
   def weight_total

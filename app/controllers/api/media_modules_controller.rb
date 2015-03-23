@@ -41,6 +41,11 @@ class Api::MediaModulesController < ApplicationController
 
   def scene_override
     @media_modules = MediaModule.order(:name)
+    if MediaModule.active.first
+      @active_module_name = MediaModule.active.first.name
+    else
+      @active_module_name = ""
+    end
   end
 
   def set_active_scene
@@ -73,18 +78,19 @@ class Api::MediaModulesController < ApplicationController
     end
   end
 
+  def get_media
+    param_name = params[:scene_name]
+    @media_module = MediaModule.select do |m|
+      m.name.parameterize.underscore == param_name
+    end.first
+  end
+
   private
 
   def update_video_player_duration
     # check and restart video duration if 0
-    # new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
-    # current_duration = ENV['VIDEO_PLAYER_DURATION'].to_i
-    # updated_duration = current_duration + new_video_duration
-    #
-    # ENV['VIDEO_PLAYER_DURATION'] = updated_duration.to_s
-    new_duration = MediaModule.find_by(name: 'Video Player').movie_duration
-    # ENV['VIDEO_PLAYER_DURATION'] = new_duration.to_s
-    Rails.application.config.video_player_duration = new_duration
+    new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
+    Rails.application.config.video_player_duration += new_video_duration
   end
 
   def media_module_params

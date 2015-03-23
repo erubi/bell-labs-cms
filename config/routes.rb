@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'scene_override', to: 'media_modules#scene_override'
     post 'set_active_scene/:id', to: 'media_modules#set_active_scene'
     put 'upload_media', to: 'media_modules#upload_media'
+    get 'get_media/:scene_name', to: 'media_modules#get_media'
 
     get 'calendar', to: 'events#calendar'
 

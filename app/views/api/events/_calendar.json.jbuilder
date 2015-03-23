@@ -4,5 +4,7 @@ json.calendar_event do
   json.countdown_timer calendar_event.countdown_begin
   json.start_time calendar_event.start_time
   json.end_time calendar_event.end_time
-  json.id calendar_event.id
+  json.event_time calendar_event.event_time
+  json.visible calendar_event.visible
+  json.event_id calendar_event.id
 end
