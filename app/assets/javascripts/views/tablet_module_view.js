@@ -1,8 +1,8 @@
 BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
   tagName: 'li',
-  // className: 'tablet-module-view-li',
+
   className: function(){
-    var classes = ['tablet-module-view-li'];
+    var classes = ['tablet-module-view-li', 'clearfix'];
 
     if (this.model.get('active')){
       classes.push('tablet-active-module')
@@ -20,6 +20,20 @@ BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
 
   events: {
     'click' : 'activateModule'
+  },
+
+  templateHelpers: function(){
+    return {
+      moduleName: this.genName()
+    };
+  },
+
+  genName: function(){
+    if (this.model.get('name') == "Media Library"){
+      return "Gallery Mode";
+    } else{
+      return this.model.get('name');
+    }
   },
 
   showError: function(event){
