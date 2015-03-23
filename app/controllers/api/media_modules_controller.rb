@@ -79,6 +79,16 @@ class Api::MediaModulesController < ApplicationController
   end
 
   def get_media
+    # TODO: actually find this out
+    @new_media = true
+
+    param_name = params[:scene_name]
+    @media_module = MediaModule.select do |m|
+      m.name.parameterize.underscore == param_name
+    end.first
+  end
+
+  def get_metadata
     param_name = params[:scene_name]
     @media_module = MediaModule.select do |m|
       m.name.parameterize.underscore == param_name

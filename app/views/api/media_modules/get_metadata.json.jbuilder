@@ -1,6 +1,4 @@
-json.has_new_media @new_media
-
-json.media do
+json.metadata do
   unless @media_module.images.length == 0
     json.media_items @media_module.all_media do |media_item|
       next if media_item.nil?

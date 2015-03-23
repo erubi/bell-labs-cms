@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post 'set_active_scene/:id', to: 'media_modules#set_active_scene'
     put 'upload_media', to: 'media_modules#upload_media'
     get 'get_media/:scene_name', to: 'media_modules#get_media'
+    get 'get_metadata/:scene_name', to: 'media_modules#get_metadata'
 
     get 'calendar', to: 'events#calendar'
 
