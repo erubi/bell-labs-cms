@@ -2,23 +2,25 @@ class Users::ManagementController < ApplicationController
   before_action :require_admin
 
   def show
+    @new_admin = User.new(admin: true)
+    @new_user = User.new()
   end
 
   def create
     @user = User.create(user_params)
-    render :show
+    redirect_to action: :show
   end
 
   def destroy
     @user = User.find(params[:u_id])
     @user.destroy
-    render :show
+    redirect_to action: :show
   end
 
   private
 
   def user_params
-    params.permit(:user).require(:email, :admin, :password)
+    params.require(:user).permit(:email, :admin)
   end
 
 end

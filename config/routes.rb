@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     delete 'manage_users', to: 'management#destroy'
   end
 
+  # scope '/admin', controller: :management do
+  #   resources :users
+  # end
+
   namespace :api, defaults: { format: :json } do
     get 'scene_weight', to: 'media_modules#scene_weight'
     get 'scene_override', to: 'media_modules#scene_override'
