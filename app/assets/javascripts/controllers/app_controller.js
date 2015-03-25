@@ -8,7 +8,7 @@ BellCMS.Controllers.AppController= {
 
   media: function(){
     // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
-    var mediaLayout = new BellCMS.Layouts.MediaLayout();
+    var mediaLayout = BellCMS.Layouts.mediaLayout = new BellCMS.Layouts.MediaLayout();
     BellCMS.rootView.showChildView('contentContainer', mediaLayout);
   },
 

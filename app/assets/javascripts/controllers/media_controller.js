@@ -18,7 +18,7 @@ BellCMS.Controllers.MediaController= {
   setUpMediaViews: function(moduleName, contentType){
     BellCMS.Collections.modules.fetch({
       success: function(){
-        var mediaLayout = new BellCMS.Layouts.MediaLayout();
+        var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
 
         var uploadView = new BellCMS.Views.MediaUploadView({
