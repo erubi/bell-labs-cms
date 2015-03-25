@@ -13,6 +13,7 @@ BellCMS.Controllers.AppController= {
   },
 
   tablet: function(){
+    BellCMS.rootView.showChildView('appNav', new BellCMS.Views.TabletNavView());
     BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.TabletLayout());
   }
 };
