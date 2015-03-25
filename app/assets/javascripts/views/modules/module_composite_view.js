@@ -9,7 +9,9 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
   },
 
   events: {
-    'slideStop .time-input': 'updateCycleDuration'
+    'slideStop .time-input': 'updateCycleDuration',
+    'click #module-randomize-btn': 'randomizeModuleWeights',
+    'click #module-reset-btn': 'resetModuleWeights'
   },
 
   onAttach: function(){
@@ -22,6 +24,16 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
 
   onRender: function(){
     this.configSlider();
+  },
+
+  randomizeModuleWeights: function(event){
+    event.preventDefault();
+    BellCMS.Collections.modules.randomizeWeights();
+  },
+
+  resetModuleWeights: function(event){
+    event.preventDefault();
+    BellCMS.Collections.modules.resetWeights();
   },
 
   calcMaxCycle: function(){
