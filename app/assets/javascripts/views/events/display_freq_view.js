@@ -17,13 +17,8 @@ BellCMS.Views.EventDisplayFreqView= Marionette.ItemView.extend({
   updateFrequency: function(event){
     event.preventDefault();
     var freq = $(event.currentTarget).data('value');
-    BellCMS.Models.configModel.set('event_freq', freq);
-    BellCMS.Models.configModel.save();
-  },
-
-  templateHelpers: function(){
-    return {
-    }
+    this.model.set('event_freq', freq);
+    this.model.save();
   },
 
   highlightFreq: function(){
