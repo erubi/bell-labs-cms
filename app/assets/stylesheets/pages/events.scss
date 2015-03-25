@@ -26,6 +26,7 @@
 }
 
 .events-layout-ctr{
+  position: relative;
   padding: 0 40px 10px 40px;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -69,3 +70,16 @@
 .save-event-ctr{
   text-transform: uppercase;
 }
+
+.display-freq-ctr{
+  position: absolute;
+  top: 20px;
+  right: 400px;
+}
+
+.current-freq{
+  a{
+    color: green !important;
+  }
+}
+
