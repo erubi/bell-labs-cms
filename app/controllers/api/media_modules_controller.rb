@@ -99,8 +99,13 @@ class Api::MediaModulesController < ApplicationController
 
   def update_video_player_duration
     # check and restart video duration if 0
-    new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
-    Rails.application.config.video_player_duration += new_video_duration
+
+    if Rails.application.config.video_player_duration == 0
+      Rails.application.config.video_player_duration = MediaModule.find_by(name: "Video Player").movie_duration
+    else
+      new_video_duration = (MediaModule.find_by(name: "Video Player").videos.last.video_duration / 60)
+      Rails.application.config.video_player_duration += new_video_duration
+    end
   end
 
   def media_module_params
