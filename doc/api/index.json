@@ -7,11 +7,6 @@
           "description": "Get a list of all events",
           "link": "events/get_a_list_of_all_events.json",
           "groups": "all"
-        },
-        {
-          "description": "Get an event by id",
-          "link": "events/get_an_event_by_id.json",
-          "groups": "all"
         }
       ]
     },
@@ -19,13 +14,13 @@
       "name": "MediaModules",
       "examples": [
         {
-          "description": "Get a list of all modules",
-          "link": "mediamodules/get_a_list_of_all_modules.json",
+          "description": "Get scene override",
+          "link": "mediamodules/get_scene_override.json",
           "groups": "all"
         },
         {
-          "description": "Get a module by id",
-          "link": "mediamodules/get_a_module_by_id.json",
+          "description": "Get scene weights",
+          "link": "mediamodules/get_scene_weights.json",
           "groups": "all"
         }
       ]

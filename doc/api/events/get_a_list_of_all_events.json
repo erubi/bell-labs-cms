@@ -24,17 +24,17 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[{\"id\":1,\"name\":\"Test Event 1\",\"description\":\"This is a test event\",\"start_time\":\"2015-03-04T22:28:58.997Z\",\"end_time\":\"2015-03-06T22:28:58.997Z\",\"countdown_begin\":\"2015-03-04T19:28:58.997Z\"},{\"id\":2,\"name\":\"Test Event 2\",\"description\":\"This is a second test event\",\"start_time\":\"2015-03-11T22:28:58.997Z\",\"end_time\":\"2015-03-23T22:28:58.997Z\",\"countdown_begin\":\"2015-03-03T20:28:58.997Z\"}]",
+      "response_body": "[{\"id\":1,\"header\":\"Event 1 Header\",\"subheader\":\"Event 2 subheader\",\"event_text\":\"Test Event 1\",\"visible\":false,\"start_time_ms\":\"1427574527578\",\"end_time_ms\":\"1427747327582\",\"event_time_ms\":\"1427660927582\",\"countdown_begin_ms\":\"1427563727578\",\"countdown_hours\":3},{\"id\":2,\"header\":\"Event 2 header\",\"subheader\":\"Event 2 subheader\",\"event_text\":\"Test Event 2\",\"visible\":false,\"start_time_ms\":\"1428179327582\",\"end_time_ms\":\"1429216127582\",\"event_time_ms\":\"1428352127582\",\"countdown_begin_ms\":\"1428172127582\",\"countdown_hours\":2}]",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"f0b170fb95cd7b16a528f87dbb617bd1\"",
+        "ETag": "W/\"3dfbbbdc397527346d866637780ac7a7\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "8101e301-8fc1-4aad-9254-d5ec465bd320",
-        "X-Runtime": "0.046225",
-        "Content-Length": "390"
+        "X-Request-Id": "08de510d-199b-4b5b-90b0-cd32fa20f578",
+        "X-Runtime": "0.053341",
+        "Content-Length": "525"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null
