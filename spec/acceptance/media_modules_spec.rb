@@ -12,7 +12,7 @@ resource "MediaModules", type: :controller do
   let (:id) { media_module.id }
 
   get "/api/media_modules" do
-    example "Get a list of all modules" do
+    example "Get a list of all modules", :document => false do
       do_request
       expect(status).to eq(200)
     end
@@ -20,7 +20,7 @@ resource "MediaModules", type: :controller do
 
   # might want to switch to using slugs with module names
   get "/api/media_modules/:id" do
-    example "Get a module by id" do
+    example "Get a module by id", :document => false do
       do_request
       expect(path).to eq "/api/media_modules/#{id}"
     end
@@ -46,6 +46,29 @@ resource "MediaModules", type: :controller do
     example "Delete a module", :document => false do
       do_request
       expect(path).to eq "api/media_modules/#{id}"
+    end
+  end
+
+  get "/api/scene_weight" do
+    example "Get scene weights" do
+      do_request
+      expect(path).to eq "/api/scene_weight"
+    end
+  end
+
+  get "/api/scene_override" do
+    example "Get scene override" do
+      do_request
+      expect(path).to eq "/api/scene_override"
+    end
+  end
+
+  get "/api/get_media/:scene_name" do
+    example "Get scene media" do
+      do_request(
+        scene_name: 'video_player'
+      )
+      expect(path).to eq "/api/scene_override/video_player"
     end
   end
 

@@ -13,7 +13,7 @@ resource "Events", type: :controller do
   end
 
   get "/api/events/:id" do
-    example "Get an event by id" do
+    example "Get an event by id", :document => false do
       do_request
       expect(path).to eq "/api/events/#{id}"
     end
