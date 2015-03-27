@@ -7,7 +7,7 @@ json.media do
       json.filename media_item.file.filename
       json.date_uploaded media_item.model.created_at
       json.file_type media_item.model.file_type
-      json.scene_association @media_module.name.parameterize.underscore
+      json.scene_association @media_module.underscore_name
       json.BellLabsPeople media_item.model.bell_labs_people
       json.TopLevelCategory media_item.model.top_level_category
       json.keywords media_item.model.keywords

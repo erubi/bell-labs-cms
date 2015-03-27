@@ -55,6 +55,10 @@ class MediaModule < ActiveRecord::Base
     self.images.concat(self.videos)
   end
 
+  def underscore_name
+    self.name.parameterize.underscore
+  end
+
   private
 
   def weight_total
