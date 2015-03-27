@@ -1,5 +1,5 @@
 class Api::MediaModulesController < ApplicationController
-  before_action :require_admin, except: [:show, :index]
+  before_action :require_admin, only: [:create, :update, :destroy]
 
   def index
     @media_modules = MediaModule.all
