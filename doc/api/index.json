@@ -4,8 +4,8 @@
       "name": "Events",
       "examples": [
         {
-          "description": "Get a list of all events",
-          "link": "events/get_a_list_of_all_events.json",
+          "description": "Get calendar json",
+          "link": "events/get_calendar_json.json",
           "groups": "all"
         }
       ]
@@ -21,6 +21,16 @@
         {
           "description": "Get scene weights",
           "link": "mediamodules/get_scene_weights.json",
+          "groups": "all"
+        },
+        {
+          "description": "Get video player media",
+          "link": "mediamodules/get_video_player_media.json",
+          "groups": "all"
+        },
+        {
+          "description": "Get video player metadata",
+          "link": "mediamodules/get_video_player_metadata.json",
           "groups": "all"
         }
       ]

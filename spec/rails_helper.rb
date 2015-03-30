@@ -58,4 +58,9 @@ end
 
 RspecApiDocumentation.configure do |config|
   config.format = :json
+
+  config.request_headers_to_include = []
+  config.response_headers_to_include = []
+
+  config.api_name = "Bell Labs CMS API Documentation"
 end

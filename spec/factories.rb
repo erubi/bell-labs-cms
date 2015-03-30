@@ -2,10 +2,11 @@ require 'faker'
 require 'carrierwave/orm/activerecord'
 
 # This will guess the User class
-FactoryGirl.define do  factory :media_item do
+FactoryGirl.define do
+
+  factory :media_item do
 
   end
-
 
   factory :media_module do
     name { Faker::Lorem.sentence }
@@ -25,6 +26,7 @@ FactoryGirl.define do  factory :media_item do
     subheader { Faker::Lorem.sentence }
     start_time { Faker::Time.backward(14, :evening) }
     end_time { Faker::Time.forward(23, :morning) }
+    event_time { Faker::Time.forward(18, :morning) }
     countdown_hours { Random.new.rand(1..6) }
   end
 end

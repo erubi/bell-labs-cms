@@ -10,6 +10,7 @@ require 'rspec_api_documentation/dsl'
 resource "MediaModules", type: :controller do
   let (:media_module) { FactoryGirl.create :media_module }
   let (:id) { media_module.id }
+  let (:scene_name) { 'video_player'}
 
   get "/api/media_modules" do
     example "Get a list of all modules", :document => false do
@@ -30,7 +31,7 @@ resource "MediaModules", type: :controller do
     example "Creating a module", :document => false do
       do_request(
         name: media_module.name,
-        active_interval: media_module.active_interval
+        weight: media_module.weight
       )
     end
   end
@@ -64,11 +65,16 @@ resource "MediaModules", type: :controller do
   end
 
   get "/api/get_media/:scene_name" do
-    example "Get scene media" do
-      do_request(
-        scene_name: 'video_player'
-      )
-      expect(path).to eq "/api/scene_override/video_player"
+    example "Get video player media" do
+      do_request
+      expect(path).to eq "/api/get_media/video_player"
+    end
+  end
+
+  get "/api/get_metadata/:scene_name" do
+    example "Get video player metadata" do
+      do_request
+      expect(path).to eq "/api/get_metadata/video_player"
     end
   end
 
