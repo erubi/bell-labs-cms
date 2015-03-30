@@ -1,21 +1,4 @@
 <h2 class="feature-header">Media</h2>
 
-<ul class="row">
-  <% if (images.length){ %>
-    <% images.each(function(i){ %>
-      <li class="col-sm-3">
-        <img class="media-content-img image-ctr media-box" src="<%= i.get('url') %>">
-      </li>
-    <% }); %>
-  <% } %>
-
-  <% if (videos.length){ %>
-    <% videos.each(function(i){ %>
-      <li class="col-sm-3">
-        <div class="text-center video-ctr media-box">
-          <%= i.get('filename') %>
-        </div>
-      </li>
-    <% }); %>
-  <% } %>
+<ul id="media-item-views-ctr" class="row">
 </ul>

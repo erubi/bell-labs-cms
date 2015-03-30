@@ -1,0 +1,19 @@
+  <% if (isImage){ %>
+  <li class="col-sm-3">
+  <div class="text-center image-ctr media-box">
+    <img class="media-content-img image-ctr media-box" src="<%= url %>">
+    <i class="delete-media-btn glyphicon glyphicon-remove-circle"></i>
+  </div>
+
+  </li>
+
+  <% } else { %>
+
+  <li class="col-sm-3">
+  <div class="text-center video-ctr media-box">
+    <%= filename %>
+    <i class="delete-media-btn glyphicon glyphicon-remove-circle"></i>
+  </div>
+  </li>
+
+  <% } %>
