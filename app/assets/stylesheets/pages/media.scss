@@ -94,10 +94,19 @@ input[readonly] {
 }
 
 .media-box{
+  position: relative;
   height: 180px;
   width: 180px;
   border: 1px solid black;
   margin-bottom: 35px;
+
+  i{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }
 
 .video-ctr{

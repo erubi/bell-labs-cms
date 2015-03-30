@@ -27,6 +27,7 @@ BellCMS.Controllers.MediaController= {
 
         var contentView = new BellCMS.Views.MediaContentView({
           model: module,
+          collection: module.mediaItems(),
           contentType: contentType
         });
 

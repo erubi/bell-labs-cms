@@ -1,17 +1,4 @@
 <h2 class="feature-header">Media</h2>
 
-<ul class="row">
-  <% _.each(images, function(i){ %>
-    <li class="col-sm-3">
-      <img class="media-content-img image-ctr media-box" src="<%= i.url %>">
-    </li>
-  <% }); %>
-
-  <% _.each(videos, function(i){ %>
-    <li class="col-sm-3">
-      <div class="text-center video-ctr media-box">
-        <%= i.filename %>
-      </div>
-    </li>
-  <% }); %>
+<ul id="media-item-views-ctr" class="row">
 </ul>
