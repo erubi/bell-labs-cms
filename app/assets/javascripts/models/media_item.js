@@ -15,5 +15,12 @@ BellCMS.Models.MediaItem = Backbone.Model.extend({
     }
 
     return false;
+  },
+
+  hasInFilename: function(str){
+    if (this.get('filename').indexOf(str) != -1){
+    }
+
+    return this.get('filename').indexOf(str) != -1;
   }
 });

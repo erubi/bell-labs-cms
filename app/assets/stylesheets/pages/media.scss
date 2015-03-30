@@ -132,3 +132,18 @@ input[readonly] {
   }
 
 }
+
+.media-search-ctr{
+  float: right;
+  width: 300px;
+
+  i{
+    cursor: pointer;
+  }
+}
+
+.media-search-input-group{
+  display: inline-block;
+  float: right;
+}
+

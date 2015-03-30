@@ -8,7 +8,25 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.childView = BellCMS.Views.MediaItemView;
   },
 
-  onShow: function(){
+  ui: {
+    searchbox: '#media-search-input'
+  },
+
+  events: {
+    'submit #media-search-input' : 'searchMedia',
+    'click #media-search-btn' : 'searchMedia'
+  },
+
+  searchMedia: function(event){
+    event.preventDefault();
+    var searchStr = this.ui.searchbox.val();
+
+    if (!this.originalCollection){
+      this.originalCollection = this.collection;
+    }
+
+    this.collection = this.originalCollection.searchedSubset(searchStr);
+    this.updateView();
   },
 
   modelEvents: {
