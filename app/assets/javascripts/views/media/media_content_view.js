@@ -20,18 +20,18 @@ BellCMS.Views.MediaContentView = Marionette.ItemView.extend({
   templateHelpers: function(){
     if (this.contentType == 'image'){
       return {
-        images: this.model.get('images'),
+        images: this.model.images(),
         videos: []
       };
     } else if (this.contentType == 'video'){
       return {
-        videos: this.model.get('videos'),
+        videos: this.model.videos(),
         images: []
       };
     } else{
       return {
-        images: this.model.get('images'),
-        videos: this.model.get('videos')
+        images: this.model.images(),
+        videos: this.model.videos()
       };
     }
   }

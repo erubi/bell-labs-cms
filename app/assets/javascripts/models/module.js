@@ -19,6 +19,22 @@ BellCMS.Models.Module = Backbone.Model.extend({
     return this._mediaItems;
   },
 
+  videos: function(){
+    return new Backbone.VirtualCollection(this.mediaItems(), {
+      filter: function(mediaItem){
+        return mediaItem.isVideo()
+      }
+    });
+  },
+
+  images: function(){
+    return new Backbone.VirtualCollection(this.mediaItems(), {
+      filter: function(mediaItem){
+        return mediaItem.isImage()
+      }
+    });
+  },
+
   parse: function(payload){
     if (payload.media_items){
       this.mediaItems().set(payload.media_items);
