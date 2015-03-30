@@ -10,5 +10,22 @@ BellCMS.Models.Module = Backbone.Model.extend({
     if(this.collection.weightSum() > 1){
       return "Sum of all weights must be less than 100%.";
     }
+  },
+
+  mediaItems: function(){
+    this._mediaItems = this._mediaItems ||
+      new BellCMS.Collections.MediaItems([], { module: this });
+
+    return this._mediaItems;
+  },
+
+  parse: function(payload){
+    if (payload.media_items){
+      this.mediaItems().set(payload.media_items);
+      delete payload.media_items;
+    }
+
+    return payload;
   }
+
 });
