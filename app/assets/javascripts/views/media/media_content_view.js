@@ -9,11 +9,12 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
   },
 
   ui: {
-    searchbox: '#media-search-input'
+    searchbox: '#media-search-input',
+    searchform: '#media-search-form'
   },
 
   events: {
-    'submit #media-search-input' : 'searchMedia',
+    'submit #media-search-form' : 'searchMedia',
     'click #media-search-btn' : 'searchMedia'
   },
 
