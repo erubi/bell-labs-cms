@@ -24,7 +24,9 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    BellMailer.welcome_email(self).deliver
+    unless Rails.env.staging?
+      BellMailer.welcome_email(self).deliver
+    end
   end
 
 end
