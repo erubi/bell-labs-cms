@@ -18,8 +18,18 @@ BellCMS.Controllers.MediaController= {
   setUpMediaViews: function(moduleName, contentType){
     BellCMS.Collections.modules.fetch({
       success: function(){
-        var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
+        var mediaItems;
+
+        if (contentType && (contentType == "video")){
+          mediaItems = module.videos();
+        } else if (contentType && (contentType == "image")){
+          mediaItems = module.images();
+        } else{
+          mediaItems = module.mediaItems();
+        }
+
+        var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
 
         var uploadView = new BellCMS.Views.MediaUploadView({
           model: module
@@ -27,8 +37,7 @@ BellCMS.Controllers.MediaController= {
 
         var contentView = new BellCMS.Views.MediaContentView({
           model: module,
-          collection: module.mediaItems(),
-          contentType: contentType
+          collection: mediaItems
         });
 
         BellCMS.rootView.showChildView('contentContainer', mediaLayout);
