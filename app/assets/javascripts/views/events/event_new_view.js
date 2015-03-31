@@ -58,7 +58,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
   highlightRange: function(){
     var that = this;
-    // var els = this.firstSelected.nextUntil(this.secondSelected).andSelf();
+
     var els = $('.rd-day-body').filter(function(){
       var $date = $(this);
       var value = parseInt($date.text());

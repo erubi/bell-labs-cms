@@ -8,7 +8,25 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
 
   templateHelpers: function(){
     return {
+      eventStartISO: this.model.eventStartISO(),
+      eventStartTime: this.model.eventStartTime(),
+      eventEndTime: this.model.eventEndTime()
     }
+  },
+
+  onShow: function(){
+    this.configRomeCal();
+  },
+
+  configRomeCal: function(){
+    var romeEl = this.$el.find('.rome-cal-input')[0];
+    this.begunSelecting = false;
+
+    this.romeCal = rome(romeEl, {
+      time: false
+    });
+
+    // this.romeCal.on('data', this.handleRangeClick.bind(this));
   },
 
   events: {

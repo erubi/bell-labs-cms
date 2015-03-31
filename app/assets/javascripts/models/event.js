@@ -27,35 +27,6 @@ BellCMS.Models.Event = Backbone.Model.extend({
     }
   },
 
-  handleAttrConv: function(attrs){
-    // should convert iso date attrs to moment dates
-    // current ms attr are from form and are not in ms
-
-    var displayStartAttr = attrs['display_start_time_ms'];
-    var eventEndAttr = attrs['event_end_time_ms'];
-    var eventStartAttr = attrs['event_start_time_ms'];
-    var countdownAttr = attrs['countdown_hours'];
-
-    if ((displayStartAttr == "") || (eventEndAttr == "") || (eventStartAttr == "")){
-      return attrs;
-    }
-
-    if (countdownAttr == ""){
-      attrs['countdown_hours'] = 0;
-    }
-
-    var displayStartMs = this.convertIsoToMs(displayStartAttr);
-    var eventEndMs = this.convertIsoToMs(eventEndAttr);
-    var eventStartMS = this.convertIsoToMs(eventStartAttr);
-
-
-    attrs['display_start_time_ms'] = startMs;
-    attrs['event_end_time_ms'] = endMs;
-    attrs['event_start_time_ms'] = eventMS;
-
-    return attrs;
-  },
-
   convertIsoToMs: function(isoString){
     var time = moment(isoString);
     var offset = time.local().utcOffset();
@@ -97,6 +68,18 @@ BellCMS.Models.Event = Backbone.Model.extend({
   eventStartISO: function(){
     var str = this.eventStartDate().toISOString();
     return str.substring(0, str.length - 1);
+  },
+
+  eventStartTime: function(){
+    return this.eventStartDate().format('HH:MM');
+  },
+
+  eventEndTime: function(){
+    return this.eventEndDate().format('HH:MM');
+  },
+
+  displayStartTime: function(){
+    return this.displayStartDate().format('HH:MM');
   },
 
   isToday: function(){
