@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   validates :countdown_hours, numericality: { only_integer: true }
 
   def self.current_and_upcoming_events
-    Event.where('event_start_time > ?', DateTime.now)
+    Event.where('event_end_time > ?', DateTime.now)
   end
 
   def display_start_time_ms
