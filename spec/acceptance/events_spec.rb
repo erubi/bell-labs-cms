@@ -50,5 +50,6 @@ resource "Events", type: :controller do
       expect(path).to eq "api/calendar"
     end
   end
+
 end
 

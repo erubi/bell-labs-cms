@@ -4,15 +4,16 @@ require 'carrierwave/orm/activerecord'
 # This will guess the User class
 FactoryGirl.define do
 
-  factory :media_item do
-
-  end
+  # factory :media_item do
+  #   image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'images', 'sample1.jpg')) }
+  # end
 
   factory :media_module do
     name { Faker::Lorem.sentence }
     active { true }
     scene_type { "code" }
-    weight { 0.25 }
+    weight { 0.12 }
+    # media_item
   end
 
   factory :user do

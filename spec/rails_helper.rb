@@ -64,3 +64,4 @@ RspecApiDocumentation.configure do |config|
 
   config.api_name = "Bell Labs CMS API Documentation"
 end
+

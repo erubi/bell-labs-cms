@@ -22,7 +22,7 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"event_frequency\":30,\"calendar_events\":[{\"calendar_event\":{\"header\":\"Event 1 Header\",\"subheader\":\"Event 2 subheader\",\"countdown_timer\":\"2015-03-31T18:31:17.518Z\",\"start_time\":\"2015-03-31T21:31:17.518Z\",\"end_time\":\"2015-04-02T21:31:17.518Z\",\"event_time\":\"2015-04-01T21:31:17.518Z\",\"visible\":false,\"event_id\":1}},{\"calendar_event\":{\"header\":\"Event 2 header\",\"subheader\":\"Event 2 subheader\",\"countdown_timer\":\"2015-04-07T19:31:17.518Z\",\"start_time\":\"2015-04-07T21:31:17.518Z\",\"end_time\":\"2015-04-19T21:31:17.518Z\",\"event_time\":\"2015-04-09T21:31:17.518Z\",\"visible\":false,\"event_id\":2}}]}",
+      "response_body": "{\"event_frequency\":30,\"calendar_events\":[{\"calendar_event\":{\"header\":\"Event 1 Header\",\"subheader\":\"Event 2 subheader\",\"countdown_timer\":\"2015-04-01T12:21:23.154Z\",\"start_time\":\"2015-04-01T15:21:23.154Z\",\"end_time\":\"2015-04-03T15:21:23.154Z\",\"event_time\":\"2015-04-02T15:21:23.154Z\",\"visible\":false,\"event_id\":1}},{\"calendar_event\":{\"header\":\"Event 2 header\",\"subheader\":\"Event 2 subheader\",\"countdown_timer\":\"2015-04-08T13:21:23.154Z\",\"start_time\":\"2015-04-08T15:21:23.154Z\",\"end_time\":\"2015-04-20T15:21:23.154Z\",\"event_time\":\"2015-04-10T15:21:23.154Z\",\"visible\":false,\"event_id\":2}}]}",
       "response_headers": {
       },
       "response_content_type": "application/json; charset=utf-8",

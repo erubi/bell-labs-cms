@@ -1,11 +1,5 @@
 require 'rails_helper'
 require 'rspec_api_documentation/dsl'
-# require File.join(Rails.root, 'spec/support/sign_in_support.rb')
-
-# def sign_in_as_a_valid_user
-#   @user ||= FactoryGirl.create :user
-#   post_via_redirect Rails.application.routes.url_helpers.user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
-# end
 
 resource "MediaModules", type: :controller do
   let (:media_module) { FactoryGirl.create :media_module }

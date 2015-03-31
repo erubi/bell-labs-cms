@@ -1,3 +1,19 @@
+# create_table "media_items", force: :cascade do |t|
+#   t.string   "file_name"
+#   t.string   "file_type"
+#   t.datetime "date_uploaded"
+#   t.string   "scene_association"
+#   t.string   "bell_labs_people"
+#   t.string   "top_level_category"
+#   t.string   "keywords"
+#   t.string   "additional_metadata"
+#   t.datetime "created_at",          null: false
+#   t.datetime "updated_at",          null: false
+#   t.integer  "media_module_id"
+#   t.string   "image"
+#   t.string   "video"
+# end
+
 class MediaItem < ActiveRecord::Base
   belongs_to :media_module
 
