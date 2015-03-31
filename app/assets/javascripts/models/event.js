@@ -6,35 +6,37 @@ BellCMS.Models.Event = Backbone.Model.extend({
       return "Event must have event text.";
     }
 
-    if (attrs.start_time_ms == ""){
-      return "Event must have a start time.";
+    if (attrs.display_start_time_ms == ""){
+      return "Event must have a display start time.";
     }
 
-    if (attrs.end_time_ms == ""){
-      return "Event must have an end time.";
+    if (attrs.event_end_time_ms == ""){
+      return "Event must have an event end time.";
     }
 
-    if (attrs.event_time_ms == ""){
-      return "Event must have an end time.";
+    if (attrs.event_start_time_ms == ""){
+      return "Event must have an event start time.";
     }
 
     if (attrs.countdown_hours < 0 ){
       return "Countdown must be positive number.";
     }
 
-    if (attrs.start_time_ms >= attrs.end_time_ms){
+    if (attrs.event_start_time_ms >= attrs.end_time_ms){
       return "Event start date must be before event end date."
     }
   },
 
   handleAttrConv: function(attrs){
     // should convert iso date attrs to moment dates
-    var startAttr = attrs['start_time_ms'];
-    var endAttr = attrs['end_time_ms'];
-    var eventTimeAttr = attrs['event_time_ms'];
+    // current ms attr are from form and are not in ms
+
+    var displayStartAttr = attrs['display_start_time_ms'];
+    var eventEndAttr = attrs['event_end_time_ms'];
+    var eventStartAttr = attrs['event_start_time_ms'];
     var countdownAttr = attrs['countdown_hours'];
 
-    if ((startAttr == "") || (endAttr == "") || (eventTimeAttr == "")){
+    if ((displayStartAttr == "") || (eventEndAttr == "") || (eventStartAttr == "")){
       return attrs;
     }
 
@@ -42,14 +44,14 @@ BellCMS.Models.Event = Backbone.Model.extend({
       attrs['countdown_hours'] = 0;
     }
 
-    var startMs = this.convertIsoToMs(startAttr);
-    var endMs = this.convertIsoToMs(endAttr);
-    var eventMS = this.convertIsoToMs(eventTimeAttr);
+    var displayStartMs = this.convertIsoToMs(displayStartAttr);
+    var eventEndMs = this.convertIsoToMs(eventEndAttr);
+    var eventStartMS = this.convertIsoToMs(eventStartAttr);
 
 
-    attrs['start_time_ms'] = startMs;
-    attrs['end_time_ms'] = endMs;
-    attrs['event_time_ms'] = eventMS;
+    attrs['display_start_time_ms'] = startMs;
+    attrs['event_end_time_ms'] = endMs;
+    attrs['event_start_time_ms'] = eventMS;
 
     return attrs;
   },
@@ -62,18 +64,18 @@ BellCMS.Models.Event = Backbone.Model.extend({
     return parseInt(ms);
   },
 
-  startDate: function(){
-    var ms = parseInt(this.get('start_time_ms'));
+  displayStartDate: function(){
+    var ms = parseInt(this.get('display_start_time_ms'));
     return moment(ms);
   },
 
-  endDate: function(){
-    var ms = parseInt(this.get('end_time_ms'));
+  eventEndDate: function(){
+    var ms = parseInt(this.get('event_end_time_ms'));
     return moment(ms);
   },
 
-  eventDate: function(){
-    var ms = parseInt(this.get('event_time_ms'));
+  eventStartDate: function(){
+    var ms = parseInt(this.get('event_start_time_ms'));
     return moment(ms);
   },
 
@@ -82,25 +84,25 @@ BellCMS.Models.Event = Backbone.Model.extend({
     return moment(ms);
   },
 
-  startISO: function(){
-    var str = this.startDate().toISOString();
+  displayStartISO: function(){
+    var str = this.displayStartDate().toISOString();
     return str.substring(0, str.length - 1);
   },
 
-  endISO: function(){
-    var str = this.endDate().toISOString();
+  eventEndISO: function(){
+    var str = this.eventEndDate().toISOString();
     return str.substring(0, str.length - 1);
   },
 
-  eventISO: function(){
-    var str = this.eventDate().toISOString();
+  eventStartISO: function(){
+    var str = this.eventStartDate().toISOString();
     return str.substring(0, str.length - 1);
   },
 
   isToday: function(){
     var today = moment();
-    var start = this.startDate();
-    var end = this.endDate();
+    var start = this.eventStartDate();
+    var end = this.eventEndDate();
 
     if (today.isBetween(start, end)){
       return true;
@@ -115,8 +117,8 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
   isThisWeek: function(){
     var currentWeek = moment().week();
-    var startWeek = this.startDate().week();
-    var endWeek = this.endDate().week();
+    var startWeek = this.eventStartDate().week();
+    var endWeek = this.eventEndDate().week();
 
     if (this.isToday()){
       return false;
@@ -135,8 +137,8 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
   isThisMonth: function(){
     var currentMonth = moment().month();
-    var startMonth = this.startDate().month();
-    var endMonth = this.endDate().month();
+    var startMonth = this.eventStartDate().month();
+    var endMonth = this.eventEndDate().month();
 
     if (this.isToday() || this.isThisWeek()){
       return false;

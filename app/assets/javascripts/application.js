@@ -27,6 +27,7 @@
 //= require jquery.ui.widget
 //= require jquery.fileupload
 //= require jquery.serializejson
+//= require rome.standalone
 //= require bell_labs_cms
 //= require_tree ../templates
 //= require_tree ./models
