@@ -66,4 +66,5 @@ class MediaModule < ActiveRecord::Base
       errors.add(:base, "Total sum of weight must not exceed 100%")
     end
   end
+
 end

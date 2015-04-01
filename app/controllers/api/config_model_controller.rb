@@ -9,6 +9,10 @@ class Api::ConfigModelController < ApplicationController
     if (params[:video_player_enabled]!= Rails.application.config.video_player_enabled)
       Rails.application.config.video_player_enabled =params[:video_player_enabled]
 
+      if Rails.application.config.video_player_duration == 0
+        Rails.application.config.video_player_duration = MediaModule.find_by(name: "Video Player").movie_duration
+      end
+
       if (Rails.application.config.video_player_enabled)
         Rails.application.config.cycle_duration -= Rails.application.config.video_player_duration
       else

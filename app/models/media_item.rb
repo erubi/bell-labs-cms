@@ -21,6 +21,7 @@ class MediaItem < ActiveRecord::Base
   mount_uploader :video, VideoUploader
 
   before_save :update_media_attrs
+  before_destroy :subtract_video_length
 
   scope :with_image, -> {where.not(image: nil)}
   scope :with_video, -> {where.not(video: nil)}
@@ -32,6 +33,13 @@ class MediaItem < ActiveRecord::Base
       self.file_type = image.file.content_type
     elsif video.present? && video_changed?
       self.file_type = video.file.content_type
+    end
+  end
+
+  def subtract_video_length
+    unless self.video.file.nil? || (self.media_module.name != "Video Player")
+      video_duration = (self.video.video_duration / 60)
+      Rails.application.config.video_player_duration -= video_duration
     end
   end
 
