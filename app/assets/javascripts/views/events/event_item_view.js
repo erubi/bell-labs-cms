@@ -17,6 +17,12 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     'invalid' : 'showError'
   },
 
+  ui: {
+    calendar: '.event-calendar',
+    startTimeInput: '.start-time-input',
+    endTimeInput: '.end-time-input'
+  },
+
   initialize: function(){
   },
 
@@ -33,19 +39,45 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   },
 
   initCal: function(){
+    var that = this;
+
+    this.ui.calendar.pickmeup({
+      format  : 'Y-m-d',
+      mode: 'range',
+      date: [
+        that.model.displayStartDate().toDate(),
+        that.model.eventStartDate().toDate()
+      ],
+      hide: that.updateStartEndDates.bind(that)
+    });
   },
 
-  updateStartEndTimes: function(event){
-    var cal = this.romeCal;
+  updateStartEndDates: function(){
+    var data = this.ui.calendar.pickmeup('get_date', false);
 
-    var event_start = cal.getMoment().local();
+    var display_start = moment(data[0]);
+    var event_start = moment(data[1]);
     var event_end = event_start.clone();
 
-    var start_time = moment(this.$el.find('.start-time-input').val(), 'h:m');
+    attr = {
+      display_start_time_ms: display_start.valueOf(),
+      event_start_time_ms: event_start.valueOf(),
+      event_end_time_ms: event_end.valueOf()
+    };
+
+    this.model.save(attr);
+  },
+
+
+  updateStartEndTimes: function(e, data){
+    var event_start = moment(this.model.eventStartDate());
+    var event_end = event_start.clone();
+
+    var start_time = moment(this.ui.startTimeInput.val(), 'h:m');
     event_start.hour(start_time.hour());
     event_start.minute(start_time.minute());
 
-    var end_time = moment(this.$el.find('.end-time-input').val(), 'h:m');
+    var end_time = moment(this.ui.endTimeInput.val(), 'h:m');
     event_end.hour(end_time.hour());
     event_end.minute(end_time.minute());
 
@@ -54,7 +86,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
       event_end_time_ms: event_end.valueOf()
     };
 
-    this.model.set(attr);
+    this.model.save(attr);
   },
 
   updateVisibility: function(event){
