@@ -11,6 +11,10 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     this.initCal();
   },
 
+  ui: {
+    calendar: '#new-event-calendar'
+  },
+
   events: {
     'click #save-new-event' : 'createEvent',
     'click .dropdown-menu li' : 'updateCountdown',
@@ -19,19 +23,34 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   initCal: function(){
-    $('#new-event-calendar').daterangepicker({
-      datepickerOptions : {
-        numberOfMonths : 1
-      },
-      initialText: 'Select Date Range & Event Time',
-      presetRanges: []
+    var that = this;
+
+    this.ui.calendar.pickmeup({
+      flat: true,
+      format  : 'Y-m-d',
+      mode: 'range',
+      change: that.updateStartEndDates.bind(that)
     });
+
   },
 
-  updateStartEndTimes: function(event){
-    var cal = this.romeCal;
+  updateStartEndDates: function(e, data){
+    var display_start = moment(data[0]);
+    var event_start = moment(data[1]);
+    var event_end = event_start.clone();
 
-    var event_start = cal.getMoment().local();
+    attr = {
+      display_start_time_ms: display_start.valueOf(),
+      event_start_time_ms: event_start.valueOf(),
+      event_end_time_ms: event_end.valueOf()
+    };
+
+    this.model.set(attr);
+  },
+
+
+  updateStartEndTimes: function(e, data){
+    var event_start = moment(this.model.eventStartDate());
     var event_end = event_start.clone();
 
     var start_time = moment(this.$el.find('#start-time-input').val(), 'h:m');
@@ -71,7 +90,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
           BellCMS.Collections.events.unshift(that.model);
           that.model = new BellCMS.Models.Event();
           that.render();
-          that.configRomeCal();
+          that.initCal();
       }
     });
   },
