@@ -2,7 +2,12 @@
 @import "bootstrap";
 @import "bootstrap-slider";
 @import "bootstrap-switch";
-@import "rome";
+@import "jquery.daterangepicker";
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
+@import "jquery-ui/button";
+@import "jquery-ui/datepicker";
+@import "jquery-ui/menu";
 @import "./pages/*";
 @import "./modules/*";
 @import "./tablet/*";

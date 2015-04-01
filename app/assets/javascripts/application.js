@@ -11,6 +11,21 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.iframe-transport
+//= require jquery.ui.widget
+//= require jquery.fileupload
+//= require jquery.serializejson
+//= require jquery.daterangepicker
+//= require jquery-ui/core
+//= require jquery-ui/dialog
+//= require jquery-ui/widget
+//= require jquery-ui/mouse
+//= require jquery-ui/position
+//= require jquery-ui/button
+//= require jquery-ui/datepicker
+//= require jquery-ui/menu
+//= require jquery-ui/selectable
+//= require jquery-ui/selectmenu
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-slider
@@ -23,11 +38,6 @@
 //= require backbone.radio.shim
 //= require backbone.virtual-collection
 //= require moment
-//= require jquery.iframe-transport
-//= require jquery.ui.widget
-//= require jquery.fileupload
-//= require jquery.serializejson
-//= require rome.standalone
 //= require bell_labs_cms
 //= require_tree ../templates
 //= require_tree ./models
