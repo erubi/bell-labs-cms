@@ -21,7 +21,6 @@ class MediaItem < ActiveRecord::Base
   mount_uploader :video, VideoUploader
 
   before_save :update_media_attrs
-  # before_destroy :delete_thumbs
 
   scope :with_image, -> {where.not(image: nil)}
   scope :with_video, -> {where.not(video: nil)}
@@ -36,9 +35,4 @@ class MediaItem < ActiveRecord::Base
     end
   end
 
-  def delete_thumbs
-    path = self.image.thumb.current_path
-    binding.pry
-    File.delete(path) if File.exists?(path.to_s)
-  end
 end

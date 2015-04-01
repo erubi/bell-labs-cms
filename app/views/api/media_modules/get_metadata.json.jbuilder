@@ -9,6 +9,7 @@ json.metadata do
       json.BellLabsPeople media_item.model.bell_labs_people
       json.TopLevelCategory media_item.model.top_level_category
       json.keywords media_item.model.keywords
+      json.additional_metadata media_item.model.additional_metadata
     end
   end
 end

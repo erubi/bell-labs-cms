@@ -67,6 +67,7 @@ class Api::MediaModulesController < ApplicationController
 
     @media_item.update_attributes(metadata_params)
 
+
     if @media_item.save
       if @media_module.name == 'Video Player' && params[:file_type] == 'video'
         update_video_player_duration
@@ -112,7 +113,9 @@ class Api::MediaModulesController < ApplicationController
   end
 
   def metadata_params
-    params.permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata)
+    params[:metadata] = JSON.parse(params[:metadata])
+
+    params.require(:metadata).permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata)
   end
 
 end
