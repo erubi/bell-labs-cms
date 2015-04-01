@@ -3,20 +3,11 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   className: 'event-view-li',
   template: 'events/event_item',
 
-  initialize: function(){
-  },
-
-  templateHelpers: function(){
-    return {
-      startISO: this.model.startISO(),
-      endISO: this.model.endISO(),
-      eventISO: this.model.eventISO()
-    }
-  },
-
   events: {
+    'change .end-time-input' : 'updateStartEndTimes',
+    'change .start-time-input' : 'updateStartEndTimes',
     'click .delete-event-btn' : 'deleteEvent',
-    'change input' : 'updateEvent',
+    'change input[type="text"]' : 'updateEvent',
     'click .dropdown-menu li' : 'updateCountdown',
     'click .visible-event-btn' : 'updateVisibility'
   },
@@ -24,6 +15,78 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   modelEvents: {
     'destroy' : 'modelDestroyed',
     'invalid' : 'showError'
+  },
+
+  ui: {
+    calendar: '.event-calendar',
+    startTimeInput: '.start-time-input',
+    endTimeInput: '.end-time-input'
+  },
+
+  initialize: function(){
+  },
+
+  templateHelpers: function(){
+    return {
+      eventStartISO: this.model.eventStartISO(),
+      eventStartTime: this.model.eventStartTime(),
+      eventEndTime: this.model.eventEndTime()
+    }
+  },
+
+  onShow: function(){
+    this.initCal();
+  },
+
+  initCal: function(){
+    var that = this;
+
+    this.ui.calendar.pickmeup({
+      format  : 'Y-m-d',
+      mode: 'range',
+      date: [
+        that.model.displayStartDate().toDate(),
+        that.model.eventStartDate().toDate()
+      ],
+      hide: that.updateStartEndDates.bind(that)
+    });
+  },
+
+  updateStartEndDates: function(){
+    var data = this.ui.calendar.pickmeup('get_date', false);
+
+    var display_start = moment(data[0]);
+    var event_start = moment(data[1]);
+    var event_end = event_start.clone();
+
+    attr = {
+      display_start_time_ms: display_start.valueOf(),
+      event_start_time_ms: event_start.valueOf(),
+      event_end_time_ms: event_end.valueOf()
+    };
+
+    this.model.save(attr);
+  },
+
+
+  updateStartEndTimes: function(e, data){
+    var event_start = moment(this.model.eventStartDate());
+    var event_end = event_start.clone();
+
+    var start_time = moment(this.ui.startTimeInput.val(), 'h:m');
+    event_start.hour(start_time.hour());
+    event_start.minute(start_time.minute());
+
+    var end_time = moment(this.ui.endTimeInput.val(), 'h:m');
+    event_end.hour(end_time.hour());
+    event_end.minute(end_time.minute());
+
+    attr = {
+      event_start_time_ms: event_start.valueOf(),
+      event_end_time_ms: event_end.valueOf()
+    };
+
+    this.model.save(attr);
   },
 
   updateVisibility: function(event){
@@ -55,7 +118,6 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     var that = this;
 
     var attrs = this.$el.find('form').serializeJSON();
-    attrs = this.model.handleAttrConv(attrs);
     this.model.set(attrs);
 
     if (this.model.isValid()){
