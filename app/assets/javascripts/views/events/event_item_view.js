@@ -7,7 +7,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     'change .end-time-input' : 'updateStartEndTimes',
     'change .start-time-input' : 'updateStartEndTimes',
     'click .delete-event-btn' : 'deleteEvent',
-    'change input' : 'updateEvent',
+    'change input[type="text"]' : 'updateEvent',
     'click .dropdown-menu li' : 'updateCountdown',
     'click .visible-event-btn' : 'updateVisibility'
   },
@@ -37,60 +37,80 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     this.begunSelecting = false;
 
     this.romeCal = rome(romeEl, {
-      time: false
+      time: false,
+      autoClose: false
     });
 
     this.romeCal.on('data', this.handleRangeClick.bind(this));
-    this.highlightRange();
+    this.romeCal.on('show', this.highlightRange.bind(this));
+    this.romeCal.on('month', this.highlightRange.bind(this));
+
+
   },
 
-  handleRangeClick: function(event){
+  handleRangeClick: function(data){
     var displayStartMs, eventStartMs, eventEndMs, attr;
     var cal = this.romeCal;
+    var $calCtr = $(this.romeCal.container)
 
     if (!this.begunSelecting){
       $('.rd-day-body').removeClass('first-range-date middle-range-date last-range-date');
       // get cal moment, convert to ms, set on model
       // should set time to beginning of day
       this.begunSelecting = true;
-      this.firstSelected = this.$el.find('.rd-day-selected');
-      // this.firstSelectedVal = parseInt(this.firstSelected.text());
+      this.firstSelected = $calCtr.find('.rd-day-selected');
       this.firstSelected.addClass('first-range-date');
       attr = {display_start_time_ms: cal.getMoment().startOf('day').valueOf()};
+      this.model.set(attr);
     } else {
       // get cal moment, add start time, set on model
       // need to write function for graying out in between dates
       this.begunSelecting = false;
-      this.updateStartEndTimes();
-      this.secondSelected = this.$el.find('.rd-day-selected');
-      // this.secondSelectedVal = parseInt(this.secondSelected.text());
+      this.secondSelected = $calCtr.find('.rd-day-selected');
       this.secondSelected.addClass('last-range-date');
+      this.updateStartEndTimes();
       this.highlightRange();
     }
 
-    this.model.save(attr);
   },
 
   highlightRange: function(){
     var that = this;
-    var startDay = this.model.eventStartDate().date();
-    var endDay = this.model.eventEndDate().date();
 
-    var els = this.$el.find('.rd-day-body').filter(function(){
-      var $date = $(this);
-      var value = parseInt($date.text());
-      var isDifMonth = $date.hasClass('rd-day-next-month');
-      var inBtwn = (value > startDay) && (value < endDay);
-      return !isDifMonth && inBtwn;
+    var displayStartDate = this.model.displayStartDate();
+    var displayStartDay = displayStartDate.date();
+    var displayStartMonth = displayStartDate.month();
+
+    var eventStartDate = this.model.eventStartDate();
+    var eventStartDay = eventStartDate.date();
+    var eventStartMonth = eventStartDate.month();
+
+    var $calCtr = $(this.romeCal.container)
+
+    var els = $calCtr.find('.rd-day-body').filter(function(){
+      var $dateEl = $(this);
+      var value = parseInt($dateEl.text());
+      var boxDate, isBetween;
+
+      boxDate = eventStartDate.clone();
+
+      if ($dateEl.hasClass('rd-day-prev-month')){
+        boxDate.subtract(1, 'months');
+      } else if($dateEl.hasClass('rd-day-next-month')){
+        boxDate.add(1, 'months');
+      }
+
+      boxDate.date(value);
+
+      isBetween = boxDate.isBetween(displayStartDate, eventStartDate);
+
+      return isBetween;
     });
 
     els.addClass('middle-range-date');
   },
 
   updateStartEndTimes: function(event){
-    event.preventDefault();
-    event.stopPropagation();
-
     var cal = this.romeCal;
 
     var event_start = cal.getMoment().local();
