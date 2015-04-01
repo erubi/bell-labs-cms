@@ -19,7 +19,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   configRomeCal: function(){
-    var romeEl = $('#event-rome-1')[0];
+    var romeEl = this.$el.find('#event-rome-1')[0];
     this.begunSelecting = false;
 
     this.romeCal = rome(romeEl, {
@@ -73,14 +73,14 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   updateStartEndTimes: function(event){
     var cal = this.romeCal;
 
-    var event_start = cal.getMoment();
-    var event_end = event_start;
+    var event_start = cal.getMoment().local();
+    var event_end = event_start.clone();
 
-    var start_time = moment($('#start-time-input').val(), 'h:m');
+    var start_time = moment(this.$el.find('#start-time-input').val(), 'h:m');
     event_start.hour(start_time.hour());
     event_start.minute(start_time.minute());
 
-    var end_time = moment($('#end-time-input').val(), 'h:m');
+    var end_time = moment(this.$el.find('#end-time-input').val(), 'h:m');
     event_end.hour(end_time.hour());
     event_end.minute(end_time.minute());
 

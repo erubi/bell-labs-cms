@@ -3,6 +3,20 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   className: 'event-view-li',
   template: 'events/event_item',
 
+  events: {
+    'change .end-time-input' : 'updateStartEndTimes',
+    'change .start-time-input' : 'updateStartEndTimes',
+    'click .delete-event-btn' : 'deleteEvent',
+    'change input' : 'updateEvent',
+    'click .dropdown-menu li' : 'updateCountdown',
+    'click .visible-event-btn' : 'updateVisibility'
+  },
+
+  modelEvents: {
+    'destroy' : 'modelDestroyed',
+    'invalid' : 'showError'
+  },
+
   initialize: function(){
   },
 
@@ -26,19 +40,76 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
       time: false
     });
 
-    // this.romeCal.on('data', this.handleRangeClick.bind(this));
+    this.romeCal.on('data', this.handleRangeClick.bind(this));
+    this.highlightRange();
   },
 
-  events: {
-    'click .delete-event-btn' : 'deleteEvent',
-    'change input' : 'updateEvent',
-    'click .dropdown-menu li' : 'updateCountdown',
-    'click .visible-event-btn' : 'updateVisibility'
+  handleRangeClick: function(event){
+    var displayStartMs, eventStartMs, eventEndMs, attr;
+    var cal = this.romeCal;
+
+    if (!this.begunSelecting){
+      $('.rd-day-body').removeClass('first-range-date middle-range-date last-range-date');
+      // get cal moment, convert to ms, set on model
+      // should set time to beginning of day
+      this.begunSelecting = true;
+      this.firstSelected = this.$el.find('.rd-day-selected');
+      // this.firstSelectedVal = parseInt(this.firstSelected.text());
+      this.firstSelected.addClass('first-range-date');
+      attr = {display_start_time_ms: cal.getMoment().startOf('day').valueOf()};
+    } else {
+      // get cal moment, add start time, set on model
+      // need to write function for graying out in between dates
+      this.begunSelecting = false;
+      this.updateStartEndTimes();
+      this.secondSelected = this.$el.find('.rd-day-selected');
+      // this.secondSelectedVal = parseInt(this.secondSelected.text());
+      this.secondSelected.addClass('last-range-date');
+      this.highlightRange();
+    }
+
+    this.model.save(attr);
   },
 
-  modelEvents: {
-    'destroy' : 'modelDestroyed',
-    'invalid' : 'showError'
+  highlightRange: function(){
+    var that = this;
+    var startDay = this.model.eventStartDate().date();
+    var endDay = this.model.eventEndDate().date();
+
+    var els = this.$el.find('.rd-day-body').filter(function(){
+      var $date = $(this);
+      var value = parseInt($date.text());
+      var isDifMonth = $date.hasClass('rd-day-next-month');
+      var inBtwn = (value > startDay) && (value < endDay);
+      return !isDifMonth && inBtwn;
+    });
+
+    els.addClass('middle-range-date');
+  },
+
+  updateStartEndTimes: function(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    var cal = this.romeCal;
+
+    var event_start = cal.getMoment().local();
+    var event_end = event_start.clone();
+
+    var start_time = moment(this.$el.find('.start-time-input').val(), 'h:m');
+    event_start.hour(start_time.hour());
+    event_start.minute(start_time.minute());
+
+    var end_time = moment(this.$el.find('.end-time-input').val(), 'h:m');
+    event_end.hour(end_time.hour());
+    event_end.minute(end_time.minute());
+
+    attr = {
+      event_start_time_ms: event_start.valueOf(),
+      event_end_time_ms: event_end.valueOf()
+    };
+
+    this.model.set(attr);
   },
 
   updateVisibility: function(event){
@@ -70,7 +141,6 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     var that = this;
 
     var attrs = this.$el.find('form').serializeJSON();
-    attrs = this.model.handleAttrConv(attrs);
     this.model.set(attrs);
 
     if (this.model.isValid()){

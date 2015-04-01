@@ -71,15 +71,15 @@ BellCMS.Models.Event = Backbone.Model.extend({
   },
 
   eventStartTime: function(){
-    return this.eventStartDate().format('HH:MM');
+    return this.eventStartDate().format('HH:mm');
   },
 
   eventEndTime: function(){
-    return this.eventEndDate().format('HH:MM');
+    return this.eventEndDate().format('HH:mm');
   },
 
   displayStartTime: function(){
-    return this.displayStartDate().format('HH:MM');
+    return this.displayStartDate().format('HH:mm');
   },
 
   isToday: function(){
