@@ -52,6 +52,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     #   super(for_file)
     # end
 
+    def full_filename(for_file)
+      parent_name = super(for_file)
+      ext         = File.extname(parent_name)
+      base_name   = parent_name.chomp(ext)
+      # [version_name, base_name].compact.join('_') + ".png"
+      base_name + ".png"
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
