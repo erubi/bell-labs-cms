@@ -56,7 +56,6 @@ class Api::MediaModulesController < ApplicationController
 
   # controller action for uploading media
   def upload_media
-    # TODO: save metadata here
     @media_module = MediaModule.find_by(name: params[:module_name])
     @media_item = @media_module.media_items.create()
 
