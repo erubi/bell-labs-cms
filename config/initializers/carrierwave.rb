@@ -27,3 +27,17 @@ CarrierWave.configure do |config|
 
   config.fog_directory    = ENV['S3_BUCKET_NAME']
 end
+
+# module CarrierWave
+#   module Uploader
+#     module Versions
+#       require 'rake'
+
+#       def full_filename(for_file)
+#         filename  = for_file.pathmap("%n")
+#         extension = for_file.pathmap("%x")
+#         [filename].compact.join('_') + extension
+#       end
+#     end
+#   end
+# end

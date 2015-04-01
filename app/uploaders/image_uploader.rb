@@ -3,8 +3,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # if Rails.env.staging?
@@ -36,11 +36,22 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+
     def store_dir
       "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
     end
 
-    process :resize_to_fit => [50, 50]
+    process :thumb_conversion => [512, 512]
+
+    # def full_filename(for_file=model.image.file)
+    #   base_name = File.basename(for_file, '.*')
+    #   "#{base_name}.png"
+    # end
+
+    # def full_filename(for_file)
+    #   super(for_file)
+    # end
+
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -51,8 +62,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+
+  private
+
+  def thumb_conversion(width, height)
+    manipulate! do |img|
+      img.format("png") do |c|
+        c.resize      "#{width}x#{height}>"
+        c.resize      "#{width}x#{height}<"
+      end
+      img
+    end
+  end
 
 end
