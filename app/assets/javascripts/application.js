@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery.iframe-transport
+//= require jquery-ui/widget
 //= require jquery.serializejson
+//= require jquery.fileupload
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-slider
