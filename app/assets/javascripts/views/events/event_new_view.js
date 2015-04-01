@@ -23,6 +23,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
       datepickerOptions : {
         numberOfMonths : 1
       },
+      initialText: 'Select Date Range & Event Time',
       presetRanges: []
     });
   },
