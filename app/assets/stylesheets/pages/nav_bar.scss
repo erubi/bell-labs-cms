@@ -55,10 +55,9 @@
 }
 
 .navbar-app-link-ctr{
-  @include horizontal-align;
+  width: 190px;
   display: inline-block;
   height:$navbar-app-height;
-  margin-right: 60px;
   padding-top: 20px;
 
   a{
