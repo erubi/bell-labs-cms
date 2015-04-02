@@ -89,9 +89,9 @@ BellCMS.Models.Event = Backbone.Model.extend({
 
     if (today.isBetween(start, end)){
       return true;
-    } else if (today.isSame(start)){
+    } else if (today.isSame(start, 'day')){
       return true;
-    } else if (today.isSame(end)){
+    } else if (today.isSame(end, 'day')){
       return true;
     }
 
