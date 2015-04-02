@@ -5,7 +5,7 @@ unless media_module.media_items.length == 0
     if !m.image.file.nil?
       json.id m.id
       json.filename m.image.file.filename
-      json.url m.image.url
+      json.url m.image.thumb.url
       json.media_type 'image'
     elsif !m.video.file.nil?
       json.id m.id
