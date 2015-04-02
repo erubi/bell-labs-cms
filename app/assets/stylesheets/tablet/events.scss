@@ -1,6 +1,6 @@
 .tablet-event-text-ctr{
   display: inline-block;
-  width: 500px;
+  width: 45%;
   border: 1px solid #fff;
   text-align: center;
 
@@ -20,7 +20,7 @@
 .tablet-event-date-ctr{
   display: inline-block;
   text-align: center;
-  margin: 0 40px;
+  margin-left: 30px;
   vertical-align: top;
   border: 1px solid #fff;
 
@@ -42,5 +42,9 @@
     &:last-child{
       border-right: none;
     }
+  }
+
+  .time-info{
+    width: 90px;
   }
 }

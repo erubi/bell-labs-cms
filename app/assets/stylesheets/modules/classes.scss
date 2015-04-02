@@ -71,3 +71,26 @@ body{
   display:none;
 }
 
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-align{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+@mixin setLinkStyleAll {
+  &, &:hover, &:link, &:active, &:visited {
+        @content;
+    }
+}
+
+@mixin setLinkSelectorStyle {
+  &:hover, &:link, &:active, &:visited {
+        @content;
+    }
+}
