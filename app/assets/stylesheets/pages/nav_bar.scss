@@ -24,17 +24,6 @@
   }
 }
 
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@mixin horizontal-align{
-    position: absolute;
-    left:50%;
-    transform: translateX(-50%);
-}
 
 .server-app-nav-ctr{
   @include horizontal-align;
@@ -62,16 +51,26 @@
 }
 
 .navbar-app-link-ctr{
+  @include horizontal-align;
   display: inline-block;
   height:$navbar-app-height;
   margin-right: 60px;
+  padding-top: 20px;
 
   a{
-    display: inline-block;
-    padding-top: 40%;
-    padding-bottom: 40%;
-    height: 20%;
-    color: #fff;
-    font-size: 20px;
+    @include setLinkStyleAll{
+      display: inline-block;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+  .tablet-nav-svg{
+    margin: auto;
+    height: 65%;
+    display: block;
   }
 }
+
