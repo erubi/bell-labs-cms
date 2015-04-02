@@ -64,6 +64,7 @@
 .navbar-app-link-ctr{
   display: inline-block;
   height:$navbar-app-height;
+  margin-right: 60px;
 
   a{
     display: inline-block;
@@ -71,6 +72,6 @@
     padding-bottom: 40%;
     height: 20%;
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
   }
 }

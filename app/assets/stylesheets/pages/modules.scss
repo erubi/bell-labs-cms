@@ -1,23 +1,28 @@
 .module-view-ul{
   list-style: none;
   position:relative;
+  color: #fff;
 }
 
 .module-time-ctr{
   display: block;
   margin-top: 30px;
   margin-bottom: 50px;
+  width: 50%;
+
+  .slider.slider-horizontal{
+    width: 100%;
+  }
 
   input{
     float: left;
   }
 
-  h2{
-    margin-right: 30px;
-    margin-top: 0px;
-    float: left;
-    display: inline-block;
-  }
+}
+
+.cycle-duration-label{
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .module-view-li{
