@@ -1,3 +1,24 @@
+html, body {
+  margin:0;
+  padding:0;
+  width: 100%;
+}
+
+body{
+  min-height: 100vh !important;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  background: rgba(73,155,234,1);
+  background: -moz-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(46%, rgba(51,57,140,1)), color-stop(100%, rgba(51,57,140,1)));
+  background: -webkit-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
+  background: linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#33398c', GradientType=1 );
+}
+
 // .vertical-align {
 //   display: flex;
 //   align-items: center;
@@ -48,17 +69,5 @@
 
 .no-display{
   display:none;
-}
-
-body{
- color: #fff;
- background: rgba(73,155,234,1);
- background: -moz-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
- background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(46%, rgba(51,57,140,1)), color-stop(100%, rgba(51,57,140,1)));
- background: -webkit-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
- background: -o-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
- background: -ms-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
- background: linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(51,57,140,1) 46%, rgba(51,57,140,1) 100%);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#33398c', GradientType=1 );
 }
 
