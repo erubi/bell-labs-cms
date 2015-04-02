@@ -40,6 +40,10 @@
     padding-bottom: 50px;
     color: #8E8CAE;
   }
+
+  @media(max-width: 768px){
+    width: 100% !important;
+  }
 }
 
 .navbar-app-links-ctr{
