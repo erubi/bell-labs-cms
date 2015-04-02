@@ -26,6 +26,10 @@ class MediaItem < ActiveRecord::Base
   scope :with_image, -> {where.not(image: nil)}
   scope :with_video, -> {where.not(video: nil)}
 
+  def base_image_name
+    File.basename(self.image.file.filename, '.*')
+  end
+
   private
 
   def update_media_attrs
