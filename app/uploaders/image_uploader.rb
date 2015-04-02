@@ -19,6 +19,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.media_module.name}/#{mounted_as}/full"
   end
 
+  process :convert => 'png'
+
+  def filename
+    base_name = File.basename(original_filename, '.*')
+    "#{base_name}.png"
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
