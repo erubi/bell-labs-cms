@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331184232) do
+ActiveRecord::Schema.define(version: 20150402190320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150331184232) do
     t.integer  "media_module_id"
     t.string   "image"
     t.string   "video"
+    t.string   "description"
   end
 
   create_table "media_modules", force: :cascade do |t|
