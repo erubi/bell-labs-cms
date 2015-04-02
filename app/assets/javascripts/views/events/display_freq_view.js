@@ -1,5 +1,5 @@
 BellCMS.Views.EventDisplayFreqView= Marionette.ItemView.extend({
-  className: 'display-freq-ctr',
+  className: '',
   template: 'events/display_freq',
 
   initialize: function(options){

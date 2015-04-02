@@ -27,10 +27,6 @@
 
 .events-layout-ctr{
   position: relative;
-  padding: 0 40px 10px 40px;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
 
 .events-new-ctr{
@@ -72,9 +68,8 @@
 }
 
 .display-freq-ctr{
-  position: absolute;
-  top: 20px;
-  right: 400px;
+  display: inline-block;
+  margin-left: 200px;
 }
 
 .current-freq{

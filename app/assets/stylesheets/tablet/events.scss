@@ -1,24 +1,46 @@
 .tablet-event-text-ctr{
   display: inline-block;
   width: 500px;
-  border: 1px solid black;
+  border: 1px solid #fff;
   text-align: center;
-  padding: 10px;
+
+  .tablet-event-header{
+    padding: 5px;
+    font-size: 20px;
+  }
+
+  .tablet-event-text{
+    border-top: 1px solid #fff;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 300;
+  }
 }
 
 .tablet-event-date-ctr{
   display: inline-block;
-  width: 100px;
-  border: 1px solid black;
   text-align: center;
-  padding: 10px;
   margin: 0 40px;
-}
+  vertical-align: top;
+  border: 1px solid #fff;
 
-.tablet-event-countdown-ctr{
-  display: inline-block;
-  width: 100px;
-  border: 1px solid black;
-  text-align: center;
-  padding: 10px;
+  li{
+    float: left;
+  }
+
+  .glyphicon{
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .tablet-event-date-info{
+    font-size: 15px;
+    border-right: 1px solid #fff;
+    padding: 10px;
+    vertical-align: middle;
+
+    &:last-child{
+      border-right: none;
+    }
+  }
 }

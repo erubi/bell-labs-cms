@@ -1,3 +1,11 @@
+.tablet-feature-header{
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-bottom: 90px;
+  font-weight: 700;
+  display: inline-block;
+}
+
 .tablet-module-view-ul{
   list-style: none;
 }
@@ -8,8 +16,8 @@
 
 .tablet-active-module{
   .module-item-box{
-    color: #fff;
-    background-color: #6E7070;
+    color: #000;
+    background-color: #B6CD51;
   }
 }
 
