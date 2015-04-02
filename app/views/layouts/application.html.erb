@@ -9,7 +9,11 @@
 </head>
 <body>
 
-<%= render partial: 'home/nav_bar' %>
+<% if !current_user %>
+    <%= render partial: 'home/nav_bar' %>
+<% else %>
+  <%= render partial: 'home/app_nav_bar' %>
+<% end %>
 
 <%= yield %>
 

@@ -1,6 +1,6 @@
 BellCMS.Views.TabletNavView= Marionette.ItemView.extend({
   tagName: 'nav',
-  className: 'navbar navbar-default navbar-app',
+  className: 'app-navbar-ctr',
   template: 'tablet/nav_bar',
 
   events: {

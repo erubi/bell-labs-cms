@@ -1,0 +1,7 @@
+<div class="container server-app-nav-ctr">
+    <% if current_user.admin %>
+      <span>
+        <%= link_to "", users_manage_users_url, class: "glyphicon glyphicon-user"%>
+      </span>
+    <% end %>
+</div>

@@ -27,10 +27,28 @@
   display: inline-block;
 }
 
-.feature-container{
+.feature-ctr-top,
+.feature-ctr-bottom{
+  padding: 40px;
+}
 
+.feature-ctr-top{
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.feature-ctr-bottom{
+  border: 1px solid #fff;
+  margin-bottom: 10px;
 }
 
 .no-display{
   display:none;
 }
+
+body{
+ background: #323D8F;
+ color: #fff;
+}
+
