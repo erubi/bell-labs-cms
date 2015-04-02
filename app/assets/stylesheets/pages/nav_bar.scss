@@ -58,11 +58,12 @@
   display: inline-block;
   width: 700px;
   text-align:center;
+  height: $navbar-app-height;
 }
 
 .navbar-app-link-ctr{
   display: inline-block;
-  height:153px;
+  height:$navbar-app-height;
 
   a{
     display: inline-block;
