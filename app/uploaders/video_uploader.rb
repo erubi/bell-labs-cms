@@ -1,6 +1,7 @@
 # encoding: utf-8
 class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
+  include CarrierWave::Video::Thumbnailer
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -19,7 +20,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.media_module.name}/#{mounted_as}"
+    "uploads/#{model.media_module.name}/#{mounted_as}/full"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -36,6 +37,34 @@ class VideoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  #
+  version :thumb do
+    def store_dir
+      "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
+    end
+
+    process thumbnail: [{format: 'png', quality: 10, size: 512}]
+
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
+
+  version :small_thumb do
+    def store_dir
+      "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
+    end
+
+    process thumbnail: [{format: 'png', quality: 6, size: 200}]
+
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
+
+  def png_name for_file, version_name
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do
