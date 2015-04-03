@@ -44,6 +44,7 @@ gem "pundit"
 
 gem 'apitome'
 gem 'carrierwave-video'
+gem 'carrierwave-video-thumbnailer'
 gem 'jquery-ui-rails'
 # gem 'redis'
 #rspec api tests gems
