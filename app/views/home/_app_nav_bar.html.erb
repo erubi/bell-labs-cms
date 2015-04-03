@@ -3,5 +3,9 @@
       <span>
         <%= link_to "", users_manage_users_url, class: "glyphicon glyphicon-user"%>
       </span>
+    <% else %>
+      <span>
+        <%= link_to "", destroy_user_session_url, method: :delete, class: 'glyphicon glyphicon-user' %>
+      </span>
     <% end %>
 </div>
