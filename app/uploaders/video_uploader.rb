@@ -50,6 +50,18 @@ class VideoUploader < CarrierWave::Uploader::Base
     end
   end
 
+  version :small_thumb do
+    def store_dir
+      "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
+    end
+
+    process thumbnail: [{format: 'png', quality: 6, size: 200}]
+
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
+
   def png_name for_file, version_name
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
   end
