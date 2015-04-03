@@ -1,7 +1,7 @@
-namespace :csv_tasks do
+namespace :csv do
   desc "Import metadata from csv"
 
-  task import_metadata: :environment do
+  task image_metadata: :environment do
     require 'csv'
 
     csv_text = File.read("#{Rails.root}/public/csv/image_metadata.csv")
