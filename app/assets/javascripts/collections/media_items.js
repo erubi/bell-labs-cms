@@ -5,7 +5,7 @@ BellCMS.Collections.MediaItems = Backbone.PageableCollection.extend({
   mode: 'client',
 
   state: {
-    pageSize: 20
+    pageSize: 10
   },
 
   byFilename: function(str){

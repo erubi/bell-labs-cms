@@ -16,7 +16,11 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
   },
 
   filter: function (child, index, collection) {
-    return child.get('media_type') == this.mediaType;
+    if (this.mediaType){
+      return child.get('media_type') == this.mediaType;
+    } else {
+      return true;
+    }
   },
 
   ui: {
