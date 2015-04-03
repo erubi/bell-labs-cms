@@ -42,7 +42,7 @@ class Api::MediaModulesController < ApplicationController
   def scene_override
     @media_modules = MediaModule.order(:name)
     if MediaModule.active.first
-      @active_module_name = MediaModule.active.first.name
+      @active_module_name = MediaModule.active.first.underscore_name
     else
       @active_module_name = ""
     end
