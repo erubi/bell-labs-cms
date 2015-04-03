@@ -7,8 +7,6 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.contentType = options.contentType;
     this.childView = BellCMS.Views.MediaItemView;
     this.mediaType = options.mediaType;
-    // this.originalCollection = this.collection;
-    // this.collection = this.originalCollection.getFirstPage();
   },
 
   childViewOptions: {
