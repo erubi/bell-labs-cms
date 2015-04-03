@@ -29,6 +29,8 @@ BellCMS.Controllers.MediaController= {
           mediaItems = module.mediaItems();
         }
 
+        mediaItems = mediaItems.getFirstPage();
+
         var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
 
         var uploadView = new BellCMS.Views.MediaUploadView({

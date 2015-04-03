@@ -27,6 +27,7 @@
 //= require backbone.marionette
 //= require backbone.radio.shim
 //= require backbone.virtual-collection
+//= require backbone.paginator
 //= require jquery.pickmeup
 //= require bell_labs_cms
 //= require_tree ../templates
