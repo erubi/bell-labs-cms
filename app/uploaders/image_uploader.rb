@@ -22,8 +22,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
 
   def filename
-    base_name = File.basename(original_filename, '.*')
-    "#{base_name}.png"
+    if original_filename
+      base_name = File.basename(original_filename, '.*')
+      return "#{base_name}.png"
+    else
+      base_name = File.basename(self.file.filename, '.*')
+      return "#{base_name}.png"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

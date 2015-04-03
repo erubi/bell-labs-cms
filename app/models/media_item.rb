@@ -26,13 +26,31 @@ class MediaItem < ActiveRecord::Base
   scope :with_image, -> {where.not(image: nil)}
   scope :with_video, -> {where.not(video: nil)}
 
+  def base_image_name
+    unless self.image.file.nil?
+      return File.basename(self.image.file.filename, '.*')
+    end
+
+    nil
+  end
+
+  def base_video_name
+    unless self.video.file.nil?
+      return File.basename(self.video.file.filename, '.*')
+    end
+
+    nil
+  end
+
   private
 
   def update_media_attrs
     if image.present? && image_changed?
       self.file_type = image.file.content_type
+      self.file_name = File.basename(image.file.filename, '.*')
     elsif video.present? && video_changed?
       self.file_type = video.file.content_type
+      self.file_name = File.basename(video.file.filename, '.*')
     end
   end
 
