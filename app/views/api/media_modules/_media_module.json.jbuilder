@@ -10,7 +10,7 @@ unless media_module.media_items.length == 0
     elsif !m.video.file.nil?
       json.id m.id
       json.filename m.video.file.filename
-      json.url m.video.url
+      json.url m.video.small_thumb.url
       json.media_type 'video'
     end
   end
