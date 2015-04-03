@@ -20,7 +20,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.media_module.name}/#{mounted_as}"
+    "uploads/#{model.media_module.name}/#{mounted_as}/full"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -39,7 +39,12 @@ class VideoUploader < CarrierWave::Uploader::Base
   # end
   #
   version :thumb do
-    process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
+    def store_dir
+      "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
+    end
+
+    process thumbnail: [{format: 'png', quality: 10, size: 512}]
+
     def full_filename for_file
       png_name for_file, version_name
     end
