@@ -14,6 +14,13 @@ BellCMS.Collections.MediaItems = Backbone.PageableCollection.extend({
    });
   },
 
+  // onlyImages: function(){
+  //   filtered = this.filter(function(m) {
+  //     return m.isImage()
+  //   });
+  //   return new BellCMS.Collections.MediaItems(filtered);
+  // },
+
   searchedSubset: function(str){
     return new Backbone.VirtualCollection(this, {
       filter: function(mediaItem){
