@@ -15,19 +15,13 @@ BellCMS.Controllers.MediaController= {
     this.setUpMediaViews('Bell Labs Heroes');
   },
 
-  setUpMediaViews: function(moduleName, contentType){
+  setUpMediaViews: function(moduleName, mediaType){
     BellCMS.Collections.modules.fetch({
       success: function(){
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
         var mediaItems;
 
-        if (contentType && (contentType == "video")){
-          mediaItems = module.videos();
-        } else if (contentType && (contentType == "image")){
-          mediaItems = module.images();
-        } else{
-          mediaItems = module.mediaItems();
-        }
+        mediaItems = module.mediaItems();
 
         var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
 
@@ -37,7 +31,8 @@ BellCMS.Controllers.MediaController= {
 
         var contentView = new BellCMS.Views.MediaContentView({
           model: module,
-          collection: mediaItems
+          collection: mediaItems,
+          mediaType: mediaType
         });
 
         BellCMS.rootView.showChildView('contentContainer', mediaLayout);

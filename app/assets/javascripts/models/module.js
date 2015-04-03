@@ -20,19 +20,25 @@ BellCMS.Models.Module = Backbone.Model.extend({
   },
 
   videos: function(){
-    return new Backbone.VirtualCollection(this.mediaItems(), {
+    var mediaItems = this.mediaItems();
+    mediaItems.fullCollection =  new Backbone.VirtualCollection(this.mediaItems(), {
       filter: function(mediaItem){
         return mediaItem.isVideo()
       }
     });
+
+    return mediaItems;
   },
 
   images: function(){
-    return new Backbone.VirtualCollection(this.mediaItems(), {
+    var mediaItems = this.mediaItems();
+    mediaItems.fullCollection =  new Backbone.VirtualCollection(this.mediaItems(), {
       filter: function(mediaItem){
         return mediaItem.isImage()
       }
     });
+
+    return mediaItems;
   },
 
   parse: function(payload){

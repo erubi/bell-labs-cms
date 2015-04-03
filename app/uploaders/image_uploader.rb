@@ -68,6 +68,32 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
+  version :small_thumb do
+
+    def store_dir
+      "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
+    end
+
+    process :thumb_conversion => [200, 200]
+
+    # def full_filename(for_file=model.image.file)
+    #   base_name = File.basename(for_file, '.*')
+    #   "#{base_name}.png"
+    # end
+
+    # def full_filename(for_file)
+    #   super(for_file)
+    # end
+
+    def full_filename(for_file)
+      parent_name = super(for_file)
+      ext         = File.extname(parent_name)
+      base_name   = parent_name.chomp(ext)
+      # [version_name, base_name].compact.join('_') + ".png"
+      base_name + ".png"
+    end
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
