@@ -38,8 +38,9 @@ module BellLabsCms
     config.assets.precompile += %w(.svg .eot .woff .ttf)
 
     config.cycle_duration = 60
-    config.event_frequency= 30
-    config.video_player_enabled=false
-    config.video_player_duration=0
+    config.event_frequency = 30
+    config.video_player_enabled = false
+    config.video_player_duration = 0
+    config.total_cycle_duration = 60
   end
 end
