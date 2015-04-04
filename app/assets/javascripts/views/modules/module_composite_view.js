@@ -36,20 +36,8 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
     BellCMS.Collections.modules.resetWeights();
   },
 
-  calcMaxCycle: function(){
-    var max;
-
-    if (this.model.get('video_player_enabled')){
-      max = (60 - this.model.get('video_player_duration'));
-    } else {
-      max = 60;
-    }
-
-    return max;
-  },
-
   configSlider: function(max){
-    var max = this.calcMaxCycle();
+    var max = 60;
 
     if ($('.time-input').length){
       $('.time-input').slider({
