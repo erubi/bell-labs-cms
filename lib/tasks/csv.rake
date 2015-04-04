@@ -22,6 +22,8 @@ namespace :csv do
           true
         elsif m.base_image_name && (m.base_image_name == asset_name)
           true
+        elsif m.base_video_name && (m.base_video_name == asset_name)
+          true
         end
       end.first
 
