@@ -10,7 +10,7 @@ namespace :csv do
 
     csv.each do |row|
       row_hash = row.to_hash
-      asset_name = row_hash['Asset Name'] || ''
+      asset_name = row_hash['Asset_Name'] || ''
       category = row_hash['Main Category'] || ''
       date = row_hash['Date'] || ''
       bell_labs_people = row_hash['Bell Labs People'] || ''
