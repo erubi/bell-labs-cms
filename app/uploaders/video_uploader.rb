@@ -44,8 +44,8 @@ class VideoUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
     end
 
-    process thumbnail: [{format: 'png', quality: 10, size: 800}]
-    process :resize_to_fill => [512, 512]
+    process thumbnail: [{format: 'png', quality: 10, size: 512}]
+    # process :resize_to_fill => [512, 512]
 
     def full_filename for_file
       png_name for_file, version_name
@@ -54,11 +54,11 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   version :small_thumb do
     def store_dir
-      "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
+      "uploads/#{model.media_module.name}-internal/#{mounted_as}/small_thumb"
     end
 
-    process thumbnail: [{format: 'png', quality: 10, size: 800}]
-    process :resize_to_fill => [200, 200]
+    process thumbnail: [{format: 'png', quality: 8, size: 200}]
+    # process :resize_to_fill => [200, 200]
 
     def full_filename for_file
       png_name for_file, version_name

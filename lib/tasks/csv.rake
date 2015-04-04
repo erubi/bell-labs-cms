@@ -17,13 +17,11 @@ namespace :csv do
       keywords = row_hash['Keywords'] || ''
       description = row_hash['Description'] || ''
 
-
-      # media_item = MediaItem.where { |m| m.base_image_name == asset_name }.first
       media_item = MediaItem.select do |m|
-        if m.file_name
-          m.file_name == asset_name
-        else
-          m.base_image_name == asset_name
+        if m.file_name && (m.file_name == asset_name)
+          true
+        elsif m.base_image_name && (m.base_image_name == asset_name)
+          true
         end
       end.first
 
@@ -40,6 +38,32 @@ namespace :csv do
 
     end
 
+  end
+
+  task images_not_matched: :environment do
+    require 'csv'
+
+    csv_text = File.read("#{Rails.root}/public/csv/image_metadata.csv")
+
+    csv = CSV.parse(csv_text, :headers => true)
+
+    csv.each do |row|
+      row_hash = row.to_hash
+      asset_name = row_hash['Asset_Name'] || ''
+
+      media_item = MediaItem.select do |m|
+        if m.file_name && (m.file_name == asset_name)
+          true
+        elsif m.base_image_name && (m.base_image_name == asset_name)
+          true
+        end
+      end.first
+
+      if media_item.nil?
+        puts(asset_name)
+      end
+
+    end
   end
 
 end
