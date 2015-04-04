@@ -21,6 +21,7 @@ class MediaItem < ActiveRecord::Base
   mount_uploader :video, VideoUploader
 
   before_save :update_media_attrs
+  before_save :process_video_thumbnails
   before_destroy :subtract_video_length
 
   scope :with_image, -> {where.not(image: nil)}
@@ -62,6 +63,12 @@ class MediaItem < ActiveRecord::Base
       end
     rescue
       nil
+    end
+  end
+
+  def process_video_thumbnails
+    if video.present?
+      self.video.convert_video_thumbnails
     end
   end
 

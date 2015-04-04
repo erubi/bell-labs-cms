@@ -5,8 +5,8 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # being called more than once for single upload(need different cb)
   # after :store, :update_video_player_duration
@@ -44,7 +44,7 @@ class VideoUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
     end
 
-    process thumbnail: [{format: 'png', quality: 10, size: 512}]
+    process thumbnail: [{format: 'png', quality: 10, size: 800}]
     # process :resize_to_fill => [512, 512]
 
     def full_filename for_file
@@ -52,18 +52,18 @@ class VideoUploader < CarrierWave::Uploader::Base
     end
   end
 
-  version :small_thumb do
-    def store_dir
-      "uploads/#{model.media_module.name}-internal/#{mounted_as}/small_thumb"
-    end
+  # version :small_thumb do
+  #   def store_dir
+  #     "uploads/#{model.media_module.name}-internal/#{mounted_as}/small_thumb"
+  #   end
 
-    process thumbnail: [{format: 'png', quality: 8, size: 200}]
-    # process :resize_to_fill => [200, 200]
+  #   process thumbnail: [{format: 'png', quality: 8, size: 500}]
+  #   # process :resize_to_fill => [200, 200]
 
-    def full_filename for_file
-      png_name for_file, version_name
-    end
-  end
+  #   def full_filename for_file
+  #     png_name for_file, version_name
+  #   end
+  # end
 
   def png_name for_file, version_name
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
@@ -75,7 +75,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   # end
 
   def extension_white_list
-    %w(mp4 avi mkv)
+    %w(mp4 avi mkv m4v png)
   end
 
   # Override the filename of the uploaded files:
@@ -84,6 +84,13 @@ class VideoUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   #
+  #
+  def convert_video_thumbnails
+    image_file = self.thumb.file.path
+    image = Magick::Image.read(image_file).first
+    image.resize_to_fill!(512, 512)
+    image.write image_file
+  end
 
   def video_duration
    # video duration in seconds
