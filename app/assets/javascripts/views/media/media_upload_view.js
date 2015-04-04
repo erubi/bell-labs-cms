@@ -2,6 +2,10 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   className: 'media-upload-ctr',
   template: 'media/upload',
 
+  ui: {
+    progressPercentage: '#progress-percentage'
+  },
+
   onShow: function(){
     this.configureUpload();
   },
@@ -30,6 +34,12 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
         that.model.fetch();
         that.configureUpload();
       }
+    });
+
+    $('#upload-media').bind('fileuploadprogress', function (e, data) {
+      // Log the current bitrate for this upload:
+      var percent = (data.loaded/data.total);
+      that.ui.progressPercentage.text(percent);
     });
   },
 
