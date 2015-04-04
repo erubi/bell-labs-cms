@@ -22,7 +22,6 @@ FactoryGirl.define do
   end
 
   factory :event do
-    event_text { Faker::Lorem.sentence }
     header { Faker::Lorem.sentence }
     subheader { Faker::Lorem.sentence }
     start_time { Faker::Time.backward(14, :evening) }

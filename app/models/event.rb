@@ -1,10 +1,9 @@
 class Event < ActiveRecord::Base
 
-  validates :event_text, presence: true
+  validates :header, presence: true
   validates :display_start_time, presence: true
   validates :event_start_time, presence: true
   validates :event_end_time, presence: true
-  # validate :valid_end_date
   validates :countdown_hours, numericality: { only_integer: true }
 
   def self.current_and_upcoming_events
