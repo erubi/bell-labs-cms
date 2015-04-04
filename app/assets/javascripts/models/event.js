@@ -2,8 +2,8 @@ BellCMS.Models.Event = Backbone.Model.extend({
   urlRoot: 'api/events',
 
   validate: function(attrs, options){
-    if (attrs.event_text.length < 1){
-      return "Event must have event text.";
+    if (attrs.header.length < 1){
+      return "Event must have header.";
     }
 
     if (attrs.display_start_time_ms == ""){
