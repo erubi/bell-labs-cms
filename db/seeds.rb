@@ -21,7 +21,6 @@ events = Event.create!([
   {
     header: 'Event 1 Header',
     subheader: 'Event 2 subheader',
-    event_text: "Test Event 1",
     display_start_time: DateTime.now.tomorrow.beginning_of_day + 1.minutes,
     event_start_time: DateTime.now + 2,
     event_end_time: DateTime.now + 3,
@@ -30,7 +29,6 @@ events = Event.create!([
   {
     header: 'Event 2 header',
     subheader: 'Event 2 subheader',
-    event_text: "Test Event 2",
     display_start_time: (DateTime.now + 8).beginning_of_day + 1.minutes,
     event_start_time: DateTime.now + 10,
     event_end_time: DateTime.now + 20,
