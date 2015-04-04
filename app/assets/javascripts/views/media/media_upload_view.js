@@ -7,11 +7,16 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   },
 
   initialize: function(){
-    // this.mediaChannel = Backbone.radio.channel('media-upload');
+    this.mediaChannel = Backbone.Radio.channel('mediaUpload');
+    this.mediaChannel.comply('showMetadata', this.showMetadata)
   },
 
   onShow: function(){
     this.configureUpload();
+  },
+
+  showMetadata: function(mediaItemId){
+    return;
   },
 
   configureUpload: function(){
@@ -42,7 +47,6 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     });
 
     $('#upload-media').bind('fileuploadprogress', function (e, data) {
-      // Log the current bitrate for this upload:
       var percent = (data.loaded/data.total);
       that.ui.progressPercentage.text(percent);
     });
