@@ -133,9 +133,9 @@
 6,Solar_cell,Physics,,,,,,,Solar Energy,,"In the early 1950s, while working on semiconductor research, Bell Labs scientist Russell Ohl discovered that sunlight striking a wafer of silicon would produce large numbers of free electrons. In 1954, G.L. Pearson, C.S. Fuller, and D.M. Chapin did a test with strips of silicon placed in sunlight, where they captured the free electrons in the strips and turned them into electrical current. This 1978 film interviews Pearson, Fuller and Chapin about their invention, how they came to create it, and what they see for applications for the technology."
 7,telstar,Wireless,,Broadband,Television,,,,Satellites,,"The story of how the Bell System, in cooperation with NASA, developed the Telstar satellite and participated in the launch and the subsequent successful transmission of signals to and from the earth and space. The film is from 1962."
 8,Alcatel - 877 - The Shannon Limit - MASTER,Multi Media,,,,,,,Networking,,Claude Shannon’s creation in the 1940’s of the subject of information theory is arguably one of the great intellectual achievements of the twentieth century. Discover who was Claude Shannon and what is the Shannon Limit.
-9,867 - Alcatel Lucent - FI Copper - V30 - 21-10-14,Physics,,"Paul Spruyt, Carl Nuzman, Jochen Maes, Peter vetter, Willem Verbiest, ",DSL,Capacity,Vectoring,H.O.P.E.,Cable,,100 mgbs
-10,867 - Alcatel Lucent - FI Optics - MASTER - 09-03-2015 - mp4 1080p,Optical,,"Peter Winzer, Andy Chraplyvy, Herwig Kolgelnik, Andreas Leven, Sebastien Bigo",Crawford Hill,Bandwitch,100G ,400G,Laser,,A review of fiber optic and Laser technology - Challenge - Funamental limit of fiber -Special Multiplexing
-11,867 - Alcatel Lucent - Wireless - V55 - 09-03-15 1080p,Wireless,,"Dick Frenkiel, Jerry Foshini, Tod Sizer, Oliver Blume, Hardy HalbauerMarcus Weldon,",Cellular,MIMO,Millimeter Waves,Beam Forming,,,
+9,867 - Alcatel Lucent - FI Copper - V30 - 21-10-14,launch,,"Paul Spruyt, Carl Nuzman, Jochen Maes, Peter vetter, Willem Verbiest, ",DSL,Capacity,Vectoring,H.O.P.E.,Cable,physics,100 mgbs
+10,867 - Alcatel Lucent - FI Optics - MASTER - 09-03-2015 - mp4 1080p,launch,,"Peter Winzer, Andy Chraplyvy, Herwig Kolgelnik, Andreas Leven, Sebastien Bigo",Crawford Hill,Bandwitch,100G ,400G,Laser,optical,A review of fiber optic and Laser technology - Challenge - Funamental limit of fiber -Special Multiplexing
+11,867 - Alcatel Lucent - Wireless - V55 - 09-03-15 1080p,launch,,"Dick Frenkiel, Jerry Foshini, Tod Sizer, Oliver Blume, Hardy HalbauerMarcus Weldon,",Cellular,MIMO,Millimeter Waves,Beam Forming,,wireless,
 12,tod_sizer_lightradio_1,Wireless,,,,,,,,,"Tod Sizer, Head of Wireless Research for Alcatel-Lucent Bell Labs, talks about developing the lightRadio antenna module."
 13,transistor,Physics,,Walter Brattain,William Shockley,Nobel,Vacuum Tube,Microelectronics,,,"lightRadio represents a new architecture where the base station, typically located at the base of each cell"
 14,CCD,Physics,,"George Smith, Willard Boyle",Solid State Camera,Pixel,,,,,"In 1969, Willard Boyle and George E. Smith invented the charge coupled device, which makes modern-day digital photography possible. Originally created for use in picturephones, the CCD evolved to allow camera makers to do away with bulky vacuum tubes, and to enable new types of computer storage."
@@ -153,6 +153,9 @@ the availability of car and other mobile telephones."
 24,computer_graphics_animation_bell-labs.mp4,Computing,,Michael Noll,Computer Art,,,,,,Historical piece on Harold Black and his work
 25,Alcatel_Lucent_-_Marcus_Weldon_-_ENGLISH_CLEAN_-_MASTER,Multi-Media,,Marcus Weldon,,,,,,,
 26,Matter_Waves,Physics,,Lester Germer,Wave Nature of Matter,Nobel,,,,,"Shown in college classrooms (occasionally, still!), this 28-minute film gives both historical and scientific insight to the wave nature of elementary, atomic-level particles. The film’s guides are Lester Germer and Alan Holden, both Bell Laboratories scientists."
+27,MSTR_BL -The Anomaly- FullProg 2015-04-02 115f70,launch,,,,,,,,,
+28,MSTR_BL -The Anomaly- PartIV 2015-04-02 115f70,,,,,,,,,,
+29,MSTR_BL -The Anomaly- Parts0-III 2015-04-02 115f70,,,,,,,,,,
 ,,,,,,,,,,,
 ,CATEGORY_LIST,Multi-Media,,,,,,,,,
 ,,Medical Technology,,,,,,,,,
