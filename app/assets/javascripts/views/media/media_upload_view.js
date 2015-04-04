@@ -6,6 +6,10 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     progressPercentage: '#progress-percentage'
   },
 
+  initialize: function(){
+    // this.mediaChannel = Backbone.radio.channel('media-upload');
+  },
+
   onShow: function(){
     this.configureUpload();
   },
@@ -33,6 +37,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
         that.render();
         that.model.fetch();
         that.configureUpload();
+        // that.mediaChannel
       }
     });
 

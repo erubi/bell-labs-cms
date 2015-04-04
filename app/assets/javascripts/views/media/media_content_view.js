@@ -7,6 +7,10 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.contentType = options.contentType;
     this.childView = BellCMS.Views.MediaItemView;
     this.mediaType = options.mediaType;
+
+    // this.mediaChannel = Backbone.radio.channel('media-upload');
+
+    // this.mediaChannel.comply('new-media', this.render);
   },
 
   childViewOptions: {
@@ -33,6 +37,10 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     'click #media-search-btn' : 'searchMedia',
     'click @ui.prevPage': 'prevPage',
     'click @ui.nextPage': 'nextPage'
+  },
+
+  modelEvents: {
+    'sync' : this.render
   },
 
   currentPage: function(){
