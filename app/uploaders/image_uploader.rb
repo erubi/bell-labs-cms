@@ -39,13 +39,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
   # Create different versions of your uploaded files:
   version :thumb do
 
@@ -53,7 +46,9 @@ class ImageUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
     end
 
-    process :thumb_conversion => [512, 512]
+    # process :thumb_conversion => [512, 512]
+    process :convert => 'png'
+    process :resize_to_fill => [512, 512]
 
     # def full_filename(for_file=model.image.file)
     #   base_name = File.basename(for_file, '.*')
@@ -79,16 +74,8 @@ class ImageUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
     end
 
-    process :thumb_conversion => [200, 200]
-
-    # def full_filename(for_file=model.image.file)
-    #   base_name = File.basename(for_file, '.*')
-    #   "#{base_name}.png"
-    # end
-
-    # def full_filename(for_file)
-    #   super(for_file)
-    # end
+    process :convert => 'png'
+    process :resize_to_fill => [200, 200]
 
     def full_filename(for_file)
       parent_name = super(for_file)
@@ -110,14 +97,14 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   private
 
-  def thumb_conversion(width, height)
-    manipulate! do |img|
-      img.format("png") do |c|
-        c.resize      "#{width}x#{height}>"
-        c.resize      "#{width}x#{height}<"
-      end
-      img
-    end
-  end
+  # def thumb_conversion(width, height)
+  #   manipulate! do |img|
+  #     img.format("png") do |c|
+  #       c.resize      "#{width}x#{height}>"
+  #       c.resize      "#{width}x#{height}<"
+  #     end
+  #     img
+  #   end
+  # end
 
 end
