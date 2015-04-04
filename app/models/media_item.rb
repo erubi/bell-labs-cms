@@ -55,9 +55,13 @@ class MediaItem < ActiveRecord::Base
   end
 
   def subtract_video_length
-    unless self.video.file.nil? || (self.media_module.name != "Video Player")
-      video_duration = (self.video.video_duration / 60)
-      Rails.application.config.video_player_duration -= video_duration
+    begin
+      unless self.video.file.nil? || (self.media_module.name != "Video Player")
+        video_duration = (self.video.video_duration / 60)
+        Rails.application.config.video_player_duration -= video_duration
+      end
+    rescue
+      nil
     end
   end
 

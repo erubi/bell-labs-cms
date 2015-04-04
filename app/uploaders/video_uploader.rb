@@ -2,6 +2,7 @@
 class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
+  include CarrierWave::MiniMagick
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -43,7 +44,8 @@ class VideoUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}/#{mounted_as}/thumb"
     end
 
-    process thumbnail: [{format: 'png', quality: 10, size: 512}]
+    process thumbnail: [{format: 'png', quality: 10, size: 800}]
+    process :resize_to_fill => [512, 512]
 
     def full_filename for_file
       png_name for_file, version_name
@@ -55,7 +57,8 @@ class VideoUploader < CarrierWave::Uploader::Base
       "uploads/#{model.media_module.name}-internal/#{mounted_as}/thumb"
     end
 
-    process thumbnail: [{format: 'png', quality: 6, size: 200}]
+    process thumbnail: [{format: 'png', quality: 10, size: 800}]
+    process :resize_to_fill => [200, 200]
 
     def full_filename for_file
       png_name for_file, version_name
