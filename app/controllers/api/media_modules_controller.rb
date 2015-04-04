@@ -84,7 +84,7 @@ class Api::MediaModulesController < ApplicationController
 
     param_name = params[:scene_name]
     @media_module = MediaModule.select do |m|
-      m.underscore_name
+      m.underscore_name == param_name
     end.first
   end
 
