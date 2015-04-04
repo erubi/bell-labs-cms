@@ -36,6 +36,10 @@ body{
 .feature-ctr-top,
 .feature-ctr-bottom{
   padding: 40px;
+
+  @media(max-width: 768px){
+    padding: 20px 10px;
+  }
 }
 
 .feature-ctr-top{

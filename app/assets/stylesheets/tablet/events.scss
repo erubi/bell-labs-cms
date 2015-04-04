@@ -4,9 +4,18 @@
   border: 1px solid #fff;
   text-align: center;
 
+  @media(max-width: 768px){
+    width: 42%;
+  }
+
   .tablet-event-header{
     padding: 5px;
     font-size: 20px;
+
+    @media(max-width: 768px){
+      font-size: 18px;
+    }
+
   }
 
   .tablet-event-text{
@@ -24,6 +33,10 @@
   vertical-align: top;
   border: 1px solid #fff;
 
+  @media(max-width: 768px){
+    margin-left: 10px;
+  }
+
   li{
     float: left;
   }
@@ -39,6 +52,10 @@
     padding: 10px;
     vertical-align: middle;
 
+    @media(max-width: 768px){
+      padding: 6px;
+    }
+
     &:last-child{
       border-right: none;
     }
@@ -47,4 +64,8 @@
   .time-info{
     width: 90px;
   }
+}
+
+.tablet-event-view-li{
+  margin-bottom: 20px;
 }
