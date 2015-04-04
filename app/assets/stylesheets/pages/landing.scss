@@ -1,0 +1,12 @@
+.landing-logo-ctr{
+  height: 80vh;
+  width: 100%;
+
+  h1{
+    @include vertical-align;
+    text-align: center;
+    font-size: 70px;
+    color: #fff;
+    font-weight: 700;
+  }
+}
