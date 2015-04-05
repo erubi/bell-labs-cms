@@ -2,6 +2,22 @@ BellCMS.Collections.MediaItems = Backbone.PageableCollection.extend({
   model: BellCMS.Models.MediaItem,
   url: 'api/media_items',
 
+  getOrFetch: function(id){
+    var mediaItems = this;
+
+    var mediaItem;
+    if (mediaItem = this.get(id)){
+      mediaItem.fetch();
+    } else {
+      mediaItem = new BellCMS.Models.MediaItem({id: id});
+      mediaItem.fetch({
+        success: function() { mediaItems.add(mediaItem) }
+      });
+    }
+
+    return mediaItem;
+  },
+
   mode: 'client',
 
   state: {

@@ -3,12 +3,18 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   template: 'media/upload',
 
   ui: {
-    progressPercentage: '#progress-percentage'
+    progressPercentage: '#progress-percentage',
+    bellLabsPeople: '#meta1',
+    topLevelCategory: '#meta2',
+    keywords: '#meta3',
+    additionalMetadata: '#meta4',
   },
 
   initialize: function(){
     this.mediaChannel = Backbone.Radio.channel('mediaUpload');
-    this.mediaChannel.comply('showMetadata', this.showMetadata)
+    this.mediaChannel.comply({
+      'showMetadata': this.showMetadata
+    }, this)
   },
 
   onShow: function(){
@@ -16,7 +22,11 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   },
 
   showMetadata: function(mediaItemId){
-    return;
+    var mediaItem = this.model.mediaItems().getOrFetch(mediaItemId);
+    this.ui.bellLabsPeople.val(mediaItem.get('bell_labs_people'));
+    this.ui.topLevelCategory.val(mediaItem.get('top_level_category'));
+    this.ui.keywords.val(mediaItem.get('keywords'));
+    this.ui.additionalMetadata.val(mediaItem.get('additional_metadata'));
   },
 
   configureUpload: function(){
