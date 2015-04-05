@@ -9,6 +9,8 @@
   margin-top: 30px;
   margin-bottom: 50px;
   width: 50%;
+  font-size: 12px;
+  font-weight: 300;
 
   .slider.slider-horizontal{
     width: 100%;
@@ -23,6 +25,8 @@
 .cycle-duration-label{
   text-transform: uppercase;
   text-align: center;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .module-view-li{
@@ -45,18 +49,66 @@
 
 .module-weight-ctr{
   float: left;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.video-player-toggle-ctr{
+  display: inline-block;
+  border: 1px solid #fff;
+
+  .switch-btn{
+    cursor: pointer;
+    float: left;
+    display: inline;
+    height: 100%;
+    padding: 10px;
+    background: $dark-blue;
+    width: 50px;
+    text-align: center;
+
+    &.active-switch{
+      background: transparent;
+    }
+
+    &:last-child{
+      border-left: 1px solid #fff;
+    }
+  }
+
+  .switch-border{
+    width: 1px;
+    display: inline-block;
+    height: 100%;
+  }
+}
+
+.inactive-video-player{
+  background-color: $dark-blue;
+  opacity: 0.5;
 }
 
 .module-randomize-ctr{
   position: absolute;
-  bottom: 35px;
+  bottom: 0;
   right: 20px;
 
   button{
     margin-top: 10px;
     text-transform: uppercase;
     width: 100px;
-    height: 30px;
+    padding: 5px 0;
     display: block;
+    border: 1px solid #fff;
+  }
+
+  .reset-btn{
+    background: $light-blue;
+    color: $dark-blue;
+  }
+
+  .randomize-btn{
+    background: transparent;
+    color: #fff;
   }
 }

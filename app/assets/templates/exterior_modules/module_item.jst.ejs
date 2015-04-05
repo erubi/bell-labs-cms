@@ -1,15 +1,26 @@
-<div class="module-item-box <%= active ? 'active-module' : 'inactive-module' %>">
-  <span class="module-title"><%= name %></span>
-</div>
-
 <% if (name != 'Video Player'){ %>
+
+  <div class="module-item-box <%= active ? 'active-module' : 'inactive-module' %>">
+    <span class="module-title"><%= name %></span>
+  </div>
+
   <div class="module-weight-ctr">
     <input class="weight-input" type="text" data-slider-value="<%= weight *= 100 %>">
   </div>
+
 <% } else { %>
-  <div class="module-weight-ctr">
-    <input
-      type="checkbox"
-      class="on-off-switch">
+
+  <div class="module-item-box <%= videoPlayerOn ? '' : 'inactive-video-player' %>">
+    <span class="module-title"><%= name %></span>
   </div>
+
+  <ul class="video-player-toggle-ctr clearfix">
+    <li class="switch-btn video-player-on <%= videoPlayerOn ? 'active-switch' : '' %>">
+      ON
+    </li>
+    <li class="switch-btn video-player-off <%= videoPlayerOn ? '' : 'active-switch' %>">
+      OFF
+    </li>
+  </ul>
+
 <% } %>
