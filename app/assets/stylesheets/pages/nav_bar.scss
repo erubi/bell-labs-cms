@@ -63,15 +63,23 @@
   display: inline-block;
   height:$navbar-app-height;
   padding-top: 20px;
+  cursor: pointer;
 
   a{
-    @include setLinkStyleAll{
-      display: inline-block;
-      color: #fff;
-      font-size: 14px;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
+    width: 100%;
+    height: 100%
+  }
+
+  &.active{
+    opacity: 0.5;
+  }
+
+  .app-nav-text{
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
   }
 
   .tablet-nav-svg{
