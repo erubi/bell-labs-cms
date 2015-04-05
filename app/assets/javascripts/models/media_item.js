@@ -12,9 +12,10 @@ BellCMS.Models.MediaItem = Backbone.Model.extend({
   isImage: function(){
     if (this.get('media_type') == 'image'){
       return true;
+    } else {
+      console.log('false');
+      return false;
     }
-
-    return false;
   },
 
   hasInFilename: function(str){

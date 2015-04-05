@@ -19,26 +19,46 @@ BellCMS.Models.Module = Backbone.Model.extend({
     return this._mediaItems;
   },
 
-  videos: function(){
+  pageableMediaItems: function(){
     var mediaItems = this.mediaItems();
-    mediaItems.fullCollection =  new Backbone.VirtualCollection(this.mediaItems(), {
+
+    return new Backbone.PageableCollection(mediaItems.models, {
+      mode: 'client',
+      state: {
+        pageSize: 12
+      }
+    });
+  },
+
+
+  pageableVideoItems: function(){
+    var filtered  =  new Backbone.VirtualCollection(this.mediaItems(), {
       filter: function(mediaItem){
         return mediaItem.isVideo()
       }
     });
 
-    return mediaItems;
+    return new Backbone.PageableCollection(filtered.models, {
+      mode: 'client',
+      state: {
+        pageSize: 12
+      }
+    });
   },
 
-  images: function(){
-    var mediaItems = this.mediaItems();
-    mediaItems.fullCollection =  new Backbone.VirtualCollection(this.mediaItems(), {
+  pageableImageItems: function(){
+    var filtered =  new Backbone.VirtualCollection(this.mediaItems(), {
       filter: function(mediaItem){
         return mediaItem.isImage()
       }
     });
 
-    return mediaItems;
+    return new Backbone.PageableCollection(filtered.models, {
+      mode: 'client',
+      state: {
+        pageSize: 12
+      }
+    });
   },
 
   parse: function(payload){

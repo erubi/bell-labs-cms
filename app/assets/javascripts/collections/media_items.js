@@ -1,4 +1,4 @@
-BellCMS.Collections.MediaItems = Backbone.PageableCollection.extend({
+BellCMS.Collections.MediaItems = Backbone.Collection.extend({
   model: BellCMS.Models.MediaItem,
   url: 'api/media_items',
 
@@ -18,24 +18,11 @@ BellCMS.Collections.MediaItems = Backbone.PageableCollection.extend({
     return mediaItem;
   },
 
-  mode: 'client',
-
-  state: {
-    pageSize: 12
-  },
-
   byFilename: function(str){
    this.filter(function(mediaItem){
       mediaItem.hasInName(str);
    });
   },
-
-  // onlyImages: function(){
-  //   filtered = this.filter(function(m) {
-  //     return m.isImage()
-  //   });
-  //   return new BellCMS.Collections.MediaItems(filtered);
-  // },
 
   searchedSubset: function(str){
     return new Backbone.VirtualCollection(this, {

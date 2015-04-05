@@ -21,7 +21,13 @@ BellCMS.Controllers.MediaController= {
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
         var mediaItems;
 
-        mediaItems = module.mediaItems();
+        if (mediaType == 'image'){
+          mediaItems = module.pageableImageItems();
+        } else if (mediaType == 'video'){
+          mediaItems = module.pageableVideoItems();
+        } else {
+          mediaItems = module.pageableMediaItems();
+        }
 
         var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
 

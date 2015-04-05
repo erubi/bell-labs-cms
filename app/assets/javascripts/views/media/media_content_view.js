@@ -9,20 +9,13 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.mediaType = options.mediaType;
 
     // this.mediaChannel = Backbone.radio.channel('media-upload');
+  },
 
-    // this.mediaChannel.comply('new-media', this.render);
+  onBeforeRender: function(){
   },
 
   childViewOptions: {
     contentType: this.contentType
-  },
-
-  filter: function (child, index, collection) {
-    if (this.mediaType){
-      return child.get('media_type') == this.mediaType;
-    } else {
-      return true;
-    }
   },
 
   ui: {
@@ -49,7 +42,7 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
 
   prevPage: function(event){
     event.preventDefault();
-    if (this.currentPage() > 1){
+    if (this.currentPage() > this.collection.state.firstPage){
       this.collection.getPreviousPage();
       this.render();
     }
