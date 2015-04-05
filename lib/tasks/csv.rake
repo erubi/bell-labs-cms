@@ -78,7 +78,7 @@ namespace :csv do
       end.first
 
       if media_item.nil?
-        gsubbed_name = asset_name.gsub(/\s/, '_')
+        gsubbed_name = asset_name.gsub(/[\s\[\]\(\)]/, '_')
 
         media_item = MediaItem.select do |m|
           if m.file_name && (m.file_name == gsubbed_name)
