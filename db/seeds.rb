@@ -13,7 +13,7 @@ MediaModule.create!([
   {name: "Physics", scene_type: "code"},
   {name: "Software", scene_type: "code"},
   {name: "Entrance Cue", scene_type: "video"},
-  {name: "Touchstone Activation", scene_type: "video"},
+  {name: "Activation", scene_type: "video"},
   {name: "Media Library", scene_type: "video"}
 ])
 

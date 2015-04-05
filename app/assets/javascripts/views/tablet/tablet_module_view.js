@@ -31,7 +31,9 @@ BellCMS.Views.TabletModuleItemView = Marionette.ItemView.extend({
   genName: function(){
     if (this.model.get('name') == "Media Library"){
       return "Gallery Mode";
-    } else{
+    } else if (this.model.get('name') == "Activation"){
+      return "Touchstone Activation";
+    } else {
       return this.model.get('name');
     }
   },
