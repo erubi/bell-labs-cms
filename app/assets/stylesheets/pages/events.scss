@@ -72,11 +72,6 @@
   margin-left: 200px;
 }
 
-.current-freq{
-  a{
-    color: green !important;
-  }
-}
 
 .middle-range-date{
   background: #5C95C6;
@@ -92,4 +87,70 @@
 
 .event-item-ctr{
   margin-bottom: 20px;
+}
+
+.display-freq-ctr{
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff !important;
+
+  button{
+    border: 1px solid #fff !important;
+    margin-top: -2px;
+
+    &:hover,
+    &:focus{
+      border: 1px solid #fff !important;
+    }
+
+    &:active{
+      outline: none;
+    }
+
+    .glyphicon{
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+  }
+
+  .dropdown-menu{
+    padding: 0;
+    margin: 0;
+    margin-top: -1px;
+    border: none !important;
+  }
+
+  button,
+  .dropdown-menu{
+
+    width: 200px  !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+
+    li{
+      &:hover{
+        background: transparent !important;
+      }
+      background: transparent !important;
+      border-radius: 0 !important;
+      border-bottom: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #fff;
+
+      &.current-freq{
+        a{
+          color: $green !important;
+        }
+      }
+
+      a{
+        &:hover{
+          background: transparent !important;
+        }
+        color: #fff !important;
+      }
+    }
+  }
+
 }
