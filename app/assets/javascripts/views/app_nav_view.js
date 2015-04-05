@@ -4,11 +4,11 @@ BellCMS.Views.AppNavView = Marionette.ItemView.extend({
   template: 'app/nav_bar',
 
   events: {
-    'click li': 'styleNav'
+    'click .navbar-app-link-ctr': 'styleNav'
   },
 
   styleNav: function(event){
-    this.$el.find('li').removeClass('active');
-    $(event.target.closest('li')).addClass('active');
+    this.$el.find('.navbar-app-link-ctr').removeClass('active');
+    $(event.target.closest('.navbar-app-link-ctr')).addClass('active');
   }
 });
