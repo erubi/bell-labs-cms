@@ -27,6 +27,11 @@ class MediaItem < ActiveRecord::Base
   scope :with_image, -> {where.not(image: nil)}
   scope :with_video, -> {where.not(video: nil)}
 
+  def filename_from_files
+    return self.image.file.filename unless self.image.file.nil?
+    return self.video.file.filename unless self.video.file.nil?
+  end
+
   def base_image_name
     unless self.image.file.nil?
       return File.basename(self.image.file.filename, '.*')
