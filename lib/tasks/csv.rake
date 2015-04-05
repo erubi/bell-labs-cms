@@ -1,7 +1,7 @@
 namespace :csv do
   desc "Import metadata from csv"
 
-  task image_metadata: :environment do
+  task import_metadata: :environment do
     require 'csv'
 
     csv_text = File.read("#{Rails.root}/public/csv/image_metadata.csv")
@@ -27,6 +27,20 @@ namespace :csv do
         end
       end.first
 
+      if media_item.nil?
+        gsubbed_name = asset_name.gsub(/\s/, '_')
+
+        media_item = MediaItem.select do |m|
+          if m.file_name && (m.file_name == gsubbed_name)
+            true
+          elsif m.base_image_name && (m.base_image_name == gsubbed_name)
+            true
+          elsif m.base_video_name && (m.base_video_name == gsubbed_name)
+            true
+          end
+        end.first
+      end
+
       next if media_item.nil?
 
       # update mediaitem attrs here
@@ -42,7 +56,7 @@ namespace :csv do
 
   end
 
-  task images_not_matched: :environment do
+  task media_not_matched: :environment do
     require 'csv'
 
     csv_text = File.read("#{Rails.root}/public/csv/image_metadata.csv")
