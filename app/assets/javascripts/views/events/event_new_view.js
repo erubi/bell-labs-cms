@@ -33,6 +33,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   toggleEventForm: function(event){
+    event.preventDefault();
     this.ui.newEventFormCtr.toggleClass('no-display');
   },
 
@@ -111,7 +112,6 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     this.model = new BellCMS.Models.Event();
     this.render();
     this.initCal();
-    this.toggleEventForm();
   },
 
   showError: function(event){
