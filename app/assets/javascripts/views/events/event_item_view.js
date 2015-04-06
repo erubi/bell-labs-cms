@@ -9,7 +9,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     'click .delete-event-btn' : 'deleteEvent',
     'change input[type="text"]' : 'updateEvent',
     'click .dropdown-menu li' : 'updateCountdown',
-    'click .visible-event-btn' : 'updateVisibility'
+    'click .eye-icon' : 'updateVisibility'
   },
 
   modelEvents: {
@@ -23,19 +23,21 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     endTimeInput: '.end-time-input'
   },
 
-  initialize: function(){
-  },
-
   templateHelpers: function(){
     return {
       eventStartISO: this.model.eventStartISO(),
       eventStartTime: this.model.eventStartTime(),
-      eventEndTime: this.model.eventEndTime()
+      eventEndTime: this.model.eventEndTime(),
+      eventStartInfo: this.eventStartInfo()
     }
   },
 
+  eventStartInfo: function(){
+    return this.model.eventStartDate().format('MM/DD/YY');
+  },
+
   onShow: function(){
-    this.initCal();
+    // this.initCal();
   },
 
   initCal: function(){
@@ -91,7 +93,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
 
   updateVisibility: function(event){
     event.preventDefault();
-    $('.eye-icon').toggleClass('glyphicon-eye-open').toggleClass('glyphicon-eye-close');
+    this.$el.find('.eye-icon').toggleClass('glyphicon-eye-open').toggleClass('glyphicon-eye-close');
     this.model.set('visible', !this.model.get('visible'));
     this.model.save();
   },
@@ -100,7 +102,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     event.preventDefault();
     var hours = $(event.currentTarget).data('value');
     this.model.set('countdown_hours', hours);
-    $('.countdown-text').text(hours + ' hours');
+    this.$el.find('.countdown-text').text(hours + ' hrs');
     this.model.save();
   },
 
