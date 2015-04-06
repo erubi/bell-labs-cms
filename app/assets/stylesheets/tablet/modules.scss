@@ -34,3 +34,28 @@
     }
   }
 }
+
+.module-item-box{
+  @media(max-width: 420px){
+    width: 100% !important;
+  }
+}
+
+@media(max-width: 420px){
+  .app-logo-header{
+    width: 90px !important;
+  }
+  .tablet-nav-svg{
+    height: 45% !important;
+  }
+  .tablet-event-text-ctr{
+    width: 100%;
+  }
+  .tablet-event-date-ctr{
+    width: 100%;
+    margin-left: 0px !important;
+  }
+  .tablet-event-date-ctr .time-info {
+    width: 80px;
+  }
+}
