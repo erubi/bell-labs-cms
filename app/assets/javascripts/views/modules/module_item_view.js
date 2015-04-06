@@ -11,8 +11,8 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
   onDomRefresh: function(){
     if ($('.weight-input').length){
       $('.weight-input').slider({
-        ticks: [0, 25, 50, 75, 100],
-        ticks_labels : ['0%', '25%', '', '', '100%'],
+        ticks: [0, 100],
+        ticks_labels : ['0%', '100%'],
         handle: 'square'
       });
     }
