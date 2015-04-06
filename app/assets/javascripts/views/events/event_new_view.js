@@ -61,8 +61,13 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     };
 
     this.model.set(attr);
+    this.displayStartDateInfo();
   },
 
+  displayStartDateInfo: function(){
+    var dateInfo = this.model.eventStartDate().format('MM/DD/YY');
+    this.$el.find('.new-event-start-date-info').text(dateInfo);
+  },
 
   updateStartEndTimes: function(e, data){
     var event_start = moment(this.model.eventStartDate());
@@ -98,6 +103,10 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   createEvent: function(event){
     event.preventDefault();
     var that = this;
+
+    if(!this.model.get('countdown_hours')){
+      this.model.set('countdown_hours', 1);
+    }
 
     var attrs = this.$el.find('form').serializeJSON();
     delete attrs['event-start-time'];
