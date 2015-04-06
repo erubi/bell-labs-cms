@@ -22,15 +22,6 @@ BellCMS.Collections.MediaItems = Backbone.Collection.extend({
    this.filter(function(mediaItem){
       mediaItem.hasInName(str);
    });
-  },
-
-  searchedSubset: function(str){
-    return new Backbone.VirtualCollection(this, {
-      filter: function(mediaItem){
-        return mediaItem.hasInFilename(str);
-      }
-    });
   }
-
 
 });

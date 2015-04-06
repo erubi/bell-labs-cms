@@ -59,12 +59,55 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
       this.originalCollection = this.collection;
     }
 
-    this.collection = this.originalCollection.searchedSubset(searchStr);
-    this.updateView();
+    if (searchStr.length == 0){
+      var results = this.originalCollection;
+    } else {
+      var results = this.searchedSubset(searchStr);
+    }
+
+    if (results){
+      this.collection = results;
+      this.updateView();
+    } else {
+      this.showError();
+    }
+  },
+
+  searchedSubset: function(str){
+
+    var results = this.collection.fullCollection.filter(function(m){
+      if (m.hasInFilename(str)){
+        return true;
+      } else if (m.hasInMetadata(str)){
+        return true;
+      }
+    });
+
+    if (results.length){
+      return new Backbone.PageableCollection(results, {
+        mode: 'client',
+        state: {
+          pageSize: 12
+        }
+      });
+    } else {
+      return false;
+    }
+
   },
 
   updateView: function(){
     this.render();
+  },
+
+  showError: function(event){
+    var error = this.model.validationError;
+    this.removeError();
+    this.$el.prepend('<div class="alert alert-warning">No results</div>');
+  },
+
+  removeError: function(){
+    this.$el.find('.alert').remove();
   }
 
 });
