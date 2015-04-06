@@ -18,7 +18,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-slider
-//= require bootstrap-switch
 //= require moment
 //= require underscore
 //= require backbone

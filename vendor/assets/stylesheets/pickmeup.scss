@@ -6,10 +6,10 @@
  * @copyright	Copyright (c) 2008-2009, Stefan Petre
  * @license		MIT License, see license.txt
  */
-$border-radius						: .4em;
-$background							: #000;
-$color								: #eee;
-$background-hover					: 'transparent';
+$border-radius						: 0em;
+$background							: transparent;
+$color								: #fff;
+$background-hover					: '';
 $color-hover						: #88c5eb;
 $nav-color							: $color;
 $nav-color-hover					: $color-hover;
@@ -24,6 +24,7 @@ $today-background					: $not-in-month-selected-background;
 $today-color						: $color-hover;
 
 .pickmeup {
+  border: 1px solid #fff;
 	background      : $background;
 	border-radius   : $border-radius;
 	-moz-box-sizing : content-box;
@@ -98,6 +99,8 @@ $today-color						: $color-hover;
 			}
 			.pmu-month {
 				width : 14em;
+        font-size: 20px;
+        font-weight: 700;
 			}
 		}
 

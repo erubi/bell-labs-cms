@@ -1,24 +1,29 @@
 <div class="event-form-ctr event-item-ctr">
-  <form class="form-inline">
-    <div class="form-group event-text-ctr">
+  <form>
+    <div class="event-text-ctr">
       <input
-      class="form-control"
+      class="header-input"
       type="text"
       name="header"
       value="<%= header %>">
 
       <input
-      class="form-control"
+      class="subheader-input"
       type="text"
       name="subheader"
       value="<%= subheader %>">
     </div>
 
-    <div class="form-group event-date-ctr">
-      <div class="event-calendar" >
-        <span>Calendar</span>
-       </div>
-      <div id="event-time-ctr">
+    <div class="event-date-ctr event-datetime-ctr">
+      <div class="event-calendar-ctr">
+        <div>
+          <span class="event-calendar glyphicon glyphicon-calendar"></span>
+        </div>
+        <div>
+          <span class="event-start-date-info"><%= eventStartInfo %></span>
+        </div>
+      </div>
+      <div id="event-time-ctr" class="event-time-info-ctr">
         <input
           class="start-time-input"
           type="time"
@@ -32,14 +37,19 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <div class="countdown-dropdown dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
-          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-          <span class="countdown-text"><%= countdown_hours %> hours</span>
-          <span class="caret"></span>
+    <div class="event-countdown-ctr">
+      <!-- Split button -->
+      <div class="btn-group">
+        <button type="button" class="btn countdown-button-left">
+          <span class="glyphicon glyphicon-time"></span>
         </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <button type="button" class="btn countdown-button-right dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span class="countdown-text"><%= countdown_hours + ' hrs'%></span>
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li data-value="1"><a href="#">1 hrs</a></li>
           <li data-value="2"><a href="#">2 hrs</a></li>
           <li data-value="3"><a href="#">3 hrs</a></li>
           <li data-value="6"><a href="#">6 hrs</a></li>
@@ -47,17 +57,9 @@
           <li data-value="24"><a href="#">24 hrs</a></li>
         </ul>
       </div>
-
     </div>
 
-    <div class="form-group delete-event-ctr">
-      <button class="form-control delete-event-btn">
-        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-      </button>
-    </div>
-
-    <div class="form-group visible-event-ctr">
-      <button class="form-control visible-event-btn">
+    <div class="visible-event-ctr">
         <% if (visible) { %>
         <span
           class="eye-icon glyphicon glyphicon-eye-open"
@@ -69,7 +71,11 @@
           aria-hidden="true">
         </span>
         <% } %>
-      </button>
     </div>
+
+    <div class="cancel-event-ctr">
+      <span class="glyphicon glyphicon-trash delete-event-btn"></span>
+    </div>
+
   </form>
 </div>

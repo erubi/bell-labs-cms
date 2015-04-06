@@ -16,23 +16,26 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
         handle: 'square'
       });
     }
+  },
 
-    if($('.on-off-switch').length){
-      $('.on-off-switch').bootstrapSwitch({
-        state: BellCMS.Models.configModel.get('video_player_enabled')
-      });
+  templateHelpers: function(){
+    return {
+      videoPlayerOn: BellCMS.Models.configModel.get('video_player_enabled')
     }
   },
 
   events: {
     'slideStop .weight-input' : 'updateModelWeight',
-    'switchChange.bootstrapSwitch .on-off-switch' : 'toggleVideoPlayer'
+    'click .video-player-on' : 'toggleVideoPlayer',
+    'click .video-player-off' : 'toggleVideoPlayer'
   },
 
-  toggleVideoPlayer: function(event, state){
-    var videoPlayerStatus = state;
+  toggleVideoPlayer: function(event){
+    event.preventDefault()
     var configModel = BellCMS.Models.configModel;
-    configModel.set('video_player_enabled', videoPlayerStatus);
+    var state = !configModel.get('video_player_enabled');
+
+    configModel.set('video_player_enabled', state);
     configModel.save();
   },
 

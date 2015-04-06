@@ -12,14 +12,29 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   },
 
   ui: {
-    calendar: '#new-event-calendar'
+    calendar: '#new-event-calendar',
+    newEventBtn: '#add-new-event-btn',
+    newEventFormCtr: '#new-event-form-ctr',
+    cancelCreateBtn: '#cancel-new-event'
   },
 
   events: {
     'click #save-new-event' : 'createEvent',
     'click .dropdown-menu li' : 'updateCountdown',
     'change #end-time-input' : 'updateStartEndTimes',
-    'change #start-time-input' : 'updateStartEndTimes'
+    'change #start-time-input' : 'updateStartEndTimes',
+    'click @ui.newEventBtn' : 'toggleEventForm',
+    'click @ui.cancelCreateBtn' : 'cancelNewEvent'
+  },
+
+  cancelNewEvent: function(event){
+    event.preventDefault();
+    this.refreshView();
+  },
+
+  toggleEventForm: function(event){
+    event.preventDefault();
+    this.ui.newEventFormCtr.toggleClass('no-display');
   },
 
   initCal: function(){
@@ -73,7 +88,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     event.preventDefault();
     var hours = $(event.currentTarget).data('value');
     this.model.set('countdown_hours', hours);
-    $('#countdown-text').text(' ' + hours + ' hours');
+    $('#countdown-text').text(' ' + hours + ' hrs');
   },
 
   createEvent: function(event){
@@ -86,13 +101,17 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
     this.model.save(attrs, {
       success: function(){
-          that.removeError();
           BellCMS.Collections.events.unshift(that.model);
-          that.model = new BellCMS.Models.Event();
-          that.render();
-          that.initCal();
+          that.refreshView();
       }
     });
+  },
+
+  refreshView: function(){
+    this.removeError();
+    this.model = new BellCMS.Models.Event();
+    this.render();
+    this.initCal();
   },
 
   showError: function(event){

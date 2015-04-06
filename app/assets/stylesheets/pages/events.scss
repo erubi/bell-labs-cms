@@ -1,28 +1,13 @@
 #events-ctr{
-  // input, {
-  //   display: block;
-  // }
-
   label{
     font-size: 12px;
     width: 60px;
     margin-left: 10px;
   }
 
-  input[type="text"]{
-    width: 100%;
-    text-align: center;
-  }
-
   input[type="number"]{
     width: 100%;
   }
-
-  // .new-event-form-ctr{
-  //   div{
-  //     height: 30px;
-  //   }
-  // }
 }
 
 .events-layout-ctr{
@@ -33,38 +18,39 @@
   margin-top: 15px;
 }
 
-.new-event-form-ctr,
-.event-form-ctr{
-  .form-group{
-    vertical-align: top;
-  }
-}
-
-.event-text-ctr{
-  width: 335px;
-  input{
-    margin-bottom: 10px;
-  }
-}
-
-.event-date-ctr{
-  input{
-    margin-bottom: 10px;
-  }
-}
-
-.form-control{
-  border-radius: 0px !important;
-}
-
-.delete-event-ctr,
+.event-text-ctr,
+.event-date-ctr,
+.event-countdown-ctr,
 .save-event-ctr,
+.cancel-event-ctr,
 .visible-event-ctr{
-  float: right;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-date-ctr,
+.event-countdown-ctr,
+.save-event-ctr,
+.cancel-event-ctr,
+.visible-event-ctr{
+  margin-left: 30px;
 }
 
 .save-event-ctr{
-  text-transform: uppercase;
+  .glyphicon{
+    cursor: pointer;
+    font-size: 30px;
+    color: $green;
+  }
+}
+
+.cancel-event-ctr,
+.visible-event-ctr{
+  .glyphicon{
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+  }
 }
 
 .display-freq-ctr{
@@ -72,11 +58,6 @@
   margin-left: 200px;
 }
 
-.current-freq{
-  a{
-    color: green !important;
-  }
-}
 
 .middle-range-date{
   background: #5C95C6;
@@ -92,4 +73,210 @@
 
 .event-item-ctr{
   margin-bottom: 20px;
+}
+
+.display-freq-ctr{
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff !important;
+
+  button{
+    border: 1px solid #fff !important;
+    margin-top: -2px;
+
+    &:hover,
+    &:focus{
+      border: 1px solid #fff !important;
+    }
+
+    &:active{
+      outline: none;
+    }
+
+    .glyphicon{
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+  }
+
+  .dropdown-menu{
+    padding: 0;
+    margin: 0;
+    margin-top: -1px;
+    border: none !important;
+  }
+
+  button,
+  .dropdown-menu{
+
+    width: 200px  !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+
+    li{
+      &:hover{
+        background: transparent !important;
+      }
+      background: transparent !important;
+      border-radius: 0 !important;
+      border-bottom: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #fff;
+
+      &.current-freq{
+        a{
+          color: $green !important;
+        }
+      }
+
+      a{
+        &:hover{
+          background: transparent !important;
+        }
+        color: #fff !important;
+      }
+    }
+  }
+
+}
+
+.add-new-event-btn{
+  display: inline-block;
+  background-color: $light-blue;
+  border: 1px solid #fff;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 34px;
+  margin-bottom: 8px;
+}
+
+.event-form-ctr,
+.new-event-form-ctr{
+  >div{
+    vertical-align: top;
+  }
+
+  form{
+    div{
+    }
+  }
+
+  input[type="text"]{
+    background: transparent;
+    width: 500px;
+    -webkit-appearance: none;
+    margin-bottom: 0;
+    text-align: center;
+    color: #fff;
+  }
+
+  input::-webkit-input-placeholder,
+  input:-moz-placeholder, /* Firefox 18- */
+  input:-ms-input-placeholder {
+    color: #fff;
+  }
+
+  .header-input{
+    padding: 8px;
+    border: 1px solid #fff;
+    display: block;
+  }
+
+  .subheader-input{
+    display: block;
+    padding: 8px;
+    border: none;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.event-time-ctr{
+  border: 1px solid #fff;
+  width: 100%;
+  height: 40px;
+
+  input{
+    float: right;
+    background: transparent;
+    width: 60px;
+    font-size: 10px;
+    border: 1px solid #fff;
+    margin-right: 5px;
+    margin-top: 3px;
+    line-height: 28px !important;
+  }
+}
+
+.countdown-button-left,
+.countdown-button-right{
+  background: transparent;
+  height: 40px;
+  border-radius: 0 !important;
+
+  &:hover,
+  &:focus,
+  &:active{
+    color: #fff !important;
+  }
+}
+
+.countdown-button-left{
+  font-size: 24px !important;
+  border: 1px solid #fff !important;
+}
+
+.countdown-button-right{
+  border-right: 1px solid #fff !important;
+  border-top: 1px solid #fff !important;
+  border-bottom: 1px solid #fff !important;
+}
+
+.event-datetime-ctr{
+  width: 212px;
+  border: 1px solid #fff;
+}
+
+.event-calendar-ctr{
+  height: 40px;
+  border-bottom: 1px solid #fff;
+
+  div{
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+
+    &:last-child{
+      border-left: 1px solid #fff;
+    }
+  }
+
+  .glyphicon{
+    font-size: 30px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .event-start-date-info{
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+  }
+}
+
+.event-time-info-ctr{
+  input{
+    width: 77px;;
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    &:first-child{
+      border-right: 1px solid #fff;
+    }
+  }
 }
