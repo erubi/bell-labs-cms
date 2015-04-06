@@ -7,11 +7,6 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.contentType = options.contentType;
     this.childView = BellCMS.Views.MediaItemView;
     this.mediaType = options.mediaType;
-
-    // this.mediaChannel = Backbone.radio.channel('media-upload');
-  },
-
-  onBeforeRender: function(){
   },
 
   childViewOptions: {
@@ -33,7 +28,7 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
   },
 
   modelEvents: {
-    'sync' : this.render
+    'sync' : 'updateView'
   },
 
   currentPage: function(){
@@ -66,10 +61,6 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
 
     this.collection = this.originalCollection.searchedSubset(searchStr);
     this.updateView();
-  },
-
-  modelEvents: {
-    'sync' : 'updateView'
   },
 
   updateView: function(){

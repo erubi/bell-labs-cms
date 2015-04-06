@@ -95,17 +95,16 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
         data.formData = that.grabFormData(data);
       },
 
-      done: function(e, data){
+      stop: function(e, data){
         that.render();
         that.model.fetch();
         that.configureUpload();
-        // that.mediaChannel
-      }
-    });
+      },
 
-    $('#upload-media').bind('fileuploadprogress', function (e, data) {
-      var percent = (data.loaded/data.total);
-      that.ui.progressPercentage.text(percent);
+      progressall: function(e, data){
+        var percent = parseInt(data.loaded / data.total * 100, 10);
+        that.ui.progressPercentage.text(percent + '%');
+      }
     });
   },
 
