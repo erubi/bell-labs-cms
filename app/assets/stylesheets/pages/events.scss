@@ -20,27 +20,34 @@
 
 .event-text-ctr,
 .event-date-ctr,
-.event-countdown-ctr{
+.event-countdown-ctr,
+.save-event-ctr,
+.cancel-event-ctr{
   display: inline-block;
   vertical-align: top;
 }
 
-.event-date-ctr{
-  margin: 0 34px;
-}
-
-.form-control{
-  border-radius: 0px !important;
-}
-
-.delete-event-ctr,
+.event-date-ctr,
+.event-countdown-ctr,
 .save-event-ctr,
-.visible-event-ctr{
-  float: right;
+.cancel-event-ctr{
+  margin-left: 30px;
 }
 
 .save-event-ctr{
-  text-transform: uppercase;
+  .glyphicon{
+    cursor: pointer;
+    font-size: 30px;
+    color: $green;
+  }
+}
+
+.cancel-event-ctr{
+  .glyphicon{
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+  }
 }
 
 .display-freq-ctr{
@@ -213,6 +220,12 @@
   background: transparent;
   height: 40px;
   border-radius: 0 !important;
+
+  &:hover,
+  &:focus,
+  &:active{
+    color: #fff !important;
+  }
 }
 
 .countdown-button-left{

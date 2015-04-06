@@ -14,7 +14,8 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   ui: {
     calendar: '#new-event-calendar',
     newEventBtn: '#add-new-event-btn',
-    newEventFormCtr: '#new-event-form-ctr'
+    newEventFormCtr: '#new-event-form-ctr',
+    cancelCreateBtn: '#cancel-new-event'
   },
 
   events: {
@@ -22,13 +23,17 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     'click .dropdown-menu li' : 'updateCountdown',
     'change #end-time-input' : 'updateStartEndTimes',
     'change #start-time-input' : 'updateStartEndTimes',
-    'click @ui.newEventBtn' : 'showEventForm'
+    'click @ui.newEventBtn' : 'toggleEventForm',
+    'click @ui.cancelCreateBtn' : 'cancelNewEvent'
   },
 
-  showEventForm: function(event){
+  cancelNewEvent: function(event){
     event.preventDefault();
-    this.ui.newEventFormCtr.toggleClass('no-display');
+    this.refreshView();
+  },
 
+  toggleEventForm: function(event){
+    this.ui.newEventFormCtr.toggleClass('no-display');
   },
 
   initCal: function(){
@@ -95,13 +100,18 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
     this.model.save(attrs, {
       success: function(){
-          that.removeError();
           BellCMS.Collections.events.unshift(that.model);
-          that.model = new BellCMS.Models.Event();
-          that.render();
-          that.initCal();
+          that.refreshView();
       }
     });
+  },
+
+  refreshView: function(){
+    this.removeError();
+    this.model = new BellCMS.Models.Event();
+    this.render();
+    this.initCal();
+    this.toggleEventForm();
   },
 
   showError: function(event){
