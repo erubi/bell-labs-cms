@@ -58,4 +58,9 @@
   .tablet-event-date-ctr .time-info {
     width: 80px;
   }
+
+  html, body {
+    max-width: 100%;
+    overflow-x:hidden;
+  }
 }
