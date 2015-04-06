@@ -16,24 +16,28 @@
 
     <div class="event-date-ctr event-datetime-ctr">
       <div class="event-calendar-ctr">
-        <div>
+        <div class="event-calendar-btn-ctr">
           <span class="event-calendar glyphicon glyphicon-calendar"></span>
         </div>
-        <div>
+        <div class="event-start-date-info-ctr">
           <span class="event-start-date-info"><%= eventStartInfo %></span>
         </div>
       </div>
       <div id="event-time-ctr" class="event-time-info-ctr">
-        <input
-          class="start-time-input"
-          type="time"
-          name="event-start-time"
-          value="<%= eventStartTime %>">
-        <input
-          class="end-time-input"
-          type="time"
-          name="event-end-time"
-          value="<%= eventEndTime %>">
+        <div>
+          <input
+            class="start-time-input"
+            type="time"
+            name="event-start-time"
+            value="<%= eventStartTime %>">
+        </div>
+        <div>
+          <input
+            class="end-time-input"
+            type="time"
+            name="event-end-time"
+            value="<%= eventEndTime %>">
+        </div>
       </div>
     </div>
 

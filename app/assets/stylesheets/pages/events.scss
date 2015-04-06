@@ -238,11 +238,12 @@
 
 .event-datetime-ctr{
   width: 212px;
+  height: 80px;
   border: 1px solid #fff;
 }
 
 .event-calendar-ctr{
-  height: 40px;
+  height: 50%;
   border-bottom: 1px solid #fff;
 
   div{
@@ -262,22 +263,49 @@
     padding: 5px;
   }
 
+  .event-calendar-btn-ctr{
+    position: relative;
+    display: inline-block;
+    width: 18%;
+    height: 100%;
+  }
+
+  .event-calendar-btn{
+    @include xy-center;
+  }
+
+  .event-start-date-info-ctr{
+    position: relative;
+    display: inline-block;
+    width: 76%;
+    height: 100%;
+  }
+
   .event-start-date-info{
-    text-align: center;
-    vertical-align: middle;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
 .event-time-info-ctr{
+  height: 50%;
+  div{
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    height: 100%;
+    &:first-child{
+      border-right: 1px solid #fff;
+    }
+  }
+
   input{
-    width: 77px;;
+    @include xy-center;
     padding: 0;
     border: 0;
     background: transparent;
 
-    &:first-child{
-      border-right: 1px solid #fff;
-    }
   }
 }

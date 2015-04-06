@@ -71,6 +71,13 @@ body{
     transform: translateX(-50%);
 }
 
+@mixin xy-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @mixin setLinkStyleAll {
   &, &:hover, &:link, &:active, &:visited {
         @content;
