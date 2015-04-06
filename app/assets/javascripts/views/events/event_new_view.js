@@ -88,7 +88,11 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     event.preventDefault();
     var hours = $(event.currentTarget).data('value');
     this.model.set('countdown_hours', hours);
-    $('#countdown-text').text(' ' + hours + ' hrs');
+    if (hours == 1){
+      $('#countdown-text').text(' ' + hours + ' hr');
+    } else {
+      $('#countdown-text').text(' ' + hours + ' hrs');
+    }
   },
 
   createEvent: function(event){
