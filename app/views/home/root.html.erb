@@ -5,5 +5,8 @@
 $(function(){
     // can pass options to start event callbacks here
     BellCMS.start({});
-    });
+    if (screen.width <= 1024) {
+      Backbone.history.navigate("/tablet", true);
+    }
+});
 </script>
