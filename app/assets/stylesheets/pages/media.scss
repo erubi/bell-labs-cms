@@ -172,3 +172,17 @@ input[readonly] {
   }
 
 }
+
+.file-constraints-header{
+   text-align: center;
+   font-weight: 300;
+   font-size: 13px;
+}
+
+.file-constraints-ul{
+  font-weight: 300;
+  font-size: 13px;
+  li{
+    text-align: center;
+  }
+}

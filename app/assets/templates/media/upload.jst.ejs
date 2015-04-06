@@ -20,9 +20,13 @@
   </div>
 
   <div class="col-sm-3">
-    <p>Notes on file constraints</p>
+    <p class="file-constraints-header">Notes on file constraints:</p>
+    <ul class="file-constraints-ul">
+      <% _.each(fileConstraintData, function(el, i){ %>
+          <li><%= el %></li>
+      <% }) %>
+    </ul>
   </div>
-
 
   <div class="col-sm-5 <%= metadataVisibleClass %>">
     <form id="metadata-form">

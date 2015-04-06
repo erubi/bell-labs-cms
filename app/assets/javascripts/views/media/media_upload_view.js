@@ -10,7 +10,9 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     additionalMetadata: '#meta4',
   },
 
-  initialize: function(){
+  initialize: function(options){
+    this.mediaType = options.mediaType;
+
     this.mediaChannel = Backbone.Radio.channel('mediaUpload');
     this.mediaChannel.comply({
       'showMetadata': this.showMetadata
@@ -23,8 +25,39 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
 
   templateHelpers: function(){
     return {
-      metadataVisibleClass: this.metadataVisible()
+      metadataVisibleClass: this.metadataVisible(),
+      fileConstraintData: this.fileConstraintData()
     };
+  },
+
+  fileConstraintData: function(){
+    var modelName = this.model.get('name');
+    if (modelName == 'Media Library' && this.mediaType == 'video'){
+      return {
+        format: 'Format: MPEG4, H264 high L5.1, yuv420p',
+        resolution: 'Resolution: 3840x1080 pixels' ,
+        max_bitrate: 'Max Bitrate: 70Mpbs',
+        audio: 'Audio: AAC lc, 48kHz'
+      }
+    } else if (modelName == 'Media Library' && this.mediaType == 'image'){
+      return {
+        format: 'Format: PNG',
+        notes: 'Notes: Images at least 1080 pixels high recommended'
+      }
+    } else if (modelName == 'Bell Labs Heroes'){
+      return {
+        format: 'Format: PNG',
+        resolution: '1620x1080 pixels',
+        notes: 'Heroes should be keyed-out over a transparent background'
+      };
+    } else if (modelName == 'Video Player'){
+      return {
+        format: 'Format: MPEG4, H264 high L5.1, yuv420p',
+        resolution: 'Resolution: 3566x1080 pixels',
+        max_bitrate: 'Max Bitrate: 70Mbps',
+        audio: 'Audio: AAC lc, 48kHz'
+      }
+    }
   },
 
   metadataVisible: function(){

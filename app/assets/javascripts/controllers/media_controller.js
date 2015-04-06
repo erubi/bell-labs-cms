@@ -32,7 +32,8 @@ BellCMS.Controllers.MediaController= {
         var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
 
         var uploadView = new BellCMS.Views.MediaUploadView({
-          model: module
+          model: module,
+          mediaType: mediaType
         });
 
         var contentView = new BellCMS.Views.MediaContentView({

@@ -13,7 +13,6 @@ BellCMS.Models.MediaItem = Backbone.Model.extend({
     if (this.get('media_type') == 'image'){
       return true;
     } else {
-      console.log('false');
       return false;
     }
   },
