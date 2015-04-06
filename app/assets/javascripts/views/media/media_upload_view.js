@@ -21,6 +21,20 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     this.configureUpload();
   },
 
+  templateHelpers: function(){
+    return {
+      metadataVisibleClass: this.metadataVisible()
+    };
+  },
+
+  metadataVisible: function(){
+    if (this.model.get('name') != 'Media Library'){
+      return 'no-display';
+    } else {
+      return '';
+    }
+  },
+
   showMetadata: function(mediaItemId){
     var mediaItem = this.model.mediaItems().getOrFetch(mediaItemId);
     this.ui.bellLabsPeople.val(mediaItem.get('bell_labs_people'));
