@@ -38,18 +38,12 @@ BellCMS.Models.MediaItem = Backbone.Model.extend({
 
     var lower = str.toLowerCase();
 
-    if (bellLabsPeople.indexOf(str) != -1 ||
-        topLevelCategory.indexOf(str) != -1 ||
-        keywords.indexOf(str) != -1 ||
-        additional.indexOf(str) != -1 ||
-        description.indexOf(str) != -1) {
-          return true;
-    } else if (bellLabsPeople.indexOf(lower) != -1 ||
-        topLevelCategory.indexOf(lower) != -1 ||
-        keywords.indexOf(lower) != -1 ||
-        additional.indexOf(lower) != -1 ||
-        description.indexOf(lower) != -1) {
-          return true;
+    if (bellLabsPeople.toLowerCase().indexOf(lower) != -1 ||
+        topLevelCategory.toLowerCase().indexOf(lower) != -1 ||
+        keywords.toLowerCase().indexOf(lower) != -1 ||
+        additional.toLowerCase().indexOf(lower) != -1 ||
+        description.toLowerCase().indexOf(lower) != -1) {
+      return true;
     } else {
       return false;
     }
