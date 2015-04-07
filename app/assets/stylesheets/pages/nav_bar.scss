@@ -24,38 +24,16 @@
   }
 }
 
-
-.server-app-nav-ctr{
-  @include horizontal-align;
-  top: 0;
-  background: transparent;
-  font-size: 30px;
-  color: #fff;
-  height: 153px;
-  margin: auto;
-
-  a{
-    float: right;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    color: #8E8CAE;
-
-    @media(max-width: 768px){
-      margin-right: 8px;
-    }
-  }
-
-  @media(max-width: 768px){
-    width: 100% !important;
-  }
-}
-
 .navbar-app-links-ctr{
   @include horizontal-align;
   display: inline-block;
   width: 700px;
   text-align:center;
   height: $navbar-app-height;
+
+  @media(max-width: 420px){
+    width: 100%;
+  }
 }
 
 .navbar-app-link-ctr{
@@ -91,3 +69,19 @@
   }
 }
 
+.manage-user-nav-link-ctr{
+  float: right;
+  height: 100%;
+  display: inline-block;
+  font-size: 35px;
+  opacity: 0.5;
+  text-align: center;
+
+  a{
+    margin-top: 35px;
+
+    @include setLinkStyleAll{
+      text-decoration: none;
+    }
+  }
+}

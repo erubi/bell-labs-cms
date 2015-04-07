@@ -1,5 +1,5 @@
 class Users::ManagementController < ApplicationController
-  before_action :require_admin
+  before_action :require_admin_or_sign_out
 
   def show
     @new_admin = User.new(admin: true)

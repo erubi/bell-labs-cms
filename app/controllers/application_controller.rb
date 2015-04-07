@@ -26,6 +26,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin_or_sign_out
+    if !current_user.admin
+      sign_out(current_user)
+      redirect_to root_url
+    end
+  end
+
   def after_sign_in_path_for(resource)
     root_url
   end
