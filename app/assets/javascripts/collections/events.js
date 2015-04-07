@@ -66,7 +66,16 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
     });
 
     return subset;
-  }
+  },
 
+  allSubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return (!eventObj.isToday() && !eventObj.isThisWeek());
+      }
+    });
+
+    return subset;
+  }
 
 });
