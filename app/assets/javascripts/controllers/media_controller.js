@@ -22,36 +22,33 @@ BellCMS.Controllers.MediaController= {
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
         var mediaItems;
 
-        if (mediaType == 'image'){
-          mediaItems = module.pageableImageItems();
-        } else if (mediaType == 'video'){
-          mediaItems = module.pageableVideoItems();
-        } else {
-          mediaItems = module.pageableMediaItems();
-        }
-
-        var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
-
-        var uploadView = new BellCMS.Views.MediaUploadView({
-          model: module,
-          mediaType: mediaType
-        });
-
-        var contentView = new BellCMS.Views.MediaContentView({
-          model: module,
-          collection: mediaItems,
-          mediaType: mediaType
-        });
-
-        BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-        mediaLayout.showChildView('mediaUploadContainer', uploadView);
-        mediaLayout.showChildView('mediaContentContainer', contentView);
-
-        contentView.showSpinner();
-
         module.fetch({
           success: function(){
-            contentView.updateView();
+            if (mediaType == 'image'){
+              mediaItems = module.pageableImageItems();
+            } else if (mediaType == 'video'){
+              mediaItems = module.pageableVideoItems();
+            } else {
+              mediaItems = module.pageableMediaItems();
+            }
+
+            var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
+
+            var uploadView = new BellCMS.Views.MediaUploadView({
+              model: module,
+              mediaType: mediaType
+            });
+
+            var contentView = new BellCMS.Views.MediaContentView({
+              model: module,
+              collection: mediaItems,
+              mediaType: mediaType
+            });
+
+            BellCMS.rootView.showChildView('contentContainer', mediaLayout);
+            mediaLayout.showChildView('mediaUploadContainer', uploadView);
+            mediaLayout.showChildView('mediaContentContainer', contentView);
+
           }
         });
       }
