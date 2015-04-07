@@ -4,10 +4,11 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
 
   initialize: function(){
     this.mediaChannel = Backbone.Radio.channel('mediaUpload');
+    vex.defaultOptions.className = 'vex-theme-plain';
   },
 
   events: {
-  'click .delete-media-btn': 'destroyModel',
+  'click .delete-media-btn': 'destroyModelPrompt',
   'click .media-box': 'showMetadata'
   },
 
@@ -22,10 +23,23 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
     }
   },
 
-  destroyModel: function(event){
+  destroyModelPrompt: function(event){
     event.preventDefault();
     event.stopPropagation();
-    this.model.destroy();
+    var that = this;
+
+    vex.dialog.confirm({
+      message: 'Are you sure you want to delete this media?',
+      callback: function(val){
+        that.destroyModel(val);
+      }
+    });
+  },
+
+  destroyModel: function(confirm){
+    if (confirm){
+      this.model.destroy();
+    }
   }
 
 });

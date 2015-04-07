@@ -28,7 +28,7 @@
 //= require backbone.virtual-collection
 //= require backbone.paginator
 //= require jquery.pickmeup
-//= require vex.dialog
+//= require vex.combined.min
 //= require bell_labs_cms
 //= require_tree ../templates
 //= require_tree ./models
