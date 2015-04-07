@@ -8,12 +8,14 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     topLevelCategory: '#meta2',
     keywords: '#meta3',
     additionalMetadata: '#meta4',
+    metadataForm: '#metadata-form'
   },
 
   initialize: function(options){
     this.mediaType = options.mediaType;
 
     this.mediaChannel = Backbone.Radio.channel('mediaUpload');
+
     this.mediaChannel.comply({
       'showMetadata': this.showMetadata
     }, this)
@@ -74,6 +76,17 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     this.ui.topLevelCategory.val(mediaItem.get('top_level_category'));
     this.ui.keywords.val(mediaItem.get('keywords'));
     this.ui.additionalMetadata.val(mediaItem.get('additional_metadata'));
+
+    this.setUpMetadataEdit(mediaItemId);
+  },
+
+  setUpMetadataEdit: function(mediaItemId){
+    var that = this;
+
+    this.ui.metadataForm.on('change', function(){
+      var data = that.ui.metadataForm.serializeJSON();
+      that.mediaChannel.command('updateMetadata', mediaItemId, data);
+    });
   },
 
   configureUpload: function(){

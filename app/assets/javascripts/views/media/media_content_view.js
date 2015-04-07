@@ -24,11 +24,19 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     'submit #media-search-form' : 'searchMedia',
     'click #media-search-btn' : 'searchMedia',
     'click @ui.prevPage': 'prevPage',
-    'click @ui.nextPage': 'nextPage'
+    'click @ui.nextPage': 'nextPage',
+    'click .media-box' : 'highlightMediaBox'
   },
 
   modelEvents: {
     'sync' : 'updateView'
+  },
+
+  highlightMediaBox: function(event){
+    event.preventDefault();
+
+    this.$el.find('.media-box').removeClass('media-box-highlighted');
+    $(event.currentTarget).closest('.media-box').addClass('media-box-highlighted');
   },
 
   currentPage: function(){

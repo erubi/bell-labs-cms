@@ -3,8 +3,18 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
   template: 'media/item',
 
   initialize: function(){
+    var that = this;
     this.mediaChannel = Backbone.Radio.channel('mediaUpload');
+
     vex.defaultOptions.className = 'vex-theme-plain';
+
+    this.mediaChannel.comply('updateMetadata', function(id, data){
+      if (that.model.id == id){
+        that.model.save(data);
+      } else {
+        return;
+      }
+    });
   },
 
   events: {
