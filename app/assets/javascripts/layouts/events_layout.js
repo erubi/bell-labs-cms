@@ -42,8 +42,8 @@ BellCMS.Layouts.EventsLayout = Marionette.LayoutView.extend({
     }));
 
     this.showChildView('monthEventsContainer', new BellCMS.Views.EventCompositeView({
-      collection: events.monthSubset(),
-      type: 'This Month'
+      collection: events.allSubset(),
+      type: 'All Events'
     }));
   }
 

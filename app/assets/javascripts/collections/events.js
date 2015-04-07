@@ -3,7 +3,6 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
 
   url: 'api/events',
 
-
   getOrFetch: function(id){
     var events = this;
 
@@ -19,6 +18,8 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
 
     return eventModel;
   },
+
+  comparator: 'event_start_time_ms',
 
   todayEvents: function(){
     return this.filter(function(eventObj){
@@ -66,7 +67,16 @@ BellCMS.Collections.Events = Backbone.Collection.extend({
     });
 
     return subset;
-  }
+  },
 
+  allSubset: function(){
+    var subset = new Backbone.VirtualCollection(this, {
+      filter: function (eventObj) {
+        return (!eventObj.isToday() && !eventObj.isThisWeek());
+      }
+    });
+
+    return subset;
+  }
 
 });

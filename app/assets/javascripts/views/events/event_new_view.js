@@ -114,8 +114,8 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
 
     this.model.save(attrs, {
       success: function(){
-          BellCMS.Collections.events.unshift(that.model);
-          that.refreshView();
+        BellCMS.Collections.events.add(that.model);
+        that.refreshView();
       }
     });
   },
