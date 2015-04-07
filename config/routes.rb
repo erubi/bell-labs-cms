@@ -29,6 +29,6 @@ Rails.application.routes.draw do
 
     resources :events, except: [:new, :edit]
     resources :media_modules, except: [:new, :edit]
-    resources :media_items, only: [:destroy, :show, :index]
+    resources :media_items, only: [:destroy, :show, :update, :index]
   end
 end
