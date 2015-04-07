@@ -18,6 +18,7 @@ BellCMS.Controllers.MediaController= {
   setUpMediaViews: function(moduleName, mediaType){
     BellCMS.Collections.modules.fetch({
       success: function(){
+
         var module = BellCMS.Collections.modules.findWhere({name: moduleName});
         var mediaItems;
 
@@ -45,6 +46,14 @@ BellCMS.Controllers.MediaController= {
         BellCMS.rootView.showChildView('contentContainer', mediaLayout);
         mediaLayout.showChildView('mediaUploadContainer', uploadView);
         mediaLayout.showChildView('mediaContentContainer', contentView);
+
+        contentView.showSpinner();
+
+        module.fetch({
+          success: function(){
+            contentView.hideSpinner();
+          }
+        });
       }
     });
   }

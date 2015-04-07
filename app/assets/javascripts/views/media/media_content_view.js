@@ -108,6 +108,14 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
 
   removeError: function(){
     this.$el.find('.alert').remove();
+  },
+
+  showSpinner: function(){
+    this.$el.find('.media-spinner').removeClass('no-display');
+  },
+
+  hideSpinner: function(){
+    this.$el.find('.media-spinner').addClass('no-display');
   }
 
 });
