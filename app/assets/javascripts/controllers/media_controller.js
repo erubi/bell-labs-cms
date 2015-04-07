@@ -51,7 +51,7 @@ BellCMS.Controllers.MediaController= {
 
         module.fetch({
           success: function(){
-            contentView.hideSpinner();
+            contentView.updateView();
           }
         });
       }
