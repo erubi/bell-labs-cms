@@ -46,7 +46,7 @@ BellCMS.Models.MediaItem = Backbone.Model.extend({
           return true;
     } else if (bellLabsPeople.indexOf(lower) != -1 ||
         topLevelCategory.indexOf(lower) != -1 ||
-        keywords.indexOf(str) != -1 ||
+        keywords.indexOf(lower) != -1 ||
         additional.indexOf(lower) != -1 ||
         description.indexOf(lower) != -1) {
           return true;
