@@ -75,7 +75,7 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
 
   searchedSubset: function(str){
 
-    var results = this.collection.fullCollection.filter(function(m){
+    var results = this.originalCollection.fullCollection.filter(function(m){
       if (m.hasInFilename(str)){
         return true;
       } else if (m.hasInMetadata(str)){
