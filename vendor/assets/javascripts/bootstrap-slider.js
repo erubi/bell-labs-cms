@@ -351,7 +351,11 @@
 				if (Array.isArray(this.options.ticks) && this.options.ticks.length > 0) {
 					for (i = 0; i < this.options.ticks.length; i++) {
 						var tick = document.createElement('div');
-						tick.className = 'slider-tick';
+            if (i == 0){
+              tick.className = 'slider-tick slider-tick-first';
+            } else {
+              tick.className = 'slider-tick';
+            }
 
 						this.ticks.push(tick);
 						sliderTrack.appendChild(tick);

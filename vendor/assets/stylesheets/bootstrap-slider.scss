@@ -33,7 +33,8 @@
   height: 20px;
 }
 .slider.slider-horizontal .slider-track {
-  height: 10px;
+  background-image: none !important;
+  height: 1px;
   width: 100%;
   margin-top: -5px;
   top: 50%;
@@ -46,6 +47,12 @@
   top: 0;
   bottom: 0;
 }
+.slider.slider-horizontal{
+  .slider-tick-first{
+    left: -1px !important;
+  }
+}
+
 .slider.slider-horizontal .slider-tick,
 .slider.slider-horizontal .slider-handle {
   margin-left: -10px;
@@ -195,12 +202,15 @@
 }
 .slider-handle.custom {
   background: transparent none;
+  box-shadow: none;
+  margin-left: 0 !important;
 }
 .slider-handle.custom::before {
-  line-height: 20px;
-  font-size: 20px;
-  content: '\2605';
-  color: #726204;
+  line-height: 14px;
+  font-size: 29px;
+  content: '\007C';
+  color: $green;
+  font-weight: lighter;
 }
 .slider-tick {
   position: absolute;
@@ -228,12 +238,16 @@
 }
 .slider-tick.custom {
   background: transparent none;
+  box-shadow: none !important;
+  background-image: initial !important;
+  margin-left: 0 !important;
 }
 .slider-tick.custom::before {
-  line-height: 20px;
-  font-size: 20px;
-  content: '\2605';
-  color: #726204;
+  line-height: 14px;
+  font-size: 18px;
+  content: '\007C';
+  color: #fff;
+  font-weight: lighter;
 }
 .slider-tick.in-selection {
   background-image: -webkit-linear-gradient(top, #89cdef 0%, #81bfde 100%);
