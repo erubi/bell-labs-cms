@@ -7,6 +7,10 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
     this.contentType = options.contentType;
     this.childView = BellCMS.Views.MediaItemView;
     this.mediaType = options.mediaType;
+
+    this.mediaChannel = Backbone.Radio.channel('mediaUpload');
+
+    this.mediaChannel.comply('unhighlightMediaBox', this.unhighlightMediaBox, this);
   },
 
   childViewOptions: {
@@ -37,6 +41,10 @@ BellCMS.Views.MediaContentView = Marionette.CompositeView.extend({
 
     this.$el.find('.media-box').removeClass('media-box-highlighted');
     $(event.currentTarget).closest('.media-box').addClass('media-box-highlighted');
+  },
+
+  unhighlightMediaBox: function(){
+    this.$el.find('.media-box').removeClass('media-box-highlighted');
   },
 
   currentPage: function(){

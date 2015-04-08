@@ -38,5 +38,5 @@ events = Event.create!([
 users = User.create([
   {email: 'ib5k@example.com', password: 'password', admin: true},
   {email: 'guild@example.com', password: 'belllabs', admin: true},
-  {email: 'anomaly@example.com', password: 'anomaly', admin: true}
+  {email: 'anomaly@example.com', password: 'belllabs', admin: true}
 ])
