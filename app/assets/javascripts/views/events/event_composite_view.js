@@ -8,6 +8,7 @@ BellCMS.Views.EventCompositeView = Marionette.CompositeView.extend({
   initialize: function(options){
     this.mergeOptions(options, this.viewOptions);
     this.childView = BellCMS.Views.EventItemView;
+    this.listenTo(this.collection, 'change', this.render);
   },
 
   templateHelpers: function(){

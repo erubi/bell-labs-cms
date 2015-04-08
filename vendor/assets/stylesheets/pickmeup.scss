@@ -8,6 +8,7 @@
  */
 $border-radius						: 0em;
 $background							: transparent;
+$background-alt							: $dark-blue;
 $color								: #fff;
 $background-hover					: '';
 $color-hover						: #88c5eb;
@@ -154,4 +155,8 @@ $today-color						: $color-hover;
 	&:not(.pmu-view-years) .pmu-years {
 		display : none;
 	}
+}
+
+.pickmeup.event-item-calendar{
+  background: $background-alt;
 }

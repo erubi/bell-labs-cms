@@ -37,7 +37,7 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
   },
 
   onShow: function(){
-    // this.initCal();
+    this.initCal();
   },
 
   initCal: function(){
@@ -50,7 +50,8 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
         that.model.displayStartDate().toDate(),
         that.model.eventStartDate().toDate()
       ],
-      hide: that.updateStartEndDates.bind(that)
+      hide: that.updateStartEndDates.bind(that),
+      class_name: 'event-item-calendar'
     });
   },
 
