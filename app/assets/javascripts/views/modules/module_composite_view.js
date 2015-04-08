@@ -45,7 +45,7 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
         min: 5,
         max: max,
         ticks_labels : ['5 MIN', max + ' MIN'],
-        handle: 'square'
+        handle: 'custom'
       });
     }
   },
