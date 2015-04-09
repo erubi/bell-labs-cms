@@ -1,6 +1,13 @@
 BellCMS.Models.MediaItem = Backbone.Model.extend({
   urlRoot: 'api/media_items',
 
+  validate: function(attr, options){
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update media");
+    }
+  },
+
   isVideo: function(){
     if (this.get('media_type') == 'video'){
       return true;

@@ -2,4 +2,5 @@ json.cycle_duration Rails.application.config.cycle_duration
 json.video_player_enabled Rails.application.config.video_player_enabled
 json.video_player_duration Rails.application.config.video_player_duration
 json.event_freq Rails.application.config.event_frequency
+json.is_admin current_user.admin
 

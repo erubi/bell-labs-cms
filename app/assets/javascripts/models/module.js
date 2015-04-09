@@ -2,6 +2,16 @@ BellCMS.Models.Module = Backbone.Model.extend({
   urlRoot: 'api/media_modules',
 
   validate: function(attrs, options){
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      return "Must be admin to update modules";
+    }
+
+    // if(!BellCMS.Models.configModel.get('is_admin')){
+    //   vex.defaultOptions.className = 'vex-theme-plain';
+    //   vex.dialog.alert("Must be admin to update media");
+    //   return;
+    // }
+
     if (attrs.weight < 0){
       return "Weight must be a percentage greater than 0.";
     }

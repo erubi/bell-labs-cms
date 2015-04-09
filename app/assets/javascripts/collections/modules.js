@@ -65,22 +65,32 @@ BellCMS.Collections.Modules = Backbone.Collection.extend({
   },
 
   randomizeWeights: function(){
-    var coll = this.weightedSubset();
-    var randWeights = this.randomWeightArray(coll.length);
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update modules");
+    } else {
+      var coll = this.weightedSubset();
+      var randWeights = this.randomWeightArray(coll.length);
 
-    this.resetWeights();
+      this.resetWeights();
 
-    coll.each(function(model, ind){
-      model.set('weight', randWeights[ind]);
-      model.save();
-    });
+      coll.each(function(model, ind){
+        model.set('weight', randWeights[ind]);
+        model.save();
+      });
+    }
   },
 
   resetWeights: function(){
-    this.each(function(model){
-      model.set('weight', 0);
-      model.save();
-    });
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update modules");
+    } else {
+      this.each(function(model){
+        model.set('weight', 0);
+        model.save();
+      });
+    }
   },
 
   randomWeightArray: function(len){

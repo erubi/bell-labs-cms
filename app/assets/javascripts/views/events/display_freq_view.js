@@ -16,9 +16,15 @@ BellCMS.Views.EventDisplayFreqView= Marionette.ItemView.extend({
 
   updateFrequency: function(event){
     event.preventDefault();
-    var freq = $(event.currentTarget).data('value');
-    this.model.set('event_freq', freq);
-    this.model.save();
+
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update display frequency");
+    } else {
+      var freq = $(event.currentTarget).data('value');
+      this.model.set('event_freq', freq);
+      this.model.save();
+    }
   },
 
   highlightFreq: function(){

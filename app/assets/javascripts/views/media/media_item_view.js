@@ -38,12 +38,17 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
     event.stopPropagation();
     var that = this;
 
-    vex.dialog.confirm({
-      message: 'Are you sure you want to delete this media?',
-      callback: function(val){
-        that.destroyModel(val);
-      }
-    });
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update media");
+    } else {
+      vex.dialog.confirm({
+        message: 'Are you sure you want to delete this media?',
+        callback: function(val){
+          that.destroyModel(val);
+        }
+      });
+    }
   },
 
   destroyModel: function(confirm){

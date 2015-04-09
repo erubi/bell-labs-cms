@@ -51,8 +51,13 @@ BellCMS.Views.ModuleCompositeView = Marionette.CompositeView.extend({
   },
 
   updateCycleDuration: function(e){
-    var newDuration = e.value;
-    this.model.set('cycle_duration', newDuration);
-    this.model.save();
+    if(!BellCMS.Models.configModel.get('is_admin')){
+      vex.defaultOptions.className = 'vex-theme-plain';
+      vex.dialog.alert("Must be admin to update cycle duration");
+    } else {
+      var newDuration = e.value;
+      this.model.set('cycle_duration', newDuration);
+      this.model.save();
+    }
   }
 });
