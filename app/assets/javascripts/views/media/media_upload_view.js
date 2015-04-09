@@ -29,6 +29,10 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     this.configureUpload();
   },
 
+  onBeforeShow: function(){
+    Backbone.Radio.channel('mediaNavChannel').command('updateActiveNav', this.model.get('name'), this.mediaType);
+  },
+
   templateHelpers: function(){
     return {
       metadataVisibleClass: this.metadataVisible(),
@@ -53,8 +57,8 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     } else if (modelName == 'Bell Labs Heroes'){
       return {
         format: 'Format: PNG',
-        resolution: '1620x1080 pixels',
-        notes: 'Heroes should be keyed-out over a transparent background'
+        resolution: 'Resolution: 1620x1080 pixels',
+        notes: 'Notes: Heroes should be keyed-out over a transparent background'
       };
     } else if (modelName == 'Video Player'){
       return {

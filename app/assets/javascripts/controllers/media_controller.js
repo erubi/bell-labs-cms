@@ -1,9 +1,8 @@
 BellCMS.Controllers.MediaController= {
   media: function(){
-    // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
     var mediaLayout = BellCMS.Layouts.mediaLayout = new BellCMS.Layouts.MediaLayout();
     BellCMS.rootView.showChildView('contentContainer', mediaLayout);
-    this.setUpMediaViews('Media Library', 'video');
+    this.videoPlayerMedia();
   },
 
   imageLibrary: function(){
@@ -23,6 +22,8 @@ BellCMS.Controllers.MediaController= {
   },
 
   setUpMediaViews: function(moduleName, mediaType){
+    var that = this;
+
     BellCMS.Collections.modules.fetch({
       success: function(){
 
