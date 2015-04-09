@@ -3,6 +3,7 @@ BellCMS.Routers.MediaRouter = Backbone.Marionette.AppRouter.extend({
   // uses media_controller.js
 
   appRoutes: {
+    'media' : 'media',
     'image_library' : 'imageLibrary',
     'video_library' : 'videoLibrary',
     'video_player_media' : 'videoPlayerMedia',

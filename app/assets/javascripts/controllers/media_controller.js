@@ -1,4 +1,11 @@
 BellCMS.Controllers.MediaController= {
+  media: function(){
+    // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
+    var mediaLayout = BellCMS.Layouts.mediaLayout = new BellCMS.Layouts.MediaLayout();
+    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
+    this.setUpMediaViews('Media Library', 'video');
+  },
+
   imageLibrary: function(){
     this.setUpMediaViews('Media Library', 'image');
   },

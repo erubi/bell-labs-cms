@@ -1,15 +1,10 @@
 BellCMS.Controllers.AppController= {
   root: function(){
+    BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
   },
 
   exteriorModules: function(){
     BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
-  },
-
-  media: function(){
-    // var mediaLayout = BellCMS.Layouts.mediaLayout = BellCMS.Layouts.mediaLayout || new BellCMS.Layouts.MediaLayout();
-    var mediaLayout = BellCMS.Layouts.mediaLayout = new BellCMS.Layouts.MediaLayout();
-    BellCMS.rootView.showChildView('contentContainer', mediaLayout);
   },
 
   tablet: function(){
