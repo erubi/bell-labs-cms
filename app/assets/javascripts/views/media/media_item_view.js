@@ -8,7 +8,7 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
 
     vex.defaultOptions.className = 'vex-theme-plain';
 
-    this.mediaChannel.comply('updateMetadata', function(id, data){
+    this.mediaChannel.comply('updateMetadata' + that.model.id, function(id, data){
       if (that.model.id == id){
         that.model.save(data);
       } else {

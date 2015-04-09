@@ -79,6 +79,8 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   },
 
   showMetadata: function(mediaItemId){
+    this.disableMetadataEdit();
+
     var mediaItem = this.model.mediaItems().getOrFetch(mediaItemId);
     this.ui.bellLabsPeople.val(mediaItem.get('bell_labs_people'));
     this.ui.topLevelCategory.val(mediaItem.get('top_level_category'));
@@ -93,7 +95,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
 
     this.ui.metadataForm.on('change', function(){
       var data = that.ui.metadataForm.serializeJSON();
-      that.mediaChannel.command('updateMetadata', mediaItemId, data);
+      that.mediaChannel.command('updateMetadata' + mediaItemId, mediaItemId, data);
     });
   },
 
