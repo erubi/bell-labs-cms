@@ -34,7 +34,8 @@ body{
 }
 
 .feature-ctr-top,
-.feature-ctr-bottom{
+.feature-ctr-bottom,
+.feature-ctr-admin{
   padding: 40px;
 
   @media(max-width: 768px){
@@ -52,6 +53,12 @@ body{
 .feature-ctr-bottom{
   border: 1px solid #fff;
   margin-bottom: 10px;
+  color: #fff;
+}
+
+.feature-ctr-admin{
+  margin-top: 40px;
+  border: 1px solid #fff;
   color: #fff;
 }
 

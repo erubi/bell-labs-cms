@@ -1,6 +1,59 @@
 .user-manage-li{
-  .button_to{
+  border: 1px solid #fff;
+  width: 400px;
+  margin-bottom: 15px;
+
+  span{
+    text-align: center;
+    width: 350px;
+    padding: 7px 0;
     display: inline-block;
+    border-right: 1px solid #fff;
+  }
+
+  form{
+    display: inline-block;
+    width: 42px;
+    text-align: center;
+  }
+
+  button{
+    font-size: 20px;
+    display: inline;
+    border: none;
+    position: relative;
+    top: 6px;
+    background-image: initial;
+    background: transparent;
+  }
+}
+
+.new-user-form-ctr{
+  form{
+    width: 400px;
+    border: 1px solid #fff;
+
+    input{
+      border: none;
+      background: transparent;
+      width: 350px;
+      padding: 7px 0;
+      text-align: center;
+      border-right: 1px solid #fff;
+    }
+
+    button{
+      width: 47px;
+      padding-left: 7px;
+      padding-right: 7px;
+      font-size: 20px;
+      display: inline;
+      border: none;
+      background-image: initial;
+      background: transparent;
+      float: right;
+      color: $green;
+    }
   }
 }
 
@@ -10,4 +63,15 @@
 
 .manage-users-ctr{
   margin-bottom: 30px;
+}
+
+.new-user-btn{
+  background: $light-blue;
+  color: #000;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid #fff;
+  padding: 4px 8px;
+  --webkit-appearence: none;
+  margin-top: 20px;
 }
