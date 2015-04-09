@@ -18,8 +18,8 @@ BellCMS.Views.MediaItemView = Marionette.CompositeView.extend({
   },
 
   events: {
-  'click .delete-media-btn': 'destroyModelPrompt',
-  'click .media-box': 'showMetadata'
+    'click .delete-media-btn': 'destroyModelPrompt',
+    'click .media-box': 'showMetadata'
   },
 
   showMetadata: function(){

@@ -49,5 +49,6 @@ BellCMS.on('start', function(options){
     Backbone.history.start();
   }
 
+  BellCMS.rootView.showChildView('contentContainer', new BellCMS.Layouts.ExteriorModulesLayout());
 });
 
