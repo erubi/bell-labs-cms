@@ -1,34 +1,40 @@
-<div class="container">
+<div class="feature-ctr-admin container">
+  <h2 class="feature-header">Admin Settings</h2>
   <div class="manage-users-ctr">
+
     <h2>
       <b>Admins - </b>
       <span class="inner-header">
-        Read, Write, and Add <b>Users</b>
+        Read, Write, and Add Users
       </span>
     </h2>
+
     <ul>
       <% current_user.other_admin_users.each do |u| %>
         <li class="user-manage-li">
-      <%= u.email %>
-      <%= button_to users_manage_users_path, method: :delete, params: {u_id: u.id}  do%>
-        <i class="glyphicon glyphicon-trash"></i>
-    <% end%>
-      </li>
-    <% end %>
+          <span>
+            <%= u.email %>
+          </span>
+
+          <%= button_to users_manage_users_path, method: :delete, params: {u_id: u.id}  do%>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end%>
+        </li>
+      <% end %>
     </ul>
 
-    <div id="new-admin-ctr" class="no-display">
+    <div id="new-admin-ctr" class="new-user-form-ctr no-display">
       <%= form_for :user, url: users_manage_users_url do |admin| %>
         <%= admin.hidden_field :admin, value: true %>
-        <%= admin.email_field :email %>
-        <button >
+        <%= admin.email_field :email, placeholder: 'Enter New Admin Here' %>
+        <button>
           <i class="glyphicon glyphicon-ok"></i>
         </button>
-    <% end %>
+      <% end %>
     </div>
 
 
-    <button id="new-admin-manage-btn" class="btn btn-default">
+    <button id="new-admin-manage-btn" class="new-user-btn">
       <i class="glyphicon glyphicon-user"></i>
       New Admin
     </button>
@@ -45,29 +51,31 @@
     <ul>
       <% User.not_admin.each do |u| %>
         <li class="user-manage-li">
-      <%= u.email %>
-      <%= button_to users_manage_users_path, method: :delete, params: {u_id: u.id}  do%>
-        <i class="glyphicon glyphicon-trash"></i>
-    <% end%>
-      </li>
-    <% end %>
+          <span>
+            <%= u.email %>
+          </span>
+          <%= button_to users_manage_users_path, method: :delete, params: {u_id: u.id}  do%>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end%>
+        </li>
+      <% end %>
     </ul>
-  </div>
 
-  <div id="new-user-ctr" class="no-display">
-    <%= form_for :user, url: users_manage_users_url do |user| %>
-      <%= user.hidden_field :admin, value: false%>
-      <%= user.email_field :email %>
-    <button >
-      <i class="glyphicon glyphicon-ok"></i>
+    <div id="new-user-ctr" class="no-display new-user-form-ctr">
+      <%= form_for :user, url: users_manage_users_url do |user| %>
+        <%= user.hidden_field :admin, value: false%>
+        <%= user.email_field :email, placeholder: 'Enter New User Here' %>
+        <button >
+          <i class="glyphicon glyphicon-ok"></i>
+        </button>
+      <% end %>
+    </div>
+
+    <button id="new-user-manage-btn" class="new-user-btn">
+      <i class="glyphicon glyphicon-user"></i>
+      New User
     </button>
-  <% end %>
   </div>
-
-  <button id="new-user-manage-btn" class="btn btn-default">
-    <i class="glyphicon glyphicon-user"></i>
-    New User
-  </button>
 </div>
 
 <script>
