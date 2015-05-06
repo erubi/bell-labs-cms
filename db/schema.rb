@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404163634) do
+ActiveRecord::Schema.define(version: 20150506153107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
     t.datetime "display_start_time"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.datetime "event_end_time"
     t.integer  "countdown_hours"
     t.string   "header"
     t.string   "subheader"
     t.datetime "event_start_time"
-    t.boolean  "visible",            default: false
+    t.boolean  "visible",            default: true
   end
 
   create_table "media_items", force: :cascade do |t|
