@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 
-  validates :header, presence: true
+  validates :header, presence: true, length: {maximum: 20}
+  validates :subheader, length: {maximum: 100}
   validates :display_start_time, presence: true
   validates :event_start_time, presence: true
   validates :event_end_time, presence: true
