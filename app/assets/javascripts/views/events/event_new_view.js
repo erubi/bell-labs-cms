@@ -21,6 +21,7 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
   events: {
     'click #save-new-event' : 'createEvent',
     'click .dropdown-menu li' : 'updateCountdown',
+    'click .countdown-button-left' : 'toggleCountdown',
     'change #end-time-input' : 'updateStartEndTimes',
     'change #start-time-input' : 'updateStartEndTimes',
     'click @ui.newEventBtn' : 'toggleEventForm',
@@ -100,11 +101,17 @@ BellCMS.Views.EventNewView = Marionette.ItemView.extend({
     }
   },
 
+  toggleCountdown: function(event){
+    event.preventDefault();
+    this.model.set('countdown_hours', 0);
+    $('#countdown-text').text(' ' + 0 + ' hrs');
+  },
+
   createEvent: function(event){
     event.preventDefault();
     var that = this;
 
-    if(!this.model.get('countdown_hours')){
+    if(this.model.get('countdown_hours') == undefined){
       this.model.set('countdown_hours', 1);
     }
 

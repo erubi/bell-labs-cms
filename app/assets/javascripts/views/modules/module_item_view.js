@@ -13,7 +13,10 @@ BellCMS.Views.ModuleItemView = Marionette.ItemView.extend({
       $('.weight-input').slider({
         ticks: [0, 100],
         ticks_labels : ['0%', '100%'],
-        handle: 'custom'
+        handle: 'custom',
+        formatter: function(value){
+          return (value + '%');
+        }
       });
     }
   },

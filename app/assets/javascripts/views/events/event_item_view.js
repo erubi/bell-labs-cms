@@ -9,7 +9,8 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     'click .delete-event-btn' : 'deleteEvent',
     'change input[type="text"]' : 'updateEvent',
     'click .dropdown-menu li' : 'updateCountdown',
-    'click .eye-icon' : 'updateVisibility'
+    'click .eye-icon' : 'updateVisibility',
+    'click .countdown-button-left' : 'toggleCountdown'
   },
 
   modelEvents: {
@@ -96,6 +97,12 @@ BellCMS.Views.EventItemView = Marionette.ItemView.extend({
     event.preventDefault();
     this.$el.find('.eye-icon').toggleClass('glyphicon-eye-open').toggleClass('glyphicon-eye-close');
     this.model.set('visible', !this.model.get('visible'));
+    this.model.save();
+  },
+
+  toggleCountdown: function(event){
+    event.preventDefault();
+    this.model.set('countdown_hours', 0);
     this.model.save();
   },
 
