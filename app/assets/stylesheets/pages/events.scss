@@ -143,13 +143,18 @@
 
 .add-new-event-btn{
   display: inline-block;
-  background-color: $light-blue;
+  background-color: transparent;
   border: 1px solid #fff;
   padding: 10px;
   font-weight: 700;
   font-size: 18px;
   margin-top: 34px;
   margin-bottom: 8px;
+  outline: none;
+
+  &:active{
+    background-color: $light-blue;
+  }
 }
 
 .event-form-ctr,
