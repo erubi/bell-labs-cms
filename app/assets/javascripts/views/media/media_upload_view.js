@@ -105,9 +105,10 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   },
 
   disableMetadataEdit: function(){
-    this.ui.metadataForm.unbind('change');
+    this.ui.saveMetadataBtn.unbind('click');
     this.mediaChannel.command('unhighlightMediaBox');
     this.ui.metadataForm.find('input[type="text"]').val('');
+    this.ui.description.val('');
   },
 
   configureUpload: function(){
@@ -148,7 +149,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     var fileTypeStr;
     var fileType;
 
-    metadata= $('#metadata-form').serializeJSON();
+    metadata = $.extend(this.ui.metadataForm.serializeJSON(), this.ui.descriptionForm.serializeJSON());
     formDataHash['module_name'] = this.model.get('name');
     fileTypeStr = data.files[0].type;
 
