@@ -11,6 +11,7 @@ json.media do
       json.BellLabsPeople media_item.model.bell_labs_people
       json.TopLevelCategory media_item.model.top_level_category
       json.keywords media_item.model.keywords
+      json.description media_item.model.description
     end
   end
 end

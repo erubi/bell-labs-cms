@@ -148,6 +148,44 @@ input[readonly] {
 
 }
 
+#description-form{
+  .description-input-ctr{
+    height: 150px;
+    border: 1px solid #fff;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  label{
+    font-weight: 300;
+    padding: 6px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+  textarea{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 10px;
+  }
+}
+
+#save-metadata-btn{
+  padding: 10px 40px;
+  margin-bottom: 20px;
+  background: transparent;
+  border:1px solid #fff;
+  outline: none;
+  float: right;
+
+  &:active{
+    background: $light-blue;
+  }
+}
+
 .media-search-ctr{
   float: right;
   width: 300px;

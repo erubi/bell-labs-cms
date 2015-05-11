@@ -4,6 +4,7 @@ json.bell_labs_people m.bell_labs_people
 json.top_level_category m.top_level_category
 json.keywords m.keywords
 json.additional_metadata m.additional_metadata
+json.description m.description
 
 if !m.image.file.nil?
   json.filename m.image.file.filename

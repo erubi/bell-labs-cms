@@ -8,7 +8,10 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     topLevelCategory: '#meta2',
     keywords: '#meta3',
     additionalMetadata: '#meta4',
-    metadataForm: '#metadata-form'
+    metadataForm: '#metadata-form',
+    description: '#description',
+    descriptionForm: '#description-form',
+    saveMetadataBtn: '#save-metadata-btn'
   },
 
   events: {
@@ -86,6 +89,7 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
     this.ui.topLevelCategory.val(mediaItem.get('top_level_category'));
     this.ui.keywords.val(mediaItem.get('keywords'));
     this.ui.additionalMetadata.val(mediaItem.get('additional_metadata'));
+    this.ui.description.val(mediaItem.get('description'));
 
     this.setUpMetadataEdit(mediaItemId);
   },
@@ -93,8 +97,9 @@ BellCMS.Views.MediaUploadView = Marionette.ItemView.extend({
   setUpMetadataEdit: function(mediaItemId){
     var that = this;
 
-    this.ui.metadataForm.on('change', function(){
-      var data = that.ui.metadataForm.serializeJSON();
+    this.ui.saveMetadataBtn.on('click', function(event){
+      event.preventDefault();
+      var data = $.extend(that.ui.metadataForm.serializeJSON(), that.ui.descriptionForm.serializeJSON());
       that.mediaChannel.command('updateMetadata' + mediaItemId, mediaItemId, data);
     });
   },
