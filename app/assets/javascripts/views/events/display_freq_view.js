@@ -28,8 +28,11 @@ BellCMS.Views.EventDisplayFreqView= Marionette.ItemView.extend({
   },
 
   highlightFreq: function(){
+    var eventFreq = BellCMS.Models.configModel.get('event_freq');
+
     $('li').removeClass('current-freq');
-    $('li[data-value=' + BellCMS.Models.configModel.get('event_freq') + ']').addClass('current-freq');
+    $('li[data-value=' + eventFreq + ']').addClass('current-freq');
+    $('.current-freq-stick').text(eventFreq + ' minutes');
   }
 
 });
