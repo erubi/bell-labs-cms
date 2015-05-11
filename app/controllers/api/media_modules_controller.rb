@@ -115,7 +115,7 @@ class Api::MediaModulesController < ApplicationController
   def metadata_params
     params[:metadata] = JSON.parse(params[:metadata])
 
-    params.require(:metadata).permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata)
+    params.require(:metadata).permit(:bell_labs_people, :top_level_category, :keywords, :additional_metadata, :description)
   end
 
 end
